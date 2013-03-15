@@ -32,13 +32,13 @@
         <div id="center">
             <div class="container-fluid">
                 <div class="row-fluid">
-                    <div id="menu" class="span3">
+                    <div id="menu" class="span3" aria-orientation="vertical">
                         <div class="navbar-search pull-left">
                             <asp:TextBox ID="TextBox1" class="search-query" placeholder="Search" runat="server"></asp:TextBox><asp:Button ID="Button1" runat="server" Text="Search" />
                         </div>
-                        <asp:ContentPlaceHolder ID="nav" runat="server">
-                            <!-- navigatie is overal verschillend omdat het actieve listitem moet in de class actief zitten! -->
-                        </asp:ContentPlaceHolder>               
+                        <nav class="nav">
+                            <asp:Menu ID="Menu1" runat="server" CssClass="navbar-inner"> </asp:Menu>
+                    </nav>               
                     </div>
                 </div>
             </div>
