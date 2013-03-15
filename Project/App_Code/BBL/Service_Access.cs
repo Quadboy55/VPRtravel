@@ -21,7 +21,7 @@ public class Service_Access
     public DataTable getAll()
     {
         DAO = new Dao_Access();
-        return DAO.getAllFromLanden().Tables[0];
+        return DAO.getLanden().Tables[0];
     }
 
     /*public DataTable getByAlcohol(String percent)

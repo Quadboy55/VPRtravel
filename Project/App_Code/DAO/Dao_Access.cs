@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 
 using System.Data;
-using System.Data.OleDb;
 
+using System.Data.SqlClient;
 /// <summary>
 /// Summary description for Dao_Access
 /// </summary>
@@ -14,18 +14,40 @@ public class Dao_Access
     private string strSQL;
     //private DataTable dttLanden;
     private Util util;
+    private List<SqlParameter> param;
 
     public Dao_Access()
 	{
 		
 	}
 
-    public DataSet getAllFromLanden()
+    public DataSet getLanden()
     {
         util = new Util();
-        OleDbParameter param = new OleDbParameter();
-        strSQL = "Select * from Landen;";
-        return util.ophalen(strSQL, param);
+        param = new List<SqlParameter>();
+        //to add parameters=> param.Add(new SqlParameter("@variabelenaam",variabele));
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT * FROM tblPlaatsen;";
+
+        return util.ophalen(strSQL, sqlparam);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //util = new Util();
+        //SqlParameter param = new SqlParameter();
+        //strSQL = "Select * from tblPlaatsen;";
+        //return util.ophalen(strSQL, param);
     }
 
    /* public DataSet getByAlcohol(string percent)
