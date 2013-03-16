@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Master.master.cs" Inherits="Master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="structuur.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <nav>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="#">VPRtravel</a>
+                        <div class="nav-collapse collapse">
+                            <div class="navbar-search pull-right">
+                                <asp:TextBox ID="txtSearch" class="search-query" placeholder="Search" runat="server"></asp:TextBox>
+                                <asp:Button ID="btnZoek" CssClass="btn-inverse" runat="server" Text="Search" />
+                            </div>
+                            <asp:Menu ID="NavigationMenu" runat="server" EnableViewState="false"
+                                IncludeStyleBlock="false" Orientation="Horizontal"
+                                CssClass="nav"
+                                StaticMenuStyle-CssClass="nav"
+                                StaticSelectedStyle-CssClass="active"
+                                DynamicMenuStyle-CssClass="dropdown-menu"
+                                DataSourceID="SiteMapDataSource1"
+                                StaticDisplayLevels="2">
+                            </asp:Menu>
+                            
+                        </div>
+
+                        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+        </nav>
+
+        <! adrotator om foto's van treinen met kwaliteiten van ons systeem te promoten>
+        <div class="adrotator">
+        </div>
+
+        <! Pad>
+        <div>
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server" CssClass="breadcrumb"
+                CurrentNodeStyle="active"
+                PathSeparatorStyle="divider">
+            </asp:SiteMapPath>
+        </div>
+
+
+        <div class="content">
+            <asp:ContentPlaceHolder ID="inhoud" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer class="modal-footer"> 
+            <p class="pagination-centered">Made By Kevin Restiaens & Anthony Van Parijs</p>
+        </footer>
+    </form>
+</body>
+</html>

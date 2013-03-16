@@ -1,0 +1,19 @@
+﻿body {
+    width:80%;
+    margin: auto;
+}
+.adrotator {
+    margin-top: 40px;
+    background-color: gray;
+    height:150px;
+    width:auto;
+    clear:both;
+    margin-bottom:6px;
+}
+.content {
+    margin-top:6px;
+    background-color:lightgray;
+    height:500px;
+    width:auto;
+    clear:both;
+}

@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-    <siteMapNode url="Home.aspx" title="Home"  description="Home-pagina"></siteMapNode>
-    <siteMapNode url="" title="Reizen"  description="Home-pagina"></siteMapNode>
+  <siteMapNode url="Home.aspx" title="Home"  description="">
+    <siteMapNode url="" title="Bestemmingen"  description="">
+      <siteMapNode url="" title="Rome"  description="" />
+      <siteMapNode url="" title="Parijs"  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="Treinen"  description="" />
+  </siteMapNode>
 </siteMap>
