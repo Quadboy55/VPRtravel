@@ -7,9 +7,15 @@
     <title></title>
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="structuur.css" rel="stylesheet" />
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <link href="CSS/structuur.css" rel="stylesheet" />
+    <link href="CSS/Banner.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script src="Banner/jquery.blueberry.js"></script>
+    <script>
+        $(window).load(function () {
+            $('.blueberry').blueberry();
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -45,7 +51,8 @@
         </nav>
 
         <! adrotator om foto's van treinen met kwaliteiten van ons systeem te promoten>
-        <div class="adrotator">
+        <div class="banner">
+            <asp:ContentPlaceHolder ID="banner" runat="server"></asp:ContentPlaceHolder>
         </div>
 
         <! Pad>
