@@ -5,12 +5,12 @@
 .banner {
     margin-top: 40px;
     background-color: gray;
-    height:150px;
+    height:207px;
     width:auto;
     clear:both;
-    padding:0px;
     margin-bottom:6px;
 }
+
 .content {
     margin-top:6px;
     background-color:lightgray;
