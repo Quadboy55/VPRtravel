@@ -9,19 +9,19 @@ using System.Data;
 /// <summary>
 /// Summary description for Service_Access
 /// </summary>
-public class Service_Access
+public class TreinenAccess
 {
-    private Dao_Access DAO;
+    private TreinenDAO DAO;
 
-    public Service_Access()
-	{
-
-	}
-
-    public DataTable getAll()
+    public TreinenAccess()
     {
-        DAO = new Dao_Access();
-        return DAO.getLanden().Tables[0];
+
+    }
+
+    public DataTable getAllTrains()
+    {
+        DAO = new TreinenDAO();
+        return DAO.getAllTrains().Tables[0];
     }
 
     /*public DataTable getByAlcohol(String percent)

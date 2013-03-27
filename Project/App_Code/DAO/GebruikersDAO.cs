@@ -9,54 +9,39 @@ using System.Data.SqlClient;
 /// <summary>
 /// Summary description for Dao_Access
 /// </summary>
-public class Dao_Access
+public class GebruikersDAO
 {
     private string strSQL;
     //private DataTable dttLanden;
     private Util util;
     private List<SqlParameter> param;
 
-    public Dao_Access()
+    public GebruikersDAO()
 	{
 		
 	}
 
-    public DataSet getLanden()
+    public DataSet getAllPlayers()
     {
         util = new Util();
         param = new List<SqlParameter>();
         //to add parameters=> param.Add(new SqlParameter("@variabelenaam",variabele));
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SELECT * FROM tblPlaatsen;";
+        strSQL = "SELECT * FROM tblGebruikers;";
 
         return util.ophalen(strSQL, sqlparam);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //util = new Util();
-        //SqlParameter param = new SqlParameter();
-        //strSQL = "Select * from tblPlaatsen;";
-        //return util.ophalen(strSQL, param);
     }
 
-   /* public DataSet getByAlcohol(string percent)
-    {
+    public DataSet getPlayerById(int id){
         util = new Util();
-        OleDbParameter param = new OleDbParameter("@alcohol",percent);
-        
-        strSQL = "Select * from bieren where alcohol>= @alcohol;";
-       
-        return util.ophalen(strSQL, param);
-    }*/
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id",id));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT * FROM tblGebruikers WHERE ID=@id;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
 }
