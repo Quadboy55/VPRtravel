@@ -5,6 +5,8 @@
       <siteMapNode url="" title="Rome"  description="" />
       <siteMapNode url="" title="Parijs"  description="" />
     </siteMapNode>
+    <siteMapNode url="" title="Uw reis"  description="" >
     <siteMapNode url="Trein.aspx" title="Treinen"  description="" />
+    </siteMapNode>
   </siteMapNode>
 </siteMap>

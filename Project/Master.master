@@ -13,7 +13,7 @@
     <script src="Banner/jquery.nivo.slider.pack.js"></script>
     <link href="CSS/banner.css" rel="stylesheet" />
     <link href="Banner/dark/dark.css" rel="stylesheet" />
-
+    <script src="modalBox.js"></script>
     <script type="text/javascript">
         $(window).load(function () {
             $('#slider').nivoSlider();
@@ -37,6 +37,7 @@
                             <div class="navbar-search pull-right">
                                 <asp:TextBox ID="txtSearch" class="search-query" placeholder="Search" runat="server"></asp:TextBox>
                                 <asp:Button ID="btnZoek" CssClass="btn-inverse" runat="server" Text="Search" />
+                                <asp:Button ID="btnLogRes" CssClass="btn-inverse" runat="server" Text="Login/register" />
                             </div>
                             <asp:Menu ID="NavigationMenu" runat="server" EnableViewState="false"
                                 IncludeStyleBlock="false" Orientation="Horizontal"
@@ -69,11 +70,39 @@
 
         <div class="content">
             <asp:ContentPlaceHolder ID="inhoud" runat="server">
+
             </asp:ContentPlaceHolder>
         </div>
         <footer class="modal-footer">
             <p class="pagination-centered">Made By Kevin Restiaens & Anthony Van Parijs</p>
         </footer>
+
+        // login en register
+         <div id="modallogin" class="modal hide fade" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Login/Register</h3>
+            </div>
+            <div class="modal-body">
+                <div class="btn-group ">
+                    <asp:Button ID="btnLogin" runat="server" class="btn-large" Text="Login" OnClientClick="tabLogin(); return false;" />
+                    <asp:Button ID="btnRegister" runat="server" class="btn-large" Text="Register" OnClientClick="tabRegister(); return false;" />
+
+
+                </div>
+                <div id="tabLogin">
+                    <p>Hier komt het login-gedeelte</p>
+
+                </div>
+                <div id="tabRegister" class="hidden">
+                    <p>Hier komt het register-gedeelte</p>
+
+
+                </div>
+
+
+
+            </div>
     </form>
 </body>
 </html>
