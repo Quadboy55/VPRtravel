@@ -24,6 +24,22 @@ public class TreinenAccess
         return DAO.getAllTrains().Tables[0];
     }
 
+    public DataTable getTrainsFromTo(int from, int to)
+    {
+        DAO = new TreinenDAO();
+        return DAO.getTrainsFromTo(from, to).Tables[0];
+    }
+    public DataTable getTrainsFrom(int from)
+    {
+        DAO = new TreinenDAO();
+        return DAO.getTrainsFrom(from).Tables[0];
+    }
+    public DataTable getTrainsTo(int to)
+    {
+        DAO = new TreinenDAO();
+        return DAO.getTrainsTo(to).Tables[0];
+    }
+
     /*public DataTable getByAlcohol(String percent)
     {
 

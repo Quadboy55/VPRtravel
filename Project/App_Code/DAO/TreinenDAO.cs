@@ -31,15 +31,43 @@ public class TreinenDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
-    public DataSet getPlayerById(int id){
+    public DataSet getTrainsFromTo(int from, int to)
+    {
         util = new Util();
         param = new List<SqlParameter>();
         //to add parameters=> 
-        param.Add(new SqlParameter("@id",id));
+        param.Add(new SqlParameter("@from", from));
+        param.Add(new SqlParameter("@to", to));
 
 
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SELECT * FROM tblGebruikers WHERE ID=@id;";
+        strSQL = "SELECT * FROM tblTrein WHERE (vertrekID = @from AND aankomstID = @to);";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+    public DataSet getTrainsFrom(int from)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@from", from));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT * FROM tblTrein WHERE vertrekID = @from;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+    public DataSet getTrainsTo(int to)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@to", to));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT * FROM tblTrein WHERE aankomstID = @to;";
 
         return util.ophalen(strSQL, sqlparam);
     }

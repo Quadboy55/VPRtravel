@@ -18,6 +18,12 @@ public class PlaatsenAccess
 
     }
 
+    public DataTable getAllPlaatsen()
+    {
+        DAO = new PlaatsenDAO();
+        return DAO.getAllPlaatsen().Tables[0];
+    }
+
     public DataTable getPlaatsById(string id)
     {
         DAO = new PlaatsenDAO();

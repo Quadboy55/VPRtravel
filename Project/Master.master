@@ -77,7 +77,7 @@
             <p class="pagination-centered">Made By Kevin Restiaens & Anthony Van Parijs</p>
         </footer>
 
-        // login en register
+        <%-- Login/Register --%>
          <div id="modallogin" class="modal hide fade" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

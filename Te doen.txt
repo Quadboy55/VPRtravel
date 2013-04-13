@@ -1,0 +1,14 @@
+Tabel treinen 
+"money" veranderen naar float
+int overstap toevoegen met de id van de overstap plaats
+Duur reis moet toegevoegd worden
+
+Tabel plaatsen
+beschrijving toevoegen aan de bestemmingen
+
+
+
+Wat kunnen we doen:
+
+Als op een rij van lijst van treinen geklikt wordt,gaan we naar een nieuwe pagina waar alle 
+vertrek en aankomst tijden van deze reis staan. En zo dan verder een reis boeken
