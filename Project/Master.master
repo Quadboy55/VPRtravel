@@ -16,7 +16,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="Banner/jquery.nivo.slider.pack.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="JS/modalBox.js"></script>
     <script type="text/javascript">
         $(window).load(function () {
             $('#slider').nivoSlider();
@@ -40,7 +39,7 @@
                             <div class="navbar-search pull-right">
                                 <asp:TextBox ID="txtSearch" class="search-query" placeholder="Search" runat="server"></asp:TextBox>
                                 <asp:Button ID="btnZoek" CssClass="btn-inverse" runat="server" Text="Search" />
-                                <a href="#ModalLogReg" role="button" class="btn btn-info pull-right" data-toggle="modal">Login/Register</a>
+                                <a href="#ModalLogReg" role="button" class="btn btn-inverse" data-toggle="modal">Login/Register</a>
                                 <%-- <asp:Button ID="btnLogRes" CssClass="btn-inverse" runat="server" Text="Login/register" />--%>
                             </div>
                             <asp:Menu ID="NavigationMenu" runat="server" EnableViewState="false"
@@ -88,25 +87,23 @@
                             <h3 id="H1">Login/Register</h3>
                         </div>
                         <div class="modal-body">
-                            <div class="btn-group ">
-                                <asp:Button ID="Button1" runat="server" class="btn-large" Text="Login" OnClientClick="tabLogin(); return false;" />
-                                <asp:Button ID="Button2" runat="server" class="btn-large" Text="Register" OnClientClick="tabRegister(); return false;"/>
-                                             
-                                         
-                            </div>
                             <div id="tabLogin">
-                                <p>Hier komt het login-gedeelte</p>
-                                                                                   
-                            </div>
-                            <div id="tabRegister" class="hidden">
-                                <p>Hier komt het register-gedeelte</p>
-
-                                          
-                            </div>        
+                                <table>
+                                    <tr>
+                                <td><asp:Label ID="Label1" runat="server" Text="Login:"></asp:Label></td>
+                                <td> <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox></td>
+                                    </tr>
+                                    <tr>
+                                <td><asp:Label ID="Label2" runat="server" Text="Wachtwoord:"></asp:Label></td>
+                                <td><asp:TextBox ID="txtWachtwoord" runat="server"></asp:TextBox> </td>
+                                        </tr>
+                                </table>      
+                                <asp:Button ID="btnRegister" runat="server" Text="Heb je geen login klik hier" CssClass="btn btn-small btn-primary" OnClick="btnRegister_Click"/>                            
+                            </div>      
                         </div>
                         <div class="modal-footer">
-                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                            <button class="btn btn-primary">Save changes</button>
+                            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+                            <asp:Button ID="btnLogOk" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogOk_Click"/>
                         </div>
                 </div>
         <!-- end of Modal -->
