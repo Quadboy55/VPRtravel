@@ -31,12 +31,32 @@ public class Util
             cmd.Parameters.AddRange(parameter);
             SqlDataAdapter dtaAdapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
-            dtaAdapter.Fill(ds, "ds_landen");
+            dtaAdapter.Fill(ds);
             return ds;
         }
         catch (System.Exception ex)
         {
             return null;
+        }
+        finally
+        {
+            cnn.Close();
+        }
+    }
+
+    public void updaten(string strSQL, SqlParameter[] parameters)
+    {
+        SqlCommand myCom = new SqlCommand(strSQL, cnn);
+        myCom.Parameters.AddRange(parameters);
+
+        try
+        {
+            cnn.Open();
+            int result = myCom.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+
         }
         finally
         {

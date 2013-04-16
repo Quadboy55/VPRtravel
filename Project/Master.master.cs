@@ -11,12 +11,33 @@ public partial class Master : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
+        if (Session["login"] != null)
+        {
+            if (Session["login"].ToString() == "true")
+            {
+                setLogon();
+            }
+            else
+            {
+                lblError.Text = "Login of wachtwoord zijn incorrect";
+                Response.Redirect("#ModalLogReg");
+                
+            }
+        }
     }
 
     protected void btnRegister_Click(object sender, EventArgs e)
     {
         Response.Redirect("Register.aspx");
+    }
+
+    private void setLogon()
+    {
+        btnLogRes.Visible = false;
+        btnLogOut.Visible = true;
+        lblLogNaam.Visible = true;
+        lblLogNaam.Text = Session["naam"].ToString();
     }
     protected void btnLogOk_Click(object sender, EventArgs e)
     {
@@ -28,12 +49,16 @@ public partial class Master : System.Web.UI.MasterPage
          gebruiker = access.login(login, pas);
          if (gebruiker == null)
          {
-             // zeg dat login of passwoord incorrect zijn
+             Session["login"] = false;
          }
-         else
+         
          {
+             Session["login"] = true;
+             Session["id"] = gebruiker.ID;
+             Session["naam"] = gebruiker.naam + gebruiker.voornaam;
              Response.Redirect("LoginSucces.aspx");
          }
 
     }
+
 }

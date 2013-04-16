@@ -36,7 +36,7 @@ public class GebruikersAccess
         if(getPlayersByLogin(login) != null)
         {
             DataTable t = DAO.login(login, pass).Tables[0];
-            if (t != null)
+            if (t.Rows.Count != 0)
             {
                 GebruikerData g = new GebruikerData();
                 object[] inhoud = t.Rows[0].ItemArray;
