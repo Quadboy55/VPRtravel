@@ -73,4 +73,28 @@ public class GebruikersDAO
 
         return util.ophalen(strSQL, sqlparam);
     }
+
+    public int addPlayer(GebruikerData g)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", g.ID));
+        param.Add(new SqlParameter("@gebruikersnaam", g.gebruikersnaam));
+        param.Add(new SqlParameter("@passwoord", g.wachtwoord));
+        param.Add(new SqlParameter("@voornaam", g.voornaam));
+        param.Add(new SqlParameter("@naam", g.naam));
+        param.Add(new SqlParameter("@email", g.mail));
+        param.Add(new SqlParameter("@straat", g.straat));
+        param.Add(new SqlParameter("@huisnr", g.huisnr));
+        param.Add(new SqlParameter("@postcode", g.postcode));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SET IDENTITY_INSERT tblGebruikers ON; INSERT INTO tblGebruikers (id, gebruikersnaam, passwoord, voornaam, naam, email, straat, huisnr, postcode) VALUES(@id, @gebruikersnaam, @passwoord, @voornaam, @naam, @email, @straat, @huisnr, @postcode);";
+
+        return util.updaten(strSQL, sqlparam);
+    }
+
+
 }

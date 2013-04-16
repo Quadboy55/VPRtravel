@@ -30,6 +30,19 @@ public class GebruikersAccess
         return DAO.getPlayersByLogin(login).Tables[0];
     }
 
+    public DataTable getPlayersByID(int id)
+    {
+        DAO = new GebruikersDAO();
+        return DAO.getPlayerById(id).Tables[0];
+    }
+
+    public int addPlayer(GebruikerData g)
+    {
+        DAO = new GebruikersDAO();
+        return DAO.addPlayer(g);
+    }
+
+
     public GebruikerData login(String login, String pass)
     {
         DAO = new GebruikersDAO();
@@ -45,12 +58,6 @@ public class GebruikersAccess
                 g.wachtwoord = (String)inhoud[2];
                 g.voornaam = (String)inhoud[3];
                 g.naam = (String)inhoud[4];
-                //g.mail = (String)inhoud[5];
-                //g.straat = (String)inhoud[6];
-                //g.huisnr = (int)inhoud[7];
-                //g.postcode = (int)inhoud[8];
-                //g.lidSinds = (DateTime)inhoud[9];
-
                 return g;
             }
 

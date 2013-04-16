@@ -14,15 +14,13 @@ public partial class Master : System.Web.UI.MasterPage
         
         if (Session["login"] != null)
         {
-            if (Session["login"].ToString() == "true")
+            if (Session["login"].ToString().Equals("True"))
             {
                 setLogon();
             }
             else
             {
-                lblError.Text = "Login of wachtwoord zijn incorrect";
-                Response.Redirect("#ModalLogReg");
-                
+                lblError.Text = "Login of wachtwoord zijn incorrect";                
             }
         }
     }
@@ -55,7 +53,7 @@ public partial class Master : System.Web.UI.MasterPage
          {
              Session["login"] = true;
              Session["id"] = gebruiker.ID;
-             Session["naam"] = gebruiker.naam + gebruiker.voornaam;
+             Session["naam"] = gebruiker.naam +" "+ gebruiker.voornaam;
              Response.Redirect("LoginSucces.aspx");
          }
 

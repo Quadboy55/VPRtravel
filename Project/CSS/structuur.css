@@ -14,7 +14,7 @@
 .content {
     margin-top:6px;
     background-color:lightgray;
-    height:500px;
+    height:auto;
     width:auto;
     clear:both;
     padding-top: 5px;
@@ -23,4 +23,7 @@
 .zoek {
     background-color:white;
     padding-bottom: 5px;
+}
+.logNaam {
+    color:lightgray;
 }

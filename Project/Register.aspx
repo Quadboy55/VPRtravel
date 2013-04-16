@@ -19,9 +19,9 @@
                 </td>
             </tr>
              <tr>
-                <td>Familienaam:</td>
+                <td>Naam:</td>
                 <td>
-                    <asp:TextBox ID="txtFamilienaam" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNaam" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -30,42 +30,53 @@
                     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
                 </td>
             </tr>
+            
             <tr>
-                <td>Password:</td>
+                <td>Straat:</td>
                 <td>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="txtStraat" runat="server"></asp:TextBox>
+                </td>
+                <td>Huisnr.:</td>
+                <td>
+                    <asp:TextBox ID="txtHuisnr" runat="server" MaxLength="3"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td>Re Password:</td>
+                <td>Postcode:</td>
                 <td>
-                    <asp:TextBox ID="txtRePassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="txtPost" runat="server" MaxLength="4"></asp:TextBox>
                 </td>
-            </tr>
-            <tr>
-                <td>Adress:</td>
+                <td>Stad:</td>
                 <td>
-                    <asp:TextBox ID="txtAdress" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtStad" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>GeboorteDatum:</td>
                 <td>
-                    <asp:TextBox ID="txtGeboorteDatum" runat="server"></asp:TextBox>
+                    <asp:Calendar ID="CalGebDat" runat="server"></asp:Calendar>
                 </td>
             </tr>
             <tr>
-                <td>Geslacht:</td>
+                <td>Login:</td>
                 <td>
-                    <asp:DropDownList ID="ddlGeslacht" runat="server" AppendDataBoundItems="true">
-                        <asp:ListItem Value="-1">Select</asp:ListItem>
-                        <asp:ListItem>Man</asp:ListItem>
-                        <asp:ListItem>Vrouw</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>Passwoord:</td>
+                <td>
+                    <asp:TextBox ID="txtPasswoord" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>Opnieuw Passwoord:</td>
+                <td>
+                    <asp:TextBox ID="txtRePassword" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                 </td>
             </tr>
         </table>
     </div>
-    <asp:Button ID="btnRegister" runat="server" Text="Registreer"/>
+    <asp:Button ID="btnRegister" runat="server" Text="Registreer" CssClass="btn btn-primary" OnClick="btnRegister_Click"/>
 </asp:Content>
 

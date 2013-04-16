@@ -44,7 +44,7 @@ public class Util
         }
     }
 
-    public void updaten(string strSQL, SqlParameter[] parameters)
+    public int updaten(string strSQL, SqlParameter[] parameters)
     {
         SqlCommand myCom = new SqlCommand(strSQL, cnn);
         myCom.Parameters.AddRange(parameters);
@@ -53,6 +53,7 @@ public class Util
         {
             cnn.Open();
             int result = myCom.ExecuteNonQuery();
+            return result;
         }
         catch (Exception ex)
         {
@@ -62,6 +63,7 @@ public class Util
         {
             cnn.Close();
         }
+        return -1;
     }
 
 }
