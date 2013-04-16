@@ -1,2 +1,5 @@
 <title></title> in contentplaceholder
 "TextMode="Password"
+
+Registratie:
+http://geekswithblogs.net/dotNETvinz/archive/2009/04/30/creating-a-simple-registration-form-in-asp.net.aspx
