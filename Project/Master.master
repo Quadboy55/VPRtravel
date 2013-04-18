@@ -19,7 +19,16 @@
     <script type="text/javascript">
         $(window).load(function () {
             $('#slider').nivoSlider();
+
+            
         });
+        $(document).ready(function (e) {
+                $("#ModalLogReg").modal({
+                    show: 'true'
+                })
+            });
+
+            
 </script>
 </head>
 <body>
@@ -90,6 +99,7 @@
                         <div class="modal-body">
                             <div id="tabLogin">
                                 <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                                <input id="hdValue" type="hidden" value="1" runat="server"/>
                                 <table>
                                     <tr>
                                 <td><asp:Label ID="Label1" runat="server" Text="Login:"></asp:Label></td>

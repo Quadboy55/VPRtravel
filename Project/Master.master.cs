@@ -20,7 +20,9 @@ public partial class Master : System.Web.UI.MasterPage
             }
             else
             {
-                lblError.Text = "Login of wachtwoord zijn incorrect";                
+                lblError.Text = "Login of wachtwoord zijn incorrect";
+                lblError.Visible = true;
+                hdValue.Value = "0";
             }
         }
     }
@@ -49,7 +51,7 @@ public partial class Master : System.Web.UI.MasterPage
          {
              Session["login"] = false;
          }
-         
+         else
          {
              Session["login"] = true;
              Session["id"] = gebruiker.ID;

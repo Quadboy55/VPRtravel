@@ -6,6 +6,10 @@ Duur reis moet toegevoegd worden
 Tabel plaatsen
 beschrijving toevoegen aan de bestemmingen
 
+tabel personen:
+toevoegen gemeente
+toevoegen geboortedatum
+
 
 
 Wat kunnen we doen:
