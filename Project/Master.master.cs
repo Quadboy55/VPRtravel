@@ -54,6 +54,8 @@ public partial class Master : System.Web.UI.MasterPage
                 btnLogOut.Visible = true;
                 lblLogNaam.Visible = true;
                 lblLogNaam.Text = Session["naam"].ToString();
+                lblError.Visible = false;
+                hdValue.Value = "1";
             }
             else
             {

@@ -106,10 +106,12 @@
                                     <tr>
                                 <td><asp:Label ID="Label1" runat="server" Text="Login:"></asp:Label></td>
                                 <td> <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox></td>
+                                        <td> <asp:RequiredFieldValidator ID="valLogin" runat="server" ErrorMessage="Geef uw gebruikersnaam in" ControlToValidate="txtLogin"></asp:RequiredFieldValidator> </td>
                                     </tr>
                                     <tr>
                                 <td><asp:Label ID="Label2" runat="server" Text="Wachtwoord:"></asp:Label></td>
                                 <td><asp:TextBox ID="txtWachtwoord" runat="server" TextMode="Password"></asp:TextBox> </td>
+                                        <td> <asp:RequiredFieldValidator ID="valPass" runat="server" ErrorMessage="Geef uw wachtwoord in" ControlToValidate="txtWachtwoord"></asp:RequiredFieldValidator> </td>
                                         </tr>
                                 </table>      
                                 <asp:Button ID="btnRegister" runat="server" Text="Heb je geen login klik hier" CssClass="btn btn-small btn-primary" OnClick="btnRegister_Click"/>                            
