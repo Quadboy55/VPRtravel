@@ -23,9 +23,11 @@
             
         });
         $(document).ready(function (e) {
+            if ($("#hdValue").val() == 0) {
                 $("#ModalLogReg").modal({
                     show: 'true'
                 })
+            }
             });
 
             

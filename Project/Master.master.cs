@@ -11,20 +11,8 @@ public partial class Master : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        checkLogon();
         
-        if (Session["login"] != null)
-        {
-            if (Session["login"].ToString().Equals("True"))
-            {
-                setLogon();
-            }
-            else
-            {
-                lblError.Text = "Login of wachtwoord zijn incorrect";
-                lblError.Visible = true;
-                hdValue.Value = "0";
-            }
-        }
     }
 
     protected void btnRegister_Click(object sender, EventArgs e)
@@ -32,13 +20,7 @@ public partial class Master : System.Web.UI.MasterPage
         Response.Redirect("Register.aspx");
     }
 
-    private void setLogon()
-    {
-        btnLogRes.Visible = false;
-        btnLogOut.Visible = true;
-        lblLogNaam.Visible = true;
-        lblLogNaam.Text = Session["naam"].ToString();
-    }
+
     protected void btnLogOk_Click(object sender, EventArgs e)
     {
         GebruikersAccess access = new GebruikersAccess();
@@ -50,6 +32,8 @@ public partial class Master : System.Web.UI.MasterPage
          if (gebruiker == null)
          {
              Session["login"] = false;
+             Response.Redirect("Home.aspx");
+             
          }
          else
          {
@@ -59,6 +43,26 @@ public partial class Master : System.Web.UI.MasterPage
              Response.Redirect("LoginSucces.aspx");
          }
 
+    }
+    private void checkLogon()
+    {
+        if (Session["login"] != null)
+        {
+            if (((Boolean)Session["login"]) == true )
+            {
+                btnLogRes.Visible = false;
+                btnLogOut.Visible = true;
+                lblLogNaam.Visible = true;
+                lblLogNaam.Text = Session["naam"].ToString();
+            }
+            else
+            {
+                lblError.Text = "Login of wachtwoord zijn incorrect";
+                lblError.Visible = true;
+                hdValue.Value = "0";
+                
+            }
+        }
     }
 
 }
