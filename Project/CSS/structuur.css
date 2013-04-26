@@ -27,3 +27,8 @@
 .logNaam {
     color:lightgray;
 }
+.error {
+    font-style:italic;
+    color:red;
+    font-weight:bold;
+}

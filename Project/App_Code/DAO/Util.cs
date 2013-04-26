@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
 using System.Data;
 using System.Data.OleDb;
-
+using System.Configuration;
 using System.Data.SqlClient;
 
 /// <summary>
@@ -15,12 +14,11 @@ public class Util
 {
 
     private SqlConnection cnn;
-    private String DatabaseLocatie = "Data Source=VPRtravel.mssql.somee.com;Initial Catalog=VPRTravel;Persist Security Info=True;User ID=1004224752_SQLLogin_1;Password=gwfgkafvio";
-
+    
 	public Util()
 	{
         cnn = new SqlConnection();
-        cnn.ConnectionString = DatabaseLocatie;
+        cnn.ConnectionString = ConfigurationManager.ConnectionStrings["VPRtravel"].ConnectionString; ;
 	}
 
     public DataSet ophalen(string strSQL,SqlParameter[] parameter)

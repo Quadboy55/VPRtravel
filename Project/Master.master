@@ -48,8 +48,6 @@
                         <a class="brand" href="#">VPRtravel</a>
                         <div class="nav-collapse collapse">
                             <div class="navbar-search pull-right">
-                                <asp:TextBox ID="txtSearch" class="search-query" placeholder="Search" runat="server"></asp:TextBox>
-                                <asp:Button ID="btnZoek" CssClass="btn btn-inverse" runat="server" Text="Search" />
                                 <a href="#ModalLogReg" id="btnLogRes" role="button" class="btn btn-inverse" data-toggle="modal" runat="server">Login/Register</a>
                                 <asp:Label ID="lblLogNaam" runat="server" Text="Label" Visible="false" CssClass="logNaam"></asp:Label>
                                 <asp:Button ID="btnLogOut" runat="server" Text="afmelden" Visible="false" CssClass="btn btn-inverse"/>
@@ -109,12 +107,12 @@
                                     <tr>
                                 <td><asp:Label ID="Label1" runat="server" Text="Login:"></asp:Label></td>
                                 <td> <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox></td>
-                                        <td> <asp:RequiredFieldValidator ID="valLogin" runat="server" ErrorMessage="Geef uw gebruikersnaam in" ControlToValidate="txtLogin"></asp:RequiredFieldValidator> </td>
+                                        <td> <asp:RequiredFieldValidator ID="valLogin" runat="server" ErrorMessage="Geef uw gebruikersnaam in" ControlToValidate="txtLogin" ValidationGroup="login" CssClass="error"></asp:RequiredFieldValidator> </td>
                                     </tr>
                                     <tr>
                                 <td><asp:Label ID="Label2" runat="server" Text="Wachtwoord:"></asp:Label></td>
                                 <td><asp:TextBox ID="txtWachtwoord" runat="server" TextMode="Password"></asp:TextBox> </td>
-                                        <td> <asp:RequiredFieldValidator ID="valPass" runat="server" ErrorMessage="Geef uw wachtwoord in" ControlToValidate="txtWachtwoord"></asp:RequiredFieldValidator> </td>
+                                        <td> <asp:RequiredFieldValidator ID="valPass" runat="server" ErrorMessage="Geef uw wachtwoord in" ControlToValidate="txtWachtwoord" ValidationGroup="login" CssClass="error"></asp:RequiredFieldValidator> </td>
                                         </tr>
                                 </table>      
                                 <asp:Button ID="btnRegister" runat="server" Text="Heb je geen login klik hier" CssClass="btn btn-small btn-primary" OnClick="btnRegister_Click" CausesValidation="False" />                            
@@ -122,7 +120,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
-                            <asp:Button ID="btnLogOk" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogOk_Click"/>
+                            <asp:Button ID="btnLogOk" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogOk_Click" ValidationGroup="login" />
                         </div>
                 </div>
         <!-- end of Modal -->
