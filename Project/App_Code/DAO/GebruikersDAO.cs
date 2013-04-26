@@ -45,6 +45,17 @@ public class GebruikersDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public DataSet getLogins()
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT gebruikersnaam FROM tblGebruikers;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+
     public DataSet login(String login)
     {
         util = new Util();
@@ -102,10 +113,12 @@ public class GebruikersDAO
         param.Add(new SqlParameter("@straat", g.straat));
         param.Add(new SqlParameter("@huisnr", g.huisnr));
         param.Add(new SqlParameter("@postcode", g.postcode));
+        param.Add(new SqlParameter("@stad", g.stad));
+        param.Add(new SqlParameter("@geboortedatum", g.geboortedatum));
 
 
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SET IDENTITY_INSERT tblGebruikers ON; INSERT INTO tblGebruikers (id, gebruikersnaam, passwoord, voornaam, naam, email, straat, huisnr, postcode) VALUES(@id, @gebruikersnaam, @passwoord, @voornaam, @naam, @email, @straat, @huisnr, @postcode);";
+        strSQL = "SET IDENTITY_INSERT tblGebruikers ON; INSERT INTO tblGebruikers (id, gebruikersnaam, passwoord, voornaam, naam, email, straat, huisnr, postcode, stad, geboortedatum) VALUES(@id, @gebruikersnaam, @passwoord, @voornaam, @naam, @email, @straat, @huisnr, @postcode, @stad, @geboortedatum);";
 
         return util.updaten(strSQL, sqlparam);
     }

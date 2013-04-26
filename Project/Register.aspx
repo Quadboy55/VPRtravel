@@ -20,7 +20,7 @@
                     <asp:TextBox ID="txtVoornaam" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RegularExpressionValidator ID="valVrNaam" runat="server" ErrorMessage="Geef een geldige voornaam in" ValidationExpression="[a-zA-Z -]+" ControlToValidate="txtVoornaam" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="valVrNaam" runat="server" ErrorMessage="Geef een geldige voornaam in" ValidationExpression="[a-zA-Z-]+" ControlToValidate="txtVoornaam" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator ID="valVrNaamIng" runat="server" ErrorMessage="Geef uw naam in" ControlToValidate="txtVoornaam" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -50,11 +50,20 @@
                 <td>
                     <asp:TextBox ID="txtStraat" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    <asp:RegularExpressionValidator ID="valStraat" runat="server" ErrorMessage="Geef een geldige straatnaam in" ValidationExpression="[a-zA-Z -]+" ControlToValidate="txtStraat" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="valStraatIng" runat="server" ErrorMessage="Geef uw straat in" ControlToValidate="txtStraat" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
+                </td>
+
             </tr>
             <tr>
                 <td>Huisnr.:</td>
                 <td>
                     <asp:TextBox ID="txtHuisnr" runat="server" MaxLength="3"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RegularExpressionValidator ID="valHuisn" runat="server" ErrorMessage="Geef een geldig huisnummer in" ValidationExpression="[0-9]+" ControlToValidate="txtHuisnr" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="valHuisnIng" runat="server" ErrorMessage="Geef uw huisnummer in" ControlToValidate="txtHuisnr" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -62,26 +71,34 @@
                 <td>
                     <asp:TextBox ID="txtPost" runat="server" MaxLength="4"></asp:TextBox>
                 </td>
+                <td>
+                    <asp:RegularExpressionValidator ID="valPostc" runat="server" ErrorMessage="Geef een geldige postcode in" ValidationExpression="[0-9]{4}" ControlToValidate="txtPost" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="valPostcIng" runat="server" ErrorMessage="Geef uw postcode in" ControlToValidate="txtPost" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td>Stad:</td>
                 <td>
                     <asp:TextBox ID="txtStad" runat="server"></asp:TextBox>
                 </td>
+                 <td>
+                    <asp:RegularExpressionValidator ID="valStad" runat="server" ErrorMessage="Geef een geldig stadsnaam in" ValidationExpression="[a-zA-Z -]+" ControlToValidate="txtStad" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="ValStadIng" runat="server" ErrorMessage="Geef uw stad in" ControlToValidate="txtStad" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td>Geboortedatum:</td>
                 <td>
-                    <asp:Calendar ID="CalGeboortedatum" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px" Width="220px">
-                        <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
-                        <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
-                        <OtherMonthDayStyle ForeColor="#999999" />
-                        <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-                        <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
-                        <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
-                        <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
-                        <WeekendDayStyle BackColor="#CCCCFF" />
-                    </asp:Calendar>
+
+                    <asp:DropDownList ID="drpJaar" runat="server" Width="120px" CssClass="btn dropdown-toggle"></asp:DropDownList>
+
+                    <asp:DropDownList ID="drpMaand" runat="server" Width="80px" CssClass="btn dropdown-toggle" OnSelectedIndexChanged="drpMaand_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+
+                    <asp:DropDownList ID="drpDag" runat="server" Width="80px" CssClass="btn dropdown-toggle" ></asp:DropDownList>
+                   
+                </td>
+                <td>
+                    
                 </td>
             </tr>
             <tr>
@@ -93,18 +110,29 @@
                 <td>
                     <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox>
                 </td>
+                 <td>
+                    <asp:RequiredFieldValidator ID="valLogin" runat="server" ErrorMessage="Geef en gebruikersnaam in" ControlToValidate="txtLogin" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
+                     <asp:CustomValidator ID="valLoginUniek" runat="server" ErrorMessage="Deze gebruikersnaam is reeds in gebruik." ControlToValidate="txtLogin" CssClass="error" ValidationGroup="register" Display="Dynamic" OnServerValidate="valLoginUniek_ServerValidate"></asp:CustomValidator>
+                 </td>
             </tr>
             <tr>
                 <td>Passwoord:</td>
                 <td>
-                    <asp:TextBox ID="txtPasswoord" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
+                    <asp:TextBox ID="txtPasswoord" runat="server" TextMode="Password" MaxLength="20" ControlToCompare="txtPasswoord"></asp:TextBox>
                 </td>
+                 <td>
+                    <asp:RequiredFieldValidator ID="valPas1" runat="server" ErrorMessage="Geef uw wachtwoord in" ControlToValidate="txtPasswoord" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
+                 </td>
             </tr>
             <tr>
                 <td>Opnieuw Passwoord:</td>
                 <td>
                     <asp:TextBox ID="txtRePassword" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                 </td>
+                 <td>
+                    <asp:RequiredFieldValidator ID="valPas2" runat="server" ErrorMessage="Geef uw wachtwoord in" ControlToValidate="txtRePassword" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
+                     <asp:CompareValidator ID="valPasComp" runat="server" ErrorMessage="Wachtwoorden zijn niet identiek" ControlToValidate="txtRePassword" ControlToCompare="txtPasswoord" CssClass="error"></asp:CompareValidator>
+                 </td>
             </tr>
         </table>
     </div>
