@@ -66,7 +66,10 @@
 
                         </div>
 
+                       
                         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+
+                        </div></div></div>
         </nav>
 
         <! adrotator om foto's van treinen met kwaliteiten van ons systeem te promoten>
@@ -114,7 +117,7 @@
                                         <td> <asp:RequiredFieldValidator ID="valPass" runat="server" ErrorMessage="Geef uw wachtwoord in" ControlToValidate="txtWachtwoord"></asp:RequiredFieldValidator> </td>
                                         </tr>
                                 </table>      
-                                <asp:Button ID="btnRegister" runat="server" Text="Heb je geen login klik hier" CssClass="btn btn-small btn-primary" OnClick="btnRegister_Click"/>                            
+                                <asp:Button ID="btnRegister" runat="server" Text="Heb je geen login klik hier" CssClass="btn btn-small btn-primary" OnClick="btnRegister_Click" CausesValidation="False" />                            
                             </div>      
                         </div>
                         <div class="modal-footer">

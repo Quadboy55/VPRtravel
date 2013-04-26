@@ -45,17 +45,16 @@ public class GebruikersDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
-    public DataSet login(String login, String pass)
+    public DataSet login(String login)
     {
         util = new Util();
         param = new List<SqlParameter>();
         //to add parameters=> 
         param.Add(new SqlParameter("@login", login));
-        param.Add(new SqlParameter("@pass", pass));
 
 
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SELECT * FROM tblGebruikers WHERE gebruikersnaam = @login AND passwoord = @pass;";
+        strSQL = "SELECT * FROM tblGebruikers WHERE gebruikersnaam = @login;";
 
         return util.ophalen(strSQL, sqlparam);
     }
@@ -74,11 +73,26 @@ public class GebruikersDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public DataSet getPlayerByLogin(String login)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@login", login));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT * FROM tblGebruikers WHERE gebruikersnaam=@login;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+
     public int addPlayer(GebruikerData g)
     {
         util = new Util();
         param = new List<SqlParameter>();
         //to add parameters=> 
+        
         param.Add(new SqlParameter("@id", g.ID));
         param.Add(new SqlParameter("@gebruikersnaam", g.gebruikersnaam));
         param.Add(new SqlParameter("@passwoord", g.wachtwoord));

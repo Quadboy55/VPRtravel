@@ -23,12 +23,13 @@ public partial class Master : System.Web.UI.MasterPage
 
     protected void btnLogOk_Click(object sender, EventArgs e)
     {
+        MD5_encryption md5 = new MD5_encryption();
         GebruikersAccess access = new GebruikersAccess();
         
         String login = txtLogin.Text;
-        String pas = txtWachtwoord.Text;
+        String pass = md5.encryptPas(txtWachtwoord.Text);
 
-         gebruiker = access.login(login, pas);
+         gebruiker = access.getPlayerByLogin(login);
          if (gebruiker == null)
          {
              Session["login"] = false;
@@ -37,10 +38,18 @@ public partial class Master : System.Web.UI.MasterPage
          }
          else
          {
-             Session["login"] = true;
-             Session["id"] = gebruiker.ID;
-             Session["naam"] = gebruiker.naam +" "+ gebruiker.voornaam;
-             Response.Redirect("LoginSucces.aspx");
+             if (pass.Equals(gebruiker.wachtwoord))
+             {
+                 Session["login"] = true;
+                 Session["id"] = gebruiker.ID;
+                 Session["naam"] = gebruiker.naam + " " + gebruiker.voornaam;
+                 Response.Redirect("LoginSucces.aspx");
+             }
+             else
+             {
+                 Session["login"] = false;
+                 Response.Redirect("Home.aspx");
+             }
          }
 
     }

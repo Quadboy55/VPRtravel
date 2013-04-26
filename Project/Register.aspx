@@ -52,10 +52,9 @@
                 </td>
             </tr>
             <tr>
-                <td>GeboorteDatum:</td>
+                <td>&nbsp;</td>
                 <td>
-                    <asp:Calendar ID="CalGebDat" runat="server"></asp:Calendar>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Login:</td>
@@ -77,6 +76,7 @@
             </tr>
         </table>
     </div>
-    <asp:Button ID="btnRegister" runat="server" Text="Registreer" CssClass="btn btn-primary" OnClick="btnRegister_Click"/>
+    <asp:Button ID="btnReg" runat="server" Text="Registreer" CssClass="btn btn-primary" OnClick="btnReg_Click" CausesValidation="False"/>
+    <asp:Button ID="btnRegis" runat="server" CausesValidation="False" OnClick="btnRegis_Click" Text="Button" />
 </asp:Content>
 

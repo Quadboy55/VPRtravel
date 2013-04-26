@@ -11,8 +11,12 @@ public partial class Register : System.Web.UI.Page
     {
 
     }
-    protected void btnRegister_Click(object sender, EventArgs e)
+
+
+
+    protected void btnReg_Click(object sender, EventArgs e)
     {
+        MD5_encryption md5 = new MD5_encryption();
         GebruikerData g = new GebruikerData();
         g.voornaam = txtVoornaam.Text;
         g.naam = txtNaam.Text;
@@ -21,11 +25,36 @@ public partial class Register : System.Web.UI.Page
         g.huisnr = Int32.Parse(txtHuisnr.Text);
         g.postcode = Int32.Parse(txtPost.Text);
         g.gebruikersnaam = txtLogin.Text;
-        g.wachtwoord = txtPasswoord.Text;
+
+        //wachtwoord instellen (hash)
+        g.wachtwoord = md5.encryptPas(txtPasswoord.Text);
 
         GebruikersAccess access = new GebruikersAccess();
         int res = access.addPlayer(g);
+        txtVoornaam.Text = res.ToString();
+        if (res != -1)
+        {
+            Response.Redirect("RegSucces.aspx");
+        }
+    }
+    protected void btnRegis_Click(object sender, EventArgs e)
+    {
+        MD5_encryption md5 = new MD5_encryption();
+        GebruikerData g = new GebruikerData();
+        g.voornaam = txtVoornaam.Text;
+        g.naam = txtNaam.Text;
+        g.mail = txtEmail.Text;
+        g.straat = txtStraat.Text;
+        g.huisnr = Int32.Parse(txtHuisnr.Text);
+        g.postcode = Int32.Parse(txtPost.Text);
+        g.gebruikersnaam = txtLogin.Text;
 
+        //wachtwoord instellen (hash)
+        g.wachtwoord = md5.encryptPas(txtPasswoord.Text);
+
+        GebruikersAccess access = new GebruikersAccess();
+        int res = access.addPlayer(g);
+        txtVoornaam.Text = res.ToString();
         if (res != -1)
         {
             Response.Redirect("RegSucces.aspx");
