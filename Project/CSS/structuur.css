@@ -32,3 +32,59 @@
     color:red;
     font-weight:bold;
 }
+
+/*css voor radiobutton list*/
+.radiobuttonlist
+{
+    font: 12px Verdana, sans-serif;
+    color: #000; /* non selected color */
+}
+ 
+.radiobuttonlist input
+{
+    width: 0px;
+    height: 0px;
+}
+.radiobuttonlist label
+{
+    color: #3E3928;
+    background-color:#E8E5D4;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 1px solid #AAAAAA;
+    margin: 0px 0px 0px 0px;
+    white-space: nowrap;
+    clear: left;
+    margin-right: 5px;
+}
+.radiobuttonlist span.selectedradio label
+{
+    background-color: #F7F5E8;
+    color: #000000;
+    font-weight: bold;
+    border-bottom-color: #F3F2E7;
+    padding-top:4px;
+ 
+}
+.radiobuttonlist label:hover
+{
+    color: #CC3300;
+    background: #D1CFC2;
+}
+ 
+.radiobuttoncontainer
+{
+    position:relative;
+    z-index:1;
+}
+ 
+.radiobuttonbackground
+{
+    position:relative;
+    z-index:0;
+    border: solid 1px #AcA899; 
+    padding: 10px; 
+    background-color:#F3F2E7;
+}
