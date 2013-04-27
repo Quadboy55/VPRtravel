@@ -35,31 +35,7 @@ public partial class Register : System.Web.UI.Page
         g.straat = txtStraat.Text;
         g.huisnr = Int32.Parse(txtHuisnr.Text);
         g.postcode = Int32.Parse(txtPost.Text);
-        g.gebruikersnaam = txtLogin.Text;
-
-        //wachtwoord instellen (hash)
-        g.wachtwoord = md5.encryptPas(txtPasswoord.Text);
-
-        GebruikersAccess access = new GebruikersAccess();
-        int res = access.addPlayer(g);
-        txtVoornaam.Text = res.ToString();
-        if (res != -1)
-        {
-            Response.Redirect("RegSucces.aspx");
-        }
-    }
-    protected void btnRegis_Click(object sender, EventArgs e)
-    {
-        MD5_encryption md5 = new MD5_encryption();
-        GebruikerData g = new GebruikerData();
-        g.voornaam = txtVoornaam.Text;
-        g.naam = txtNaam.Text;
-        g.mail = txtEmail.Text;
-        g.straat = txtStraat.Text;
-        g.huisnr = Int32.Parse(txtHuisnr.Text);
-        g.postcode = Int32.Parse(txtPost.Text);
         g.stad = txtStad.Text;
-        g.geboortedatum = new DateTime(Convert.ToInt32(drpDag.SelectedValue),Convert.ToInt32(drpMaand.SelectedValue),Convert.ToInt32(drpJaar.SelectedValue));
         g.gebruikersnaam = txtLogin.Text;
 
         //wachtwoord instellen (hash)
@@ -73,15 +49,19 @@ public partial class Register : System.Web.UI.Page
             Response.Redirect("RegSucces.aspx");
         }
     }
-
+   
     protected void valLoginUniek_ServerValidate(object source, ServerValidateEventArgs args)
     {
-        DataTable logins = new GebruikersAccess().getLogins();
+        DataTable logins = new GebruikersAccess().getLogins(txtLogin.Text);
 
-        if (logins.Rows.Find(txtLogin.Text) == null)
-            args.IsValid = true;
-        else
+        if (logins.Rows.Count > 0)
+        {
             args.IsValid = false;
+        }
+        else
+        {
+            args.IsValid = true;
+        }
 
     }
 

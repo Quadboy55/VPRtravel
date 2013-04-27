@@ -20,15 +20,13 @@ public partial class _Default : System.Web.UI.Page
         PlaatsAccess = new PlaatsenAccess();
         plaatsData = new Dictionary<int, PlaatsData>();
         vulBestemmingData();
-        
-        
-        
+
         if (!Page.IsPostBack)
         {
-           zoek.Visible = false;
-           setGrid(TreinAccess.getAllTrains());
-           vulDropBestemming();
-            
+            //zoek.Visible = false;
+            setGrid(TreinAccess.getAllTrains());
+            vulDropBestemming();
+
         }
     }
 
@@ -37,7 +35,7 @@ public partial class _Default : System.Web.UI.Page
     {
         DataTable plaats = PlaatsAccess.getAllPlaatsen();
 
-        for( int r = 0; r < plaats.Rows.Count; r++)
+        for (int r = 0; r < plaats.Rows.Count; r++)
         {
             PlaatsData pl = new PlaatsData();
             object[] inhoud = plaats.Rows[r].ItemArray;
@@ -57,17 +55,17 @@ public partial class _Default : System.Web.UI.Page
         drpVertrek.Items.Add("--Vertrek--");
         drpAankomst.Items.Add("--Aankomst--");
 
-        foreach(KeyValuePair<int, PlaatsData> p in plaatsData)
+        foreach (KeyValuePair<int, PlaatsData> p in plaatsData)
         {
             drpVertrek.Items.Add(p.Value.naam);
-            drpAankomst.Items.Add(p.Value.naam); 
+            drpAankomst.Items.Add(p.Value.naam);
         }
     }
     private void setGridBestemming()
     {
-        for( int r = 0; r < GridTrein.Rows.Count; r++)
+        for (int r = 0; r < GridTrein.Rows.Count; r++)
         {
-            for(int i = 1; i<3 ; i++)
+            for (int i = 2; i < 4; i++)
             {
                 int id = Int32.Parse(GridTrein.Rows[r].Cells[i].Text);
                 GridTrein.Rows[r].Cells[i].Text = plaatsData[id].naam;
@@ -76,7 +74,8 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
-    private void setGrid(DataTable data) {
+    private void setGrid(DataTable data)
+    {
         GridTrein.DataSource = data;
         GridTrein.DataBind();
         setGridBestemming();
@@ -84,23 +83,25 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnZoekFunc_Click(object sender, EventArgs e)
     {
-        if (btnZoekFunc.Text.Equals("Zoeken naar reis"))
-        {
-            zoek.Visible = true;
-            btnZoekFunc.Text = "verberg";
-        }
-        else
-        {
-            zoek.Visible = false;
-            btnZoekFunc.Text = "Zoeken naar reis";
-            setGrid(TreinAccess.getAllTrains());
-        }
+        //if (btnZoekFunc.Text.Equals("Zoeken naar reis"))
+        //{
+        //    zoek.Visible = true;
+        //    btnZoekFunc.Text = "verberg";
+        //}
+        //else
+        //{
+        //    zoek.Visible = false;
+        //    btnZoekFunc.Text = "Zoeken naar reis";
+        //    setGrid(TreinAccess.getAllTrains());
+        //}
     }
+
     protected void btnZoek_Click(object sender, EventArgs e)
     {
+        hdFilter.Value = "1";
         if (drpVertrek.SelectedIndex == 0 && drpAankomst.SelectedIndex == 0)
         {
-                 //waarschuwing iets kiezen
+            //waarschuwing iets kiezen
         }
         else
         {
@@ -119,8 +120,17 @@ public partial class _Default : System.Web.UI.Page
                     setGrid(TreinAccess.getTrainsFromTo(drpVertrek.SelectedIndex, drpAankomst.SelectedIndex));
                 }
             }
-    
-    
+
+
         }
     }
+
+
+
+    protected void GridTrein_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["VPR_reis"] = GridTrein.SelectedRow.Cells[1].Text;
+        Response.Redirect("BoekReis.aspx");
+    }
+
 }

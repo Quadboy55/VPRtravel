@@ -65,10 +65,10 @@ public class GebruikersAccess
         return DAO.addPlayer(g);
     }
 
-    public DataTable getLogins()
+    public DataTable getLogins(String login)
     {
         DAO = new GebruikersDAO();
-        return DAO.getLogins().Tables[0];
+        return DAO.getLogins(login).Tables[0];
     }
 
 

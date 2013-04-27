@@ -32,7 +32,7 @@ public partial class Master : System.Web.UI.MasterPage
          gebruiker = access.getPlayerByLogin(login);
          if (gebruiker == null)
          {
-             Session["login"] = false;
+             Session["VPR_login"] = false;
              Response.Redirect("Home.aspx");
              
          }
@@ -40,14 +40,14 @@ public partial class Master : System.Web.UI.MasterPage
          {
              if (pass.Equals(gebruiker.wachtwoord))
              {
-                 Session["login"] = true;
-                 Session["id"] = gebruiker.ID;
-                 Session["naam"] = gebruiker.naam + " " + gebruiker.voornaam;
+                 Session["VPR_login"] = true;
+                 Session["VPR_id"] = gebruiker.ID;
+                 Session["VPR_naam"] = gebruiker.naam + " " + gebruiker.voornaam;
                  Response.Redirect("LoginSucces.aspx");
              }
              else
              {
-                 Session["login"] = false;
+                 Session["VPR_login"] = false;
                  Response.Redirect("Home.aspx");
              }
          }
@@ -55,14 +55,14 @@ public partial class Master : System.Web.UI.MasterPage
     }
     private void checkLogon()
     {
-        if (Session["login"] != null)
+        if (Session["VPR_login"] != null)
         {
-            if (((Boolean)Session["login"]) == true )
+            if (((Boolean)Session["VPR_login"]) == true)
             {
                 btnLogRes.Visible = false;
                 btnLogOut.Visible = true;
                 lblLogNaam.Visible = true;
-                lblLogNaam.Text = Session["naam"].ToString();
+                lblLogNaam.Text = Session["VPR_naam"].ToString();
                 lblError.Visible = false;
                 hdValue.Value = "1";
             }

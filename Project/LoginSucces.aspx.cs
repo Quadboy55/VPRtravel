@@ -9,6 +9,7 @@ public partial class LoginSucces : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Control pad = Master.FindControl("SiteMapPath1");
+        pad.Visible = false;
     }
 }

@@ -5,11 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class RegSucces : System.Web.UI.Page
+public partial class BoekReis : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Control pad = Master.FindControl("SiteMapPath1");
-        pad.Visible = false;
+        Label1.Text = (String)Session["VPR_reis"];
     }
 }
