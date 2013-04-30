@@ -89,16 +89,13 @@
             <tr>
                 <td>Geboortedatum:</td>
                 <td>
-
-                    <asp:DropDownList ID="drpJaar" runat="server" Width="120px" CssClass="btn dropdown-toggle"></asp:DropDownList>
-
-                    <asp:DropDownList ID="drpMaand" runat="server" Width="80px" CssClass="btn dropdown-toggle" OnSelectedIndexChanged="drpMaand_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-
-                    <asp:DropDownList ID="drpDag" runat="server" Width="80px" CssClass="btn dropdown-toggle" ></asp:DropDownList>
-                   
+                    <asp:TextBox ID="txtGebDat" runat="server"></asp:TextBox>
                 </td>
-                <td>
-                    
+                 <td>
+                    <asp:RegularExpressionValidator ID="valDateFormat" runat="server" ErrorMessage="Geef een geldige datum in zoals 27/10/2000" ValidationExpression="[0-9]{2}\/[0-9]{2}\/[0-9]{4}" ControlToValidate="txtGebDat" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="valDatIng" runat="server" ErrorMessage="Geef uw geboortedatum in" ControlToValidate="txtGebDat" ValidationGroup="register" Display="Dynamic" CssClass="error"></asp:RequiredFieldValidator>
+                     <asp:CustomValidator ID="valGeldigeDatum" runat="server" ErrorMessage="Geef een geldige datum in." CssClass="error" ControlToValidate="txtGebDat" OnServerValidate="valGeldigeDatum_ServerValidate" ValidationGroup="register" Display="Dynamic"></asp:CustomValidator>
+                     <asp:CustomValidator ID="val18Jaar" runat="server" ErrorMessage="Uw moet 18 zijn om deze site te kunnen gebruiken" CssClass="error" ControlToValidate="txtGebDat" OnServerValidate="val18Jaar_ServerValidate" ValidationGroup="register" ></asp:CustomValidator>
                 </td>
             </tr>
             <tr>

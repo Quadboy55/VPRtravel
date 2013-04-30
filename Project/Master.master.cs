@@ -61,8 +61,8 @@ public partial class Master : System.Web.UI.MasterPage
             {
                 btnLogRes.Visible = false;
                 btnLogOut.Visible = true;
-                lblLogNaam.Visible = true;
-                lblLogNaam.Text = Session["VPR_naam"].ToString();
+                btnProfile.Visible = true;
+                btnProfile.Text = Session["VPR_naam"].ToString();
                 lblError.Visible = false;
                 hdValue.Value = "1";
             }
@@ -76,4 +76,11 @@ public partial class Master : System.Web.UI.MasterPage
         }
     }
 
+    protected void btnLogOut_Click(object sender, EventArgs e)
+    {
+        Session.Clear();
+        btnLogRes.Visible = true;
+        btnLogOut.Visible = false;
+        btnProfile.Visible = false;
+    }
 }

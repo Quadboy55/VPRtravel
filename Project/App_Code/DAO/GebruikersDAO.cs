@@ -105,7 +105,6 @@ public class GebruikersDAO
         param = new List<SqlParameter>();
         //to add parameters=> 
         
-        param.Add(new SqlParameter("@id", g.ID));
         param.Add(new SqlParameter("@gebruikersnaam", g.gebruikersnaam));
         param.Add(new SqlParameter("@passwoord", g.wachtwoord));
         param.Add(new SqlParameter("@voornaam", g.voornaam));
@@ -115,13 +114,13 @@ public class GebruikersDAO
         param.Add(new SqlParameter("@huisnr", g.huisnr));
         param.Add(new SqlParameter("@postcode", g.postcode));
         param.Add(new SqlParameter("@stad", g.stad));
-        //param.Add(new SqlParameter("@geboortedatum", g.geboortedatum));
-        //param.Add(new SqlParameter("@lidSinds", g.lidSinds));
+        param.Add(new SqlParameter("@geboortedatum", g.geboortedatum.ToLocalTime()));
 
 
 
+        //SET IDENTITY_INSERT tblGebruikers ON;
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SET IDENTITY_INSERT tblGebruikers ON; INSERT INTO tblGebruikers (ID, gebruikersnaam, passwoord, voornaam, naam, email, straat, huisnr, postcode,  Geemente) VALUES(@id, @gebruikersnaam, @passwoord, @voornaam, @naam, @email, @straat, @huisnr, @postcode, @stad);";
+        strSQL = "INSERT INTO tblGebruikers (gebruikersnaam, passwoord, voornaam, naam, email, straat, huisnr, postcode, Geemente, geboortedatum) VALUES(@gebruikersnaam, @passwoord, @voornaam, @naam, @email, @straat, @huisnr, @postcode, @stad, @geboortedatum);";
 
         return util.updaten(strSQL, sqlparam);
     }
