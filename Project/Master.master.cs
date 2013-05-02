@@ -83,4 +83,8 @@ public partial class Master : System.Web.UI.MasterPage
         btnLogOut.Visible = false;
         btnProfile.Visible = false;
     }
+    protected void btnProfile_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("profile.aspx");
+    }
 }

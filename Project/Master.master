@@ -32,7 +32,7 @@
                         <div class="nav-collapse collapse">
                             <div class="navbar-search pull-right">
                                 <a href="#ModalLogReg" id="btnLogRes" role="button" class="btn btn-inverse" data-toggle="modal" runat="server">Login/Register</a>
-                                <asp:Button ID="btnProfile" runat="server" Text="naam" Visible="false" CssClass="btn btn-inverse"/>
+                                <asp:Button ID="btnProfile" runat="server" Text="naam" Visible="false" CssClass="btn btn-inverse" OnClick="btnProfile_Click"/>
                                 <asp:Button ID="btnLogOut" runat="server" Text="afmelden" Visible="false" CssClass="btn btn-inverse" OnClick="btnLogOut_Click"/>
                             </div>
                             <asp:Menu ID="NavigationMenu" runat="server" EnableViewState="false"
