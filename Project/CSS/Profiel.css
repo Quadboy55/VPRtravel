@@ -1,0 +1,60 @@
+﻿body {
+}
+
+.links {
+    width:auto;
+    float:left;
+    padding: 15px;
+}
+
+.rechts {
+    width:45%;
+    float:left;
+    padding: 15px;
+}
+.btn-group {
+    background-color: #DDD;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.visibleTab {
+    visibility:visible;
+}
+
+.invisibleTab {
+    visibility:hidden;
+}
+
+
+
+#txtHuisnr {
+    width: 20px;
+}
+
+#txtPostcode {
+    width: 20px;
+}
+
+#txtStraat {
+    width: 80px;
+}
+
+#txtGemeente {
+    width: 80px;
+}
+
+.popover {
+    margin-top:120px;
+    width:450px;
+}
+
+.arrow {
+    top:18% !important;
+}
+
+.center {
+    width:100%;
+    text-align:center;
+}
+
+
