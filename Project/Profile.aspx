@@ -41,6 +41,12 @@
                     <td><asp:Label ID="Label9" runat="server" Text="Postcode + Gemeente:"></asp:Label></td>
                     <td><asp:TextBox ID="txtPostcode" runat="server"  Width="80px"></asp:TextBox><asp:TextBox ID="txtGemeente" runat="server"  Width="120px"></asp:TextBox></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <asp:Button ID="btnOpslaan" runat="server" Text="Wijzigingen Opslaan" OnClick="btnOpslaan_Click" /></td>
+                </tr>
+
             </table>
         </div>
         <div class="rechts" id="popshow">

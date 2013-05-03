@@ -60,10 +60,29 @@ public class GebruikersAccess
         
     }
 
+    public int getIdByLogin(string login)
+    {
+        DAO = new GebruikersDAO();
+        DataTable d =DAO.getIdByLogin(login).Tables[0];
+
+        if (d.Rows.Count != 0)
+        {
+            object[] inhoud = d.Rows[0].ItemArray;
+            return Int32.Parse(inhoud[0].ToString());
+        }
+        return -1;
+    }
+
     public DataTable getPlayersByID(int id)
     {
         DAO = new GebruikersDAO();
         return DAO.getPlayerById(id).Tables[0];
+    }
+
+    public void changeUserById(GebruikerData g)
+    {
+        DAO = new GebruikersDAO();
+        DAO.changeUserById(g);
     }
 
     public int addPlayer(GebruikerData g)

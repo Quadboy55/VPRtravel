@@ -126,4 +126,42 @@ public class GebruikersDAO
     }
 
 
+
+    public void changeUserById(GebruikerData g)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+
+        param.Add(new SqlParameter("@id", g.ID));
+        param.Add(new SqlParameter("@voornaam", g.voornaam));
+        param.Add(new SqlParameter("@naam", g.naam));
+        param.Add(new SqlParameter("@email", g.mail));
+        param.Add(new SqlParameter("@straat", g.straat));
+        param.Add(new SqlParameter("@huisnr", g.huisnr));
+        param.Add(new SqlParameter("@postcode", g.postcode));
+        param.Add(new SqlParameter("@stad", g.stad));
+
+
+
+        //SET IDENTITY_INSERT tblGebruikers ON;
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "Update tblGebruikers set voornaam = @voornaam, naam = @naam, email = @email, straat = @straat, huisnr = @huisnr, postcode = @postcode, Geemente = @stad where id=@id;";
+
+        util.updaten(strSQL, sqlparam);
+    }
+
+    public DataSet getIdByLogin(string login)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@login", login));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT id FROM tblGebruikers WHERE gebruikersnaam=@login;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
 }
