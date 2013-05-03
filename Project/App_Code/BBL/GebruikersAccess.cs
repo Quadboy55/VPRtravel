@@ -45,6 +45,13 @@ public class GebruikersAccess
                g.wachtwoord = (String)inhoud[2];
                g.voornaam = (String)inhoud[3];
                g.naam = (String)inhoud[4];
+               g.mail = (String)inhoud[5];
+               g.straat = (String)inhoud[6];
+               g.huisnr = Int32.Parse(inhoud[7].ToString());
+               g.postcode =  Int32.Parse(inhoud[8].ToString());
+               g.geboortedatum = DateTime.Parse(inhoud[10].ToString());
+               g.stad = (String)inhoud[11];
+
                return g;
            }
        }
