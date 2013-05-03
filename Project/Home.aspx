@@ -10,5 +10,5 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="inhoud" runat="Server">
-</asp:Content>
+    </asp:Content>
 

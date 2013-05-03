@@ -32,12 +32,14 @@
 
         <asp:GridView ID="GridTrein" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" OnSelectedIndexChanged="GridTrein_SelectedIndexChanged">
             <columns>
-            <asp:CommandField SelectText="Bestel" ControlStyle-CssClass="btn btn-danger" ShowSelectButton="True" />
+            <asp:CommandField SelectText="Bestel" ControlStyle-CssClass="btn btn-danger" ShowSelectButton="True" >
+<ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                </asp:CommandField>
             <asp:BoundField DataField="ID" HeaderText="Reisnr." />
             <asp:BoundField DataField="vertrekID" HeaderText="Vertrekplaats" />
             <asp:BoundField DataField="aankomstID" HeaderText="Bestemming" />
             <asp:BoundField DataField="capaciteit" HeaderText="Aantal plaatsen" />
-            <asp:BoundField DataField="prijs" HeaderText="Prijs/pers." />
+            <asp:BoundField DataField="Prijs" HeaderText="Prijs/pers." />
         </columns>
         </asp:GridView>
     <input id="hdFilter" type="hidden" value="0" runat="server"/>

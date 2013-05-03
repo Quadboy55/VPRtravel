@@ -10,8 +10,8 @@ public class RitBag
 {
     public int id { get; set; }
     public int treinID { get; set; }
-    public String weekdag { get; set; }
-    public DateTime tijdstip { get; set; }
+    public int weekdag { get; set; }
+    public TimeSpan tijdstip { get; set; }
 	public RitBag()
 	{
 		
