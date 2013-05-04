@@ -19,6 +19,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <nav>
             <div class="navbar navbar-inverse navbar-fixed-top">
                 <div class="navbar-inner">
@@ -85,7 +86,7 @@
                         <div class="modal-body">
                             <div id="tabLogin">
                                 <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                                <input id="hdValue" type="hidden" value="1" runat="server"/>
+                                
                                 <table>
                                     <tr>
                                 <td><asp:Label ID="Label1" runat="server" Text="Login:"></asp:Label></td>
@@ -108,7 +109,7 @@
                 </div>
         <!-- end of Modal -->
 
-        
+        <input id="hdValue" type="hidden" value="1" runat="server"/>
     </form>
 </body>
 </html>

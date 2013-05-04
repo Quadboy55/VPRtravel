@@ -38,6 +38,7 @@
                     <td><asp:TextBox ID="txtStraat" runat="server"  Width="170px"></asp:TextBox><asp:TextBox ID="txtHuisnr" runat="server" Width="30px"></asp:TextBox></td>
                 </tr>
                 <tr>
+                    
                     <td><asp:Label ID="Label9" runat="server" Text="Postcode + Gemeente:"></asp:Label></td>
                     <td><asp:TextBox ID="txtPostcode" runat="server"  Width="80px"></asp:TextBox><asp:TextBox ID="txtGemeente" runat="server"  Width="120px"></asp:TextBox></td>
                 </tr>
@@ -56,7 +57,7 @@
                 <h3 class="popover-title">Change Passwoord</h3>
                 <div class="popover-content">
                     <asp:ChangePassword ID="cngPass" runat="server"></asp:ChangePassword>
-
+                    
                 </div>
 
             </div>

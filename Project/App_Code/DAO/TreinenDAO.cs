@@ -45,6 +45,19 @@ public class TreinenDAO
 
         return util.ophalen(strSQL, sqlparam);
     }
+
+    public DataSet getTrainById(int tr)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", tr));
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT * FROM tblTrein WHERE ID = @id;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
     public DataSet getTrainsFrom(int from)
     {
         util = new Util();

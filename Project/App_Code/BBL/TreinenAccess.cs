@@ -29,6 +29,13 @@ public class TreinenAccess
         DAO = new TreinenDAO();
         return DAO.getTrainsFromTo(from, to).Tables[0];
     }
+
+    public DataTable getTrainById(int tr)
+    {
+        DAO = new TreinenDAO();
+        return DAO.getTrainById(tr).Tables[0];
+    }
+
     public DataTable getTrainsFrom(int from)
     {
         DAO = new TreinenDAO();
@@ -40,10 +47,4 @@ public class TreinenAccess
         return DAO.getTrainsTo(to).Tables[0];
     }
 
-    /*public DataTable getByAlcohol(String percent)
-    {
-
-        bierdao = new Landendao_Access();
-        return bierdao.getByAlcohol(percent).Tables[0];
-    }*/
 }
