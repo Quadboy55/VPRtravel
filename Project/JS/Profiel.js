@@ -1,6 +1,9 @@
 ﻿
 $(document).ready(function () {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 3e94022... Revert "1 fout opgelost in profiel"
     $("#popshow").hide();
     $("#pop").click(function () {
        if ($("#popshow").css('display') == "none") {
