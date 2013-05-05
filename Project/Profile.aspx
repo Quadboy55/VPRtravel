@@ -32,7 +32,7 @@
                 <tr>
                     <td><asp:Label ID="Label5" runat="server" Text="Email:"></asp:Label></td>
                     <td><asp:TextBox ID="txtEmail" runat="server" Width="213px"></asp:TextBox></td>
-                </tr>
+                </tr> 
                 <tr>
                     <td><asp:Label ID="Label7" runat="server" Text="Straat + Huisnr:"></asp:Label></td>
                     <td><asp:TextBox ID="txtStraat" runat="server"  Width="170px"></asp:TextBox><asp:TextBox ID="txtHuisnr" runat="server" Width="30px"></asp:TextBox></td>

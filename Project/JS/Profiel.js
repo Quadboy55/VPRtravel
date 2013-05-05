@@ -1,9 +1,5 @@
 ﻿
 $(document).ready(function () {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 3e94022... Revert "1 fout opgelost in profiel"
     $("#popshow").hide();
     $("#pop").click(function () {
        if ($("#popshow").css('display') == "none") {
@@ -14,13 +10,12 @@ $(document).ready(function () {
         }
     });
 
-    $("#inhoud_txtDate").datepicker();
+    //$("#inhoud_txtDate").datepicker();
 
-    if ($("#hdValCal").val() == 0) {
-        $("#popshow").toggle();
-    }
+    //if ($("#hdValCal").val() == 0) {
+    //    $("#popshow").toggle();
+    //}
     
-=======
     //$("#popshow").hide();
     //$("#pop").click(function () {
     //    if ($("#popshow").css('display') == "none") {
@@ -30,11 +25,10 @@ $(document).ready(function () {
     //        $("#popshow").hide();
     //    }
     //});
->>>>>>> datepicker verwijderd
     
-    $("#pop").click(function () {
-        $("#popshow").toggle();
-    });
+    //$("#pop").click(function () {
+    //    $("#popshow").toggle();
+   // });
 
     $("#btnProfiel").click(function () {
         $("#btnProfiel").removeClass("active");
