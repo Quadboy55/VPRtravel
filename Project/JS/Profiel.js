@@ -1,14 +1,14 @@
 ﻿
 $(document).ready(function () {
-    $("#popshow").hide();
-    $("#pop").click(function () {
-       if ($("#popshow").css('display') == "none") {
-           $("#popshow").show();
-        }
-        else {
-            $("#popshow").hide();
-        }
-    });
+    //$("#popshow").hide();
+    //$("#pop").click(function () {
+    //    if ($("#popshow").css('display') == "none") {
+    //        $("#popshow").show();
+    //    }
+    //    else {
+    //        $("#popshow").hide();
+    //    }
+    //});
 
     $("#inhoud_txtDate").datepicker();
 
