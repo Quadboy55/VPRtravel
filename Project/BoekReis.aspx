@@ -35,7 +35,15 @@
                 <asp:Button ID="btnZoek" runat="server" Text="Zoek" CssClass="btn btn-primary" OnClick="btnZoek_Click" />
 
             </div>
-            <asp:GridView ID="grdRitten" runat="server" Visible="false"></asp:GridView>
+            <asp:GridView ID="grdRitten" CssClass="table table-striped" runat="server" Visible="False" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="tijdstip" HeaderText="Vertrektijd" />
+                    <asp:BoundField HeaderText="Aankomsttijd" />
+                    <asp:BoundField DataField="vertrekID" HeaderText="Vertrekplaats" />
+                    <asp:BoundField DataField="AankomstID" HeaderText="Aankomstplaats" />
+                    <asp:BoundField DataField="duur" HeaderText="Duur rit" />
+                </Columns>
+            </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
     <input id="hdValCal" type="hidden" value="0" />
