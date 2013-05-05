@@ -32,7 +32,7 @@
                 <br />
                 <br />
 
-                <asp:Button ID="btnZoek" Enabled="false" runat="server" Text="Zoek" CssClass="btn btn-primary" OnClick="btnZoek_Click" />
+                <asp:Button ID="btnZoek" runat="server" Text="Zoek" CssClass="btn btn-primary" OnClick="btnZoek_Click" />
 
             </div>
             <asp:GridView ID="grdRitten" runat="server" Visible="false"></asp:GridView>

@@ -50,4 +50,20 @@ public class RitDAO
 
         return util.ophalen(strSQL, sqlparam);
     }
+
+    public DataSet getRit(int treinID, int day, TimeSpan tijd)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@trein", treinID));
+        param.Add(new SqlParameter("@day", day));
+        param.Add(new SqlParameter("@tijd", tijd));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "select tblRit.ID, treinID, tijdstip, vertrekID, aankomstID, prijs, duur from tblRit, tblTrein where (treinID = @trein  AND treinID = tblTrein.ID AND tijdstip = @tijd AND weekdag = @day) ;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
 }

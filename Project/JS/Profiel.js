@@ -1,5 +1,23 @@
 ﻿
 $(document).ready(function () {
+<<<<<<< HEAD
+    $("#popshow").hide();
+    $("#pop").click(function () {
+       if ($("#popshow").css('display') == "none") {
+           $("#popshow").show();
+        }
+        else {
+            $("#popshow").hide();
+        }
+    });
+
+    $("#inhoud_txtDate").datepicker();
+
+    if ($("#hdValCal").val() == 0) {
+        $("#popshow").toggle();
+    }
+    
+=======
     //$("#popshow").hide();
     //$("#pop").click(function () {
     //    if ($("#popshow").css('display') == "none") {
@@ -9,42 +27,11 @@ $(document).ready(function () {
     //        $("#popshow").hide();
     //    }
     //});
-
-    $("#inhoud_txtDate").datepicker();
-
-    if ($("#hdValCal").val() == 0) {
-        $("#popshow").toggle();
-    }
+>>>>>>> datepicker verwijderd
     
     $("#pop").click(function () {
         $("#popshow").toggle();
     });
-
-    $("#inhoud_CalDatum").click(function () {
-        $("#popshow").toggle();
-    });
-
-    $("#inhoud_cal").click(function () {
-        showCalPop();
-    });
-   
-
-    function showCalPop() {
-        $("#popshow").toggle();
-        if ($("#hdValCal").val() == 0) {
-            $("#hdValCal").val(1);
-        }
-
-    }
-
-    //$("#inhoud_cal").click(function () {
-    //    if ($("#popshow").css('display') == "none") {
-    //        $("#popshow").show();
-    //    }
-    //    else {
-    //        $("#popshow").hide();
-    //    }
-    //});
 
     $("#btnProfiel").click(function () {
         $("#btnProfiel").removeClass("active");

@@ -9,12 +9,12 @@ using System.Web;
 /// </summary>
 public class RitAccess
 {
-	private RitDAO DAO;
-    
+    private RitDAO DAO;
+
     public RitAccess()
-	{
-		
-	}
+    {
+
+    }
 
     //public DataTable getRittenTrein(int treinID)
     //{
@@ -30,6 +30,12 @@ public class RitAccess
     public DataTable getRittenTrein(int r, int day)
     {
         DAO = new RitDAO();
-        return DAO.getRittenTrein(r,day).Tables[0];
+        return DAO.getRittenTrein(r, day).Tables[0];
+    }
+
+    public DataTable getRit(int treinID, int day, TimeSpan tijd)
+    {
+        DAO = new RitDAO();
+        return DAO.getRit(treinID, day, tijd).Tables[0];
     }
 }
