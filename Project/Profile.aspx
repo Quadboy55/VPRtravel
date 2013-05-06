@@ -6,9 +6,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="inhoud" runat="Server">
     <div class="btn-group center">
-        <button class="btn active" id="btnProfiel" onclick="return false;">Profiel</button>
-        <button class="btn" id="btnHistoriek" onclick="return false;">Historiek</button>
-        <button class="btn" id="btnRitten" onclick="return false;">Geplande Ritten</button>
+        <asp:Button ID="btnProfiel" class="btn active" runat="server" Text="Button" onclick="return false;" />
+        <asp:Button ID="btnHistoriek" class="btn" runat="server" Text="Button" onclick="btnHistoriek_Click"/>
+        <asp:Button ID="btnRitten" class="btn" runat="server" Text="Button" onclick="return false;"/>
+
+        <%-- 
+            <button class="btn active" id="btnProfiel" onclick="return false;">Profiel</button>
+            <button class="btn" id="btnHistoriek" onclick="return false;">Historiek</button>
+            <button class="btn" id="btnRitten" onclick="return false;">Geplande Ritten</button>
+        --%>
     </div>
     <div id="Profiel">
         <div class="links">
@@ -69,8 +75,74 @@
 
     </div>
     <div id="Historiek">
+        <asp:Repeater ID="rptRepeater" runat="server">
+            <HeaderTemplate>
+                <table>
+                    <tr>
+                        <td><b>Datum</b></td>
+                        <td><b>Verstrekpunt</b></td>
+                        <td><b>Aankomstpunt</b></td>
+                        <td><b>Betaald</b></td>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                    <tr>
+                        <td><%# Eval("Datum") %></td>
+                        <td><%# Eval("Vertrek") %></td>
+                        <td><%# Eval("Aankomst") %></td>
+                        <td><%# Eval("Betaald") %></td>
+                    </tr>
+            </ItemTemplate>
+            <AlternatingItemTemplate>
+                    <tr>
+                        <td bgcolor="#DDD"><%# Eval("Datum") %></td>
+                        <td bgcolor="#DDD"><%# Eval("Vertrek") %></td>
+                        <td bgcolor="#DDD"><%# Eval("Aankomst") %></td>
+                        <td bgcolor="#DDD"><%# Eval("Betaald") %></td>
+                    </tr>
+            </AlternatingItemTemplate>
+            <FooterTemplate>
+                    <tr>
+                        <td colspan="4" style="text-align:center;">- Einde van de lijst -</td>
+                    </tr>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
     </div>
     <div id="Ritten">
+         <asp:Repeater ID="Repeater1" runat="server">
+            <HeaderTemplate>
+                <table>
+                    <tr>
+                        <td><b>Datum</b></td>
+                        <td><b>Verstrekpunt</b></td>
+                        <td><b>Aankomstpunt</b></td>
+                        <td><b>Betaald</b></td>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                    <tr>
+                        <td><%# Eval("Datum") %></td>
+                        <td><%# Eval("Vertrek") %></td>
+                        <td><%# Eval("Aankomst") %></td>
+                        <td><%# Eval("Betaald") %></td>
+                    </tr>
+            </ItemTemplate>
+            <AlternatingItemTemplate>
+                    <tr>
+                        <td bgcolor="#DDD"><%# Eval("Datum") %></td>
+                        <td bgcolor="#DDD"><%# Eval("Vertrek") %></td>
+                        <td bgcolor="#DDD"><%# Eval("Aankomst") %></td>
+                        <td bgcolor="#DDD"><%# Eval("Betaald") %></td>
+                    </tr>
+            </AlternatingItemTemplate>
+            <FooterTemplate>
+                    <tr>
+                        <td colspan="4" style="text-align:center;">- Einde van de lijst -</td>
+                    </tr>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
     </div>
 
 </asp:Content>

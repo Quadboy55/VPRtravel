@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+    private RitAccess ritten;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -24,6 +26,7 @@ public partial class _Default : System.Web.UI.Page
             txtGemeente.Text = g.stad;
             txtEmail.Text = g.mail;
         }
+
     }
     protected void btnOpslaan_Click(object sender, EventArgs e)
     {
@@ -39,5 +42,13 @@ public partial class _Default : System.Web.UI.Page
         g.mail=txtEmail.Text;
         g.ID = bll.getIdByLogin(g.gebruikersnaam);
         bll.changeUserById(g);
+    }
+
+    protected Boolean btnHistoriek_Click(object sender, EventArgs e)
+    {
+        ritten = new RitAccess();
+        rptRepeater.DataSource = ritten.getHistoriek();
+        rptRepeater.DataBind();
+        return false;
     }
 }
