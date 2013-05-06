@@ -7,7 +7,17 @@ $(document).ready(function () {
         }
         else {
             $("#popshow").hide();
-        }
+       }
+
+       $("#historiek tr:odd").addClass("odd");
+       $("#historiek tr:not(.odd)").hide();
+       $("#historiek tr:first-child").show();
+
+       $("#historiek tr.odd").click(function () {
+           $(this).next("tr").toggle();
+           $(this).find(".arrow").toggleClass("up");
+       });
+        //$("#report").jExpand();
     });
 
     //$("#inhoud_txtDate").datepicker();

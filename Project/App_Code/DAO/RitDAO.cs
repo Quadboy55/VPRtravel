@@ -66,4 +66,20 @@ public class RitDAO
 
         return util.ophalen(strSQL, sqlparam);
     }
+
+    public DataSet getHistoriek()
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        DateTime today = new DateTime();
+        today = DateTime.Now;
+        param.Add(new SqlParameter("@today", today));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "select t.vertrekDatum, ";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
 }

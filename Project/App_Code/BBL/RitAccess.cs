@@ -38,4 +38,12 @@ public class RitAccess
         DAO = new RitDAO();
         return DAO.getRit(treinID, day, tijd).Tables[0];
     }
+
+    public DataTable getHistoriek()
+    {
+        DAO = new RitDAO();
+        return DAO.getHistoriek().Tables[0];
+    }
+
+    
 }

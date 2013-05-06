@@ -44,11 +44,28 @@ public partial class _Default : System.Web.UI.Page
         bll.changeUserById(g);
     }
 
-    protected Boolean btnHistoriek_Click(object sender, EventArgs e)
+    protected void btnHistoriek_Click(object sender, EventArgs e)
     {
         ritten = new RitAccess();
         rptRepeater.DataSource = ritten.getHistoriek();
         rptRepeater.DataBind();
-        return false;
+    }
+    protected void btnProfiel_Click(object sender, EventArgs e)
+    {
+        GebruikersAccess bll = new GebruikersAccess();
+        GebruikerData g = new GebruikerData();
+        string gebruikersnaam = Session["VPR_naam"].ToString();
+        g = bll.getPlayerByLogin(gebruikersnaam);
+        lblGebruiker.Text = gebruikersnaam;
+        txtNaam.Text = g.naam;
+        txtVoornaam.Text = g.voornaam;
+        txtStraat.Text = g.straat;
+        txtPostcode.Text = g.postcode.ToString();
+        txtHuisnr.Text = g.huisnr.ToString();
+        txtGemeente.Text = g.stad;
+        txtEmail.Text = g.mail;
+    }
+    protected void btnRitten_Click(object sender, EventArgs e)
+    {
     }
 }
