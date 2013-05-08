@@ -35,7 +35,7 @@ public partial class Register : System.Web.UI.Page
             g.wachtwoord = md5.encryptPas(txtPasswoord.Text);
 
             GebruikersAccess access = new GebruikersAccess();
-            int res = access.addPlayer(g);
+            int res = access.addUser(g);
             txtVoornaam.Text = res.ToString();
             if (res != -1)
             {

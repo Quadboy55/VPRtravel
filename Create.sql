@@ -1,0 +1,16 @@
+CREATE TABLE tblRit (ID int IDENTITY NOT NULL, TreinID int NOT NULL, vertrekUur datetime NOT NULL, capaciteit int NOT NULL, weekdag datetime NOT NULL, PRIMARY KEY (ID));
+CREATE TABLE tblPersonenPerTicket (ID int IDENTITY NOT NULL, TicketID int NOT NULL, voornaam varchar(50) NOT NULL, naam varchar(70) NOT NULL, stoelnr varchar(3) NOT NULL, PRIMARY KEY (ID));
+CREATE TABLE tblClass (ID int IDENTITY NOT NULL, naam varchar(25) NULL, beschrijving varchar(255) NULL, prijsFactor int NULL, PRIMARY KEY (ID));
+CREATE TABLE tblHotel (ID int IDENTITY NOT NULL, plaatsID int NOT NULL, beschrijving varchar(255) NULL, foto varchar(255) NULL, website varchar(100) NULL, prijs float(10) NULL, PRIMARY KEY (ID));
+CREATE TABLE tblTrein (ID int IDENTITY NOT NULL, vertrekID int NOT NULL, aankomstID int NOT NULL, prijs float(10) NOT NULL, overstappen varchar(20) NULL, duur datetime NULL, PRIMARY KEY (ID));
+CREATE TABLE tblTicket (ID int IDENTITY NOT NULL, gebruikerID int NOT NULL, totalePrijs float(10) NOT NULL, aankomstdatum datetime NULL, vertrekDatum datetime NULL, typeID int NOT NULL, treinID int NOT NULL, PRIMARY KEY (ID));
+CREATE TABLE tblPlaats (ID int IDENTITY NOT NULL, naam varchar(25) NOT NULL, beschrijving varchar(255) NULL, PRIMARY KEY (ID));
+CREATE TABLE tblGebruikers (ID int IDENTITY NOT NULL, gebruikersnaam varchar(50) NOT NULL, passwoord varchar(100) NOT NULL, voornaam varchar(50) NULL, naam varchar(70) NULL, email varchar(100) NOT NULL, straat varchar(50) NULL, huisnr varchar(4) NULL, postcode varchar(4) NULL, lidSinds datetime DEFAULT GETDATE() NOT NULL, geboorteDatum datetime NULL, Gemeente varchar(50) NULL, PRIMARY KEY (ID));
+ALTER TABLE tblHotel ADD CONSTRAINT FKtblHotel616739 FOREIGN KEY (plaatsID) REFERENCES tblPlaats (ID);
+ALTER TABLE tblTicket ADD CONSTRAINT FKtblTicket660887 FOREIGN KEY (gebruikerID) REFERENCES tblGebruikers (ID);
+ALTER TABLE tblTrein ADD CONSTRAINT FKtblTrein113214 FOREIGN KEY (aankomstID) REFERENCES tblPlaats (ID);
+ALTER TABLE tblTrein ADD CONSTRAINT FKtblTrein248809 FOREIGN KEY (vertrekID) REFERENCES tblPlaats (ID);
+ALTER TABLE tblPersonenPerTicket ADD CONSTRAINT FKtblPersone315321 FOREIGN KEY (TicketID) REFERENCES tblTicket (ID);
+ALTER TABLE tblRit ADD CONSTRAINT FKtblRit441863 FOREIGN KEY (TreinID) REFERENCES tblTrein (ID);
+ALTER TABLE tblTicket ADD CONSTRAINT FKtblTicket656377 FOREIGN KEY (typeID) REFERENCES tblClass (ID);
+ALTER TABLE tblTicket ADD CONSTRAINT FKtblTicket491152 FOREIGN KEY (treinID) REFERENCES tblTrein (ID);

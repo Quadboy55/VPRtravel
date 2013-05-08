@@ -35,7 +35,7 @@ public class GebruikersAccess
        DAO = new GebruikersDAO();
        if (getPlayersByLogin(login) != null)
        {
-           DataTable t = DAO.getPlayerByLogin(login).Tables[0];
+           DataTable t = DAO.getUserByLogin(login).Tables[0];
            if (t.Rows.Count != 0)
            {
                GebruikerData g = new GebruikerData();
@@ -85,10 +85,10 @@ public class GebruikersAccess
         DAO.changeUserById(g);
     }
 
-    public int addPlayer(GebruikerData g)
+    public int addUser(GebruikerData g)
     {
         DAO = new GebruikersDAO();
-        return DAO.addPlayer(g);
+        return DAO.addUser(g);
     }
 
     public DataTable getLogins(String login)

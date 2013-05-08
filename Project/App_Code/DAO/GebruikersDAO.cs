@@ -85,7 +85,7 @@ public class GebruikersDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
-    public DataSet getPlayerByLogin(String login)
+    public DataSet getUserByLogin(String login)
     {
         util = new Util();
         param = new List<SqlParameter>();
@@ -99,7 +99,7 @@ public class GebruikersDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
-    public int addPlayer(GebruikerData g)
+    public int addUser(GebruikerData g)
     {
         util = new Util();
         param = new List<SqlParameter>();
