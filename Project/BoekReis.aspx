@@ -37,11 +37,10 @@
             </div>
             <asp:GridView ID="grdRitten" CssClass="table table-striped" runat="server" Visible="False" AutoGenerateColumns="False">
                 <Columns>
-                    <asp:BoundField DataField="tijdstip" HeaderText="Vertrektijd" />
+                    <asp:BoundField DataField="vertrekUur" HeaderText="Vertrektijd" />
                     <asp:BoundField HeaderText="Aankomsttijd" />
                     <asp:BoundField DataField="vertrekID" HeaderText="Vertrekplaats" />
                     <asp:BoundField DataField="AankomstID" HeaderText="Aankomstplaats" />
-                    <asp:BoundField DataField="duur" HeaderText="Duur rit" />
                 </Columns>
             </asp:GridView>
         </ContentTemplate>

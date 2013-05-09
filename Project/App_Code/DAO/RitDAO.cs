@@ -62,7 +62,7 @@ public class RitDAO
 
 
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "select tblRit.ID, treinID, tijdstip, vertrekID, aankomstID, prijs, duur from tblRit, tblTrein where (treinID = @trein  AND treinID = tblTrein.ID AND tijdstip = @tijd AND weekdag = @day) ;";
+        strSQL = "select tblRit.ID, treinID, vertrekUur, vertrekID, aankomstID, prijs, duur from tblRit, tblTrein where (treinID = @trein  AND treinID = tblTrein.ID AND vertrekUur = @tijd AND weekdag = @day) ;";
 
         return util.ophalen(strSQL, sqlparam);
     }

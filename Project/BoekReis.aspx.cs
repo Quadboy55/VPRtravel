@@ -31,7 +31,7 @@ public partial class BoekReis : System.Web.UI.Page
 
         int start = Convert.ToInt32(fullTraject.Rows[0].ItemArray[1].ToString());
         int eind = Convert.ToInt32(fullTraject.Rows[0].ItemArray[2].ToString());
-        String[] overstap = fullTraject.Rows[0].ItemArray[5].ToString().Split(';');
+        String[] overstap = fullTraject.Rows[0].ItemArray[4].ToString().Split(';');
 
         DataTable tempTrein;
         DataTable tempRit = new DataTable();
@@ -42,14 +42,14 @@ public partial class BoekReis : System.Web.UI.Page
         {
             tempTrein = tracc.getTrainsFromTo(start, eind);
             tempRit = rtacc.getRit(Convert.ToInt32(tempTrein.Rows[0].ItemArray[0]), Hulp.dayOfWeek(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)), vertrektijd);
-            vertrektijd += TimeSpan.Parse(tempRit.Rows[0].ItemArray[6].ToString());
+            vertrektijd += TimeSpan.Parse(tempTrein.Rows[0].ItemArray[5].ToString());
         }
         else
         {
             int stop = Convert.ToInt32(overstap[0]);
             tempTrein = tracc.getTrainsFromTo(start, stop);
             tempRit = rtacc.getRit(Convert.ToInt32(tempTrein.Rows[0].ItemArray[0]), Hulp.dayOfWeek(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)), vertrektijd);
-            vertrektijd = dichtsteUur(vertrektijd.Add(TimeSpan.Parse(tempRit.Rows[0].ItemArray[6].ToString())));
+            vertrektijd = dichtsteUur(vertrektijd.Add(TimeSpan.Parse(tempTrein.Rows[0].ItemArray[5].ToString())));
 
             if (overstap.Count<String>() >= 2)
             {
@@ -59,7 +59,7 @@ public partial class BoekReis : System.Web.UI.Page
                     tempTrein = tracc.getTrainsFromTo(stop, stop2);
                     tempRit.Merge(rtacc.getRit(Convert.ToInt32(tempTrein.Rows[0].ItemArray[0]), Hulp.dayOfWeek(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)), vertrektijd));
                     stop = stop2;
-                    vertrektijd = dichtsteUur(vertrektijd.Add(TimeSpan.Parse(tempRit.Rows[j].ItemArray[6].ToString())));
+                    vertrektijd = dichtsteUur(vertrektijd.Add(TimeSpan.Parse(tempTrein.Rows[0].ItemArray[5].ToString())));
                     j++;
                 }
             }
@@ -82,7 +82,7 @@ public partial class BoekReis : System.Web.UI.Page
         grdRitten.Visible = true;
         grdRitten.DataSource = ticketTraject;
         grdRitten.DataBind();
-        setUrenVertrek();
+        //setUrenVertrek();
     }
 
     protected void drpUur_SelectedIndexChanged(object sender, EventArgs e)
