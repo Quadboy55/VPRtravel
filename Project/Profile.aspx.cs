@@ -4,13 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.OleDb;
+using System.Data;
 
 public partial class _Default : System.Web.UI.Page
 {
+
+    private RitAccess RitAccess;
     private RitAccess ritten;
+    private PlaatsenAccess PlaatsAccess;
+    private Dictionary<int, PlaatsData> plaatsData;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        RitAccess = new RitAccess();
+        PlaatsAccess = new PlaatsenAccess();
+        plaatsData = new Dictionary<int, PlaatsData>();
         if (!Page.IsPostBack)
         {
             GebruikersAccess bll = new GebruikersAccess();
@@ -25,9 +34,47 @@ public partial class _Default : System.Web.UI.Page
             txtHuisnr.Text = g.huisnr.ToString();
             txtGemeente.Text = g.stad;
             txtEmail.Text = g.mail;
+            setGrid(RitAccess.getHistoriek());
+            vulBestemmingData();
         }
-
     }
+
+    private void setGridBestemming()
+    {
+        for (int r = 0; r < grdRitten.Rows.Count; r++)
+        {
+            for (int i = 2; i < 4; i++)
+            {
+                int id = Int32.Parse(grdRitten.Rows[r].Cells[i].Text);
+                grdRitten.Rows[r].Cells[i].Text = plaatsData[id].naam;
+            }
+        }
+    }
+
+    private void setGrid(DataTable data)
+    {
+        grdRitten.DataSource = data;
+        grdRitten.DataBind();
+        setGridBestemming();
+    }
+
+
+    private void vulBestemmingData()
+    {
+        DataTable plaats = PlaatsAccess.getAllPlaatsen();
+
+        for (int r = 0; r < plaats.Rows.Count; r++)
+        {
+            PlaatsData pl = new PlaatsData();
+            object[] inhoud = plaats.Rows[r].ItemArray;
+            pl.ID = (int)inhoud[0];
+            pl.naam = (String)inhoud[1];
+            //pl.beschrijving = (String)inhoud[2];
+
+            plaatsData.Add(pl.ID, pl);
+        }
+    }
+
     protected void btnOpslaan_Click(object sender, EventArgs e)
     {
         GebruikersAccess bll = new GebruikersAccess();

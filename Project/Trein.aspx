@@ -38,7 +38,7 @@
             <asp:BoundField DataField="ID" HeaderText="Reisnr." />
             <asp:BoundField DataField="vertrekID" HeaderText="Vertrekplaats" />
             <asp:BoundField DataField="aankomstID" HeaderText="Bestemming" />
-            <asp:BoundField DataField="capaciteit" HeaderText="Aantal plaatsen" />
+            <%--<asp:BoundField DataField="capaciteit" HeaderText="Aantal plaatsen" />--%>
             <asp:BoundField DataField="Prijs" HeaderText="Prijs/pers." />
         </columns>
         </asp:GridView>

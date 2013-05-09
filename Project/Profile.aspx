@@ -140,39 +140,18 @@
         </asp:Repeater>
     </div>
     <div id="Ritten">
-        <asp:Repeater ID="Repeater1" runat="server">
-            <HeaderTemplate>
-                <table>
-                    <tr>
-                        <td><b>Datum</b></td>
-                        <td><b>Verstrekpunt</b></td>
-                        <td><b>Aankomstpunt</b></td>
-                        <td><b>Betaald</b></td>
-                    </tr>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <tr>
-                    <td><%# Eval("Datum") %></td>
-                    <td><%# Eval("Vertrek") %></td>
-                    <td><%# Eval("Aankomst") %></td>
-                    <td><%# Eval("Betaald") %></td>
-                </tr>
-            </ItemTemplate>
-            <AlternatingItemTemplate>
-                <tr>
-                    <td bgcolor="#DDD"><%# Eval("Datum") %></td>
-                    <td bgcolor="#DDD"><%# Eval("Vertrek") %></td>
-                    <td bgcolor="#DDD"><%# Eval("Aankomst") %></td>
-                    <td bgcolor="#DDD"><%# Eval("Betaald") %></td>
-                </tr>
-            </AlternatingItemTemplate>
-            <FooterTemplate>
-                <tr>
-                    <td colspan="4" style="text-align: center;">- Einde van de lijst -</td>
-                </tr>
-                </table>
-            </FooterTemplate>
-        </asp:Repeater>
+        <asp:GridView ID="grdRitten" runat="server" AutoGenerateColumns="False" CssClass="table table-striped">
+            <Columns>
+                
+                <asp:BoundField DataField="Datum" HeaderText="Datum" />
+                <asp:BoundField DataField="vertrekID" HeaderText="Vertrek" />
+                <asp:BoundField DataField="AankomstID" HeaderText="Aankomst" />
+                <asp:BoundField DataField="Prijs" HeaderText=" Totale Prijs" />
+                <asp:CommandField SelectText="Annuleer" ControlStyle-CssClass="btn btn-danger" ShowSelectButton="True">
+                    <ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                </asp:CommandField>
+            </Columns>
+        </asp:GridView>
     </div>
 
 </asp:Content>
