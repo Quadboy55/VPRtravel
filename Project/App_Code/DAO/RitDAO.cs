@@ -78,7 +78,7 @@ public class RitDAO
 
 
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "select t.vertrekDatum, ";
+        strSQL = "SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTicket.totalePrijs AS Betaald FROM tblPlaats INNER JOIN tblTicket ON tblPlaats.ID = tblTicket.ID INNER JOIN tblTrein ON tblPlaats.ID = tblTrein.aankomstID AND tblPlaats.ID = tblTrein.vertrekID AND tblTicket.treinID = tblTrein.ID WHERE (tblTicket.vertrekDatum < CURRENT_TIMESTAMP) ORDER BY Datum";
 
         return util.ophalen(strSQL, sqlparam);
     }
