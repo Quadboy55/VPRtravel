@@ -21,7 +21,7 @@ public class GebruikersAccess
     public DataTable getAllPlayers()
     {
         DAO = new GebruikersDAO();
-        return DAO.getAllPlayers().Tables[0];
+        return DAO.getAllUsers().Tables[0];
     }
 
     public DataTable getPlayersByLogin(String login)
@@ -76,7 +76,7 @@ public class GebruikersAccess
     public DataTable getPlayersByID(int id)
     {
         DAO = new GebruikersDAO();
-        return DAO.getPlayerById(id).Tables[0];
+        return DAO.getUserById(id).Tables[0];
     }
 
     public void changeUserById(GebruikerData g)

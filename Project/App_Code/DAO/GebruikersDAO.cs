@@ -21,7 +21,7 @@ public class GebruikersDAO
 		
 	}
 
-    public DataSet getAllPlayers()
+    public DataSet getAllUsers()
     {
         util = new Util();
         param = new List<SqlParameter>();
@@ -32,7 +32,7 @@ public class GebruikersDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
-    public DataSet getPlayerById(int id){
+    public DataSet getUserById(int id){
         util = new Util();
         param = new List<SqlParameter>();
         //to add parameters=> 
@@ -120,7 +120,7 @@ public class GebruikersDAO
 
         //SET IDENTITY_INSERT tblGebruikers ON;
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "INSERT INTO tblGebruikers (gebruikersnaam, passwoord, voornaam, naam, email, straat, huisnr, postcode, Geemente, geboortedatum) VALUES(@gebruikersnaam, @passwoord, @voornaam, @naam, @email, @straat, @huisnr, @postcode, @stad, @geboortedatum);";
+        strSQL = "INSERT INTO tblGebruikers (gebruikersnaam, passwoord, voornaam, naam, email, straat, huisnr, postcode, Gemeente, geboortedatum) VALUES(@gebruikersnaam, @passwoord, @voornaam, @naam, @email, @straat, @huisnr, @postcode, @stad, @geboortedatum);";
 
         return util.updaten(strSQL, sqlparam);
     }
