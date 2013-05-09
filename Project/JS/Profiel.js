@@ -1,5 +1,13 @@
 ﻿
 $(document).ready(function () {
+    $("#btnProfiel").removeClass("active");
+    $("#btnHistoriek").removeClass("active");
+    $("#btnRitten").removeClass("active");
+    $("#btnProfiel").addClass("active");
+    $("#Profiel").show();
+    $("#Historiek").hide();
+    $("#Ritten").hide();
+
     $("#popshow").hide();
     $("#pop").click(function () {
        if ($("#popshow").css('display') == "none") {

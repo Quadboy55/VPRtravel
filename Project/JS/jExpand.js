@@ -1,4 +1,17 @@
-(function($){
+$(document).ready(function () {
+    alert("test");
+    $("#report tr:odd").addClass("odd");
+    $("#report tr:not(.odd)").hide();
+    $("#report tr:first-child").show();
+
+    $("#report tr.odd").click(function () {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+    });
+    //$("#report").jExpand();
+});
+
+(function ($) {
     $.fn.jExpand = function(){
         var element = this;
 

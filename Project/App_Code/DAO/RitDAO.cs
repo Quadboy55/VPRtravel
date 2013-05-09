@@ -67,19 +67,16 @@ public class RitDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
-    public DataSet getHistoriek()
+    public DataSet getHistoriek(int gebruikersid)
     {
         util = new Util();
         param = new List<SqlParameter>();
         //to add parameters=> 
-        DateTime today = new DateTime();
-        today = DateTime.Now;
-        param.Add(new SqlParameter("@today", today));
+        param.Add(new SqlParameter("@gebruikersid", gebruikersid));
 
 
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTicket.totalePrijs AS Betaald FROM tblPlaats INNER JOIN tblTicket ON tblPlaats.ID = tblTicket.ID INNER JOIN tblTrein ON tblPlaats.ID = tblTrein.aankomstID AND tblPlaats.ID = tblTrein.vertrekID AND tblTicket.treinID = tblTrein.ID WHERE (tblTicket.vertrekDatum < CURRENT_TIMESTAMP) ORDER BY Datum";
-
+        strSQL = "SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTrein.prijs AS Betaald FROM tblTicket INNER JOIN tblTrein ON tblTicket.treinID = tblTrein.ID INNER JOIN tblGebruikers ON tblTicket.gebruikerID = tblGebruikers.ID WHERE (tblGebruikers.ID = @gebruikersid) and (tblTicket.vertrekDatum < CURRENT_TIMESTAMP) ORDER BY Datum";
         return util.ophalen(strSQL, sqlparam);
     }
 }

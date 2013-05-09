@@ -76,32 +76,32 @@
 
             </div>
         </div>
-
-
-
-
-
     </div>
     <div id="Historiek">
-        <asp:Repeater ID="rptRepeater" runat="server">
+        <asp:Repeater ID="rptRepeater" runat="server" DataSourceID="SqlDataSource1">
             <HeaderTemplate>
-                <table id="historiek">
-                    <tr>
+                <table id="report">
+                    <tr class="header">
                         <td><b>Datum</b></td>
                         <td><b>Verstrekpunt</b></td>
                         <td><b>Aankomstpunt</b></td>
                         <td><b>Betaald</b></td>
+                        <td><b></b></td>
+
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
-                <tr onmouseover="javascript:highlight(this);" onmouseout="javascript:unhighlight(this,1);">
+                <tr class="odd">
                     <td><%# Eval("Datum") %></td>
                     <td><%# Eval("Vertrek") %></td>
                     <td><%# Eval("Aankomst") %></td>
                     <td><%# Eval("Betaald") %></td>
+                    <td>
+                        <div class="arrow"></div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="5">
                         <h4>Details:</h4>
                         <ul>
                             <li>test</li>
@@ -113,14 +113,14 @@
                 </tr>
             </ItemTemplate>
             <AlternatingItemTemplate>
-                <tr onmouseover="javascript:highlight(this);" onmouseout="javascript:unhighlight(this,1);">
+                <tr>
                     <td bgcolor="#DDD"><%# Eval("Datum") %></td>
                     <td bgcolor="#DDD"><%# Eval("Vertrek") %></td>
                     <td bgcolor="#DDD"><%# Eval("Aankomst") %></td>
                     <td bgcolor="#DDD"><%# Eval("Betaald") %></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="5">
                         <h4>Details:</h4>
                         <ul>
                             <li>test</li>
@@ -133,20 +133,26 @@
             </AlternatingItemTemplate>
             <FooterTemplate>
                 <tr>
-                    <td colspan="4" style="text-align: center;">- Einde van de lijst -</td>
+                    <td colspan="5" style="text-align: center;">- Einde van de lijst -</td>
                 </tr>
                 </table>
             </FooterTemplate>
         </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_99C675_VPRTravelConnectionString %>" SelectCommand="SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTrein.prijs AS Betaald FROM tblTicket INNER JOIN tblTrein ON tblTicket.treinID = tblTrein.ID INNER JOIN tblGebruikers ON tblTicket.gebruikerID = tblGebruikers.ID WHERE (tblGebruikers.ID = @gebruikersid) and (tblTicket.vertrekDatum &lt; CURRENT_TIMESTAMP) ORDER BY Datum
+       ">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="-1" Name="gebruikersid" SessionField="VPR_id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </div>
     <div id="Ritten">
         <asp:GridView ID="grdRitten" runat="server" AutoGenerateColumns="False" CssClass="table table-striped">
             <Columns>
-                
+
                 <asp:BoundField DataField="Datum" HeaderText="Datum" />
-                <asp:BoundField DataField="vertrekID" HeaderText="Vertrek" />
-                <asp:BoundField DataField="AankomstID" HeaderText="Aankomst" />
-                <asp:BoundField DataField="Prijs" HeaderText=" Totale Prijs" />
+                <asp:BoundField DataField="Vertrek" HeaderText="Vertrek" />
+                <asp:BoundField DataField="Aankomst" HeaderText="Aankomst" />
+                <asp:BoundField DataField="Betaald" HeaderText=" Totale Prijs" />
                 <asp:CommandField SelectText="Annuleer" ControlStyle-CssClass="btn btn-danger" ShowSelectButton="True">
                     <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                 </asp:CommandField>
