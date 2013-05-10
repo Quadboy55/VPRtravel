@@ -92,9 +92,10 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <tr class="odd">
+                    
                     <td><%# Eval("Datum") %></td>
-                    <td><%# Eval("Vertrek") %></td>
-                    <td><%# Eval("Aankomst") %></td>
+                    <td><%# getPlaats(Int32.Parse(Eval("Vertrek").ToString())) %></td>
+                    <td><%# getPlaats(Int32.Parse(Eval("Aankomst").ToString())) %></td>
                     <td><%# Eval("Betaald") %></td>
                     <td>
                         <div class="arrow"></div>
@@ -102,35 +103,12 @@
                 </tr>
                 <tr>
                     <td colspan="5">
-                        <h4>Details:</h4>
-                        <ul>
-                            <li>test</li>
-                            <li>test</li>
-                            <li>test</li>
-
-                        </ul>
+                        <h5>Details:</h5>
+                        <h6>Personen</h6>
+                        <%# getPersonen(Int32.Parse(Eval("Betaald").ToString()) %>
                     </td>
                 </tr>
             </ItemTemplate>
-            <AlternatingItemTemplate>
-                <tr>
-                    <td bgcolor="#DDD"><%# Eval("Datum") %></td>
-                    <td bgcolor="#DDD"><%# Eval("Vertrek") %></td>
-                    <td bgcolor="#DDD"><%# Eval("Aankomst") %></td>
-                    <td bgcolor="#DDD"><%# Eval("Betaald") %></td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                        <h4>Details:</h4>
-                        <ul>
-                            <li>test</li>
-                            <li>test</li>
-                            <li>test</li>
-
-                        </ul>
-                    </td>
-                </tr>
-            </AlternatingItemTemplate>
             <FooterTemplate>
                 <tr>
                     <td colspan="5" style="text-align: center;">- Einde van de lijst -</td>

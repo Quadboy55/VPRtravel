@@ -116,4 +116,16 @@ public partial class _Default : System.Web.UI.Page
     protected void btnRitten_Click(object sender, EventArgs e)
     {
     }
+
+    public string getPlaats(int id)
+    {
+        return plaatsData[id].naam;
+    }
+
+   
+    
+    public void getPersonen(int Ticketid)
+    {
+
+    }
 }
