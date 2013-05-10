@@ -30,7 +30,6 @@ public partial class BoekReis : System.Web.UI.Page
             drpUur.Items.Add("20:00:00");
 
            tempClass = new ClassAccess().getAllClass();
-            drpClass.Items.Add("--Klasse--");
             foreach (DataRow r in tempClass.Rows)
             {
                 drpClass.Items.Add(new ListItem(r.ItemArray[1].ToString(), r.ItemArray[0].ToString()));
@@ -47,7 +46,7 @@ public partial class BoekReis : System.Web.UI.Page
 
         int start = Convert.ToInt32(fullTraject.Rows[0].ItemArray[1].ToString());
         int eind = Convert.ToInt32(fullTraject.Rows[0].ItemArray[2].ToString());
-        vertrekDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        vertrekDate = CalDate.SelectedDate;
         aankomstDate = vertrekDate;
 
         String[] overstap = fullTraject.Rows[0].ItemArray[4].ToString().Split(';');
@@ -61,7 +60,7 @@ public partial class BoekReis : System.Web.UI.Page
         if (overstap[0].Equals(""))
         {
             tempTrein = tracc.getTrainsFromTo(start, eind);
-            tempRit = rtacc.getRit(Convert.ToInt32(tempTrein.Rows[0].ItemArray[0]), Hulp.dayOfWeek(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)), vertrektijd);
+            tempRit = rtacc.getRit(Convert.ToInt32(tempTrein.Rows[0].ItemArray[0]), Hulp.dayOfWeek(vertrekDate), vertrektijd);
             vertrektijd += TimeSpan.Parse(tempTrein.Rows[0].ItemArray[5].ToString());
         }
         else
@@ -71,7 +70,7 @@ public partial class BoekReis : System.Web.UI.Page
             //eerste rit
             int stop = Convert.ToInt32(overstap[0]);
             tempTrein = tracc.getTrainsFromTo(start, stop);
-            tempRit = rtacc.getRit(Convert.ToInt32(tempTrein.Rows[0].ItemArray[0]), Hulp.dayOfWeek(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)), vertrektijd);
+            tempRit = rtacc.getRit(Convert.ToInt32(tempTrein.Rows[0].ItemArray[0]), Hulp.dayOfWeek(vertrekDate), vertrektijd);
             vertrektijd = dichtsteUur(vertrektijd.Add(TimeSpan.Parse(tempTrein.Rows[0].ItemArray[5].ToString())));
 
             // controle op meerdere overstappen
@@ -81,7 +80,7 @@ public partial class BoekReis : System.Web.UI.Page
                 {
                     int stop2 = Convert.ToInt32(overstap[i]);
                     tempTrein.Merge(tracc.getTrainsFromTo(stop, stop2));
-                    tempRit.Merge(rtacc.getRit(Convert.ToInt32(tempTrein.Rows[j].ItemArray[0]), Hulp.dayOfWeek(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)), vertrektijd));
+                    tempRit.Merge(rtacc.getRit(Convert.ToInt32(tempTrein.Rows[j].ItemArray[0]), Hulp.dayOfWeek(vertrekDate), vertrektijd));
                     stop = stop2;
                     vertrektijd = dichtsteUur(vertrektijd.Add(TimeSpan.Parse(tempTrein.Rows[j].ItemArray[5].ToString())));
                     j++;
@@ -90,7 +89,7 @@ public partial class BoekReis : System.Web.UI.Page
 
             //eind traject
             tempTrein.Merge(tracc.getTrainsFromTo(stop, eind));
-            tempRit.Merge(rtacc.getRit(Convert.ToInt32(tempTrein.Rows[j].ItemArray[0]), Hulp.dayOfWeek(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)), vertrektijd));
+            tempRit.Merge(rtacc.getRit(Convert.ToInt32(tempTrein.Rows[j].ItemArray[0]), Hulp.dayOfWeek(vertrekDate), vertrektijd));
         }
 
 
@@ -102,6 +101,8 @@ public partial class BoekReis : System.Web.UI.Page
 
         Session["VPR_tempTrein"] = tempTrein;
         Session["VPR_tempRit"] = tempRit;
+        
+
     }
 
     // zoekt dichtst volgende vertrekuur
@@ -198,51 +199,34 @@ public partial class BoekReis : System.Web.UI.Page
     protected void drpPersonen_SelectedIndexChanged(object sender, EventArgs e)
     {
         atlPersonen = Convert.ToInt32(drpPersonen.SelectedValue);
+        Session["VPR_atlPersonen"] = atlPersonen;
 
-        for (int i = 1; i <= atlPersonen; i++)
+        p1.Visible = false;
+        p2.Visible = false;
+        p3.Visible = false;
+        p4.Visible = false;
+        p5.Visible = false;
+        p6.Visible = false;
+        p7.Visible = false;
+        p8.Visible = false;
+        p9.Visible = false;
+        p10.Visible = false;
+
+        for (int i = 0; i < atlPersonen; i++)
         {
-
-            
-            Label l = new Label();
-            l.ID = "naam" + i;
-            l.Text = "Naam " + i + " : ";
-
-            TextBox t = new TextBox();
-            t.ID = "txtnaam" + i;
-
-            Label l2 = new Label();
-            l2.ID = "vrnaam" + i;
-            l2.Text = "Voornaam " + i + " : ";
-
-            TextBox t2 = new TextBox();
-            t2.ID = "txtvrnaam" + i;
-
-            RequiredFieldValidator val = new RequiredFieldValidator();
-            val.ControlToValidate = t2.ID;
-            val.ValidationGroup = "namen";
-            val.ErrorMessage = "Gelieve de voornaam op te geven.   ";
-            val.CssClass = "error";
-            val.Display = ValidatorDisplay.Dynamic;
-
-            RequiredFieldValidator val2 = new RequiredFieldValidator();
-            val2.ControlToValidate = t.ID;
-            val2.ValidationGroup = "namen";
-            val2.ErrorMessage = "Gelieve de naam op te geven";
-            val2.CssClass = "error";
-            val2.Display = ValidatorDisplay.Dynamic;
-
-            namen.Controls.Add(new LiteralControl("<strong>"));
-            namen.Controls.Add(l);
-            namen.Controls.Add(new LiteralControl("</strong>"));
-            namen.Controls.Add(t);
-            namen.Controls.Add(new LiteralControl("<strong>"));
-            namen.Controls.Add(l2);
-            namen.Controls.Add(new LiteralControl("</strong>"));
-            namen.Controls.Add(t2);
-            namen.Controls.Add(val);
-            namen.Controls.Add(val2);
-            namen.Controls.Add(new LiteralControl("<br/>"));
-
+            switch (i)
+            {
+                case 0: p1.Visible = true; break;
+                case 1: p2.Visible = true; break;
+                case 2: p3.Visible = true; break;
+                case 3: p4.Visible = true; break;
+                case 4: p5.Visible = true; break;
+                case 5: p6.Visible = true; break;
+                case 6: p7.Visible = true; break;
+                case 7: p8.Visible = true; break;
+                case 8: p9.Visible = true; break;
+                case 9: p10.Visible = true; break;
+            }
         }
         btnMand.Visible = true;
     }
@@ -250,7 +234,8 @@ public partial class BoekReis : System.Web.UI.Page
     protected void btnMand_Click(object sender, EventArgs e)
     {
         tempTrein = (DataTable)Session["VPR_tempTrein"];
-        tempTrein = (DataTable)Session["VPR_tempRit"];
+        tempRit = (DataTable)Session["VPR_tempRit"];
+        atlPersonen = (int)Session["VPR_atlPersonen"];
 
 
         // bestelling in sessie plaatsen
@@ -275,8 +260,8 @@ public partial class BoekReis : System.Web.UI.Page
         DataRow r = bestelling.NewRow();
         r[0] = Session["VPR_id"];
         r[1] = berekenPrijs();
-        r[2] = DateTime.ParseExact(grdRitten.Rows[0].Cells[0].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-        r[3] = DateTime.ParseExact(grdRitten.Rows[grdRitten.Rows.Count-1].Cells[1].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+        r[3] = DateTime.ParseExact(grdRitten.Rows[0].Cells[0].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+        r[2] = DateTime.ParseExact(grdRitten.Rows[grdRitten.Rows.Count-1].Cells[1].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
         r[4] = drpClass.SelectedItem.ToString();
         r[5] = Session["VPR_reis"];
         r[6] = grdRitten.Rows[0].Cells[2].Text;
@@ -291,10 +276,10 @@ public partial class BoekReis : System.Web.UI.Page
 
         if (Session["VPR_personen"] == null) // schoppingcart
         {
-            bestelling.Columns.Add("rijTicket");
-            bestelling.Columns.Add("voornaam");
-            bestelling.Columns.Add("naam");
-            bestelling.Columns.Add("stoelnr");
+            personen.Columns.Add("rijTicket");
+            personen.Columns.Add("voornaam");
+            personen.Columns.Add("naam");
+            personen.Columns.Add("stoelnr");
         }
         else
         {
@@ -306,11 +291,30 @@ public partial class BoekReis : System.Web.UI.Page
             DataRow rp = personen.NewRow();
             rp[0] = bestelling.Rows.Count - 1;
 
-            TextBox t = (TextBox)Page.FindControl("vrnaam" + i);
-            rp[1] = t.Text;
 
-            t = (TextBox)Page.FindControl("naam" + i);
-            rp[2] = t.Text;
+                switch (i)
+                {
+                    case 1: rp[1] = txtvrnaam1.Text;
+                        rp[2] = txtnaam1.Text; break;
+                    case 2: rp[1] = txtvrnaam2.Text;
+                        rp[2] = txtnaam2.Text; break;
+                    case 3: rp[1] = txtvrnaam3.Text;
+                        rp[2] = txtnaam3.Text; break;
+                    case 4: rp[1] = txtvrnaam4.Text;
+                        rp[2] = txtnaam4.Text; break;
+                    case 5: rp[1] = txtvrnaam5.Text;
+                        rp[2] = txtnaam5.Text; break;
+                    case 6: rp[1] = txtvrnaam6.Text;
+                        rp[2] = txtnaam6.Text; break;
+                    case 7: rp[1] = txtvrnaam7.Text;
+                        rp[2] = txtnaam7.Text; break;
+                    case 8: rp[1] = txtvrnaam8.Text;
+                        rp[2] = txtnaam8.Text; break;
+                    case 9: rp[1] = txtvrnaam9.Text;
+                        rp[2] = txtnaam9.Text; break;
+                    case 10: rp[1] = txtvrnaam10.Text;
+                        rp[2] = txtnaam10.Text; break;
+                }
 
             int[] stoelnummers = getEersteVrijeStoel();
             StringBuilder sb = new StringBuilder();
@@ -335,7 +339,14 @@ public partial class BoekReis : System.Web.UI.Page
             DateTime datum = DateTime.ParseExact(grdRitten.Rows[i].Cells[0].Text,"dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
             datum = DateTime.ParseExact(datum.ToString("dd/MM/yyyy"),"dd/MM/yyyy", CultureInfo.InvariantCulture);
             DataTable d = new CapaciteitAccess().getCapa(datum,Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()));
-            stoelen[i] = Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
+            if (d != null)
+            {
+                stoelen[i] = Convert.ToInt32(tempRit.Rows[i].ItemArray[2])-Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
+            }
+            else
+            {
+                stoelen[i] = 1;
+            }
         }
 
         return stoelen;
@@ -344,16 +355,30 @@ public partial class BoekReis : System.Web.UI.Page
     private double berekenPrijs()
     {
         double prijs = 0;
+        double tarief = 0;
         tempClass = new ClassAccess().getAllClass();
 
         foreach (DataRow r in tempTrein.Rows)
         {
-            double tarief = Convert.ToDouble(r.ItemArray[3].ToString());
-            prijs += tarief;
+            tarief += Convert.ToDouble(r.ItemArray[3].ToString());
         }
         double verhouding = Convert.ToDouble(tempClass.Rows[drpClass.SelectedIndex - 1].ItemArray[3]);
 
-        double totaal = prijs * verhouding * atlPersonen;
-        return totaal;
+        prijs = tarief * verhouding/100 * atlPersonen;
+        return prijs;
+    }
+    protected void valPers_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        if (drpPersonen.SelectedIndex == 0)
+            args.IsValid = false;
+        else
+            args.IsValid = true;
+    }
+    protected void valClass_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        if (drpClass.SelectedIndex == 0)
+            args.IsValid = false;
+        else
+            args.IsValid = true;
     }
 }

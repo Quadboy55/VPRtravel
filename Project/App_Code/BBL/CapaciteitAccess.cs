@@ -20,7 +20,14 @@ public class CapaciteitAccess
 
     public DataTable getCapa(DateTime d, int rit)
     {
-        DAO = new CapaciteitDAO();
-        return DAO.getCapa(d,rit).Tables[0];
+        try
+        {
+            DAO = new CapaciteitDAO();
+            return DAO.getCapa(d, rit).Tables[0];
+        }
+        catch (NullReferenceException ex)
+        {
+            return null;
+        }
     }
 }
