@@ -124,8 +124,15 @@ public partial class _Default : System.Web.UI.Page
 
    
     
-    public void getPersonen(int Ticketid)
+    public string getPersonen(int Ticketid)
     {
-
+        TicketAccess t = new TicketAccess();
+        DataTable table =  t.getPersonenPerTicket(Ticketid);
+        int atl =table.Rows.Count;
+        string str = "";
+        for (int i = 0; i < atl; i++) {
+            str += "<li> " + table.Rows[i][2] + " " + table.Rows[i][3] + " </li>";
+        }
+        return str;
     }
 }

@@ -30,4 +30,9 @@ public class TicketAccess
         return DAO.getTicketById(tr).Tables[0];
     }
 
+    public DataTable getPersonenPerTicket(int tr)
+    {
+        DAO = new TicketDAO();
+        return DAO.getPersonenPerTicket(tr).Tables[0];
+    }
 }

@@ -52,7 +52,7 @@ public class TicketDAO
         param.Add(new SqlParameter("@id", tr));
 
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SELECT * FROM tblTicket WHERE ID = @id;";
+        strSQL = "SELECT * FROM tblPersonenPerTicket WHERE TicketID = @id;";
 
         return util.ophalen(strSQL, sqlparam);
     }

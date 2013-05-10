@@ -93,7 +93,7 @@
             <ItemTemplate>
                 <tr class="odd">
                     
-                    <td><%# Eval("Datum") %></td>
+                    <td><%# Convert.ToDateTime(Eval("Datum")).ToShortDateString() %></td>
                     <td><%# getPlaats(Int32.Parse(Eval("Vertrek").ToString())) %></td>
                     <td><%# getPlaats(Int32.Parse(Eval("Aankomst").ToString())) %></td>
                     <td><%# Eval("Betaald") %></td>
@@ -105,7 +105,10 @@
                     <td colspan="5">
                         <h5>Details:</h5>
                         <h6>Personen</h6>
-                        <%# getPersonen(Int32.Parse(Eval("Betaald").ToString()) %>
+                        <span>
+                            <%# getPersonen(Int32.Parse(Eval("TicketID").ToString())) %>
+                        </span>
+                        
                     </td>
                 </tr>
             </ItemTemplate>
@@ -116,8 +119,7 @@
                 </table>
             </FooterTemplate>
         </asp:Repeater>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_99C675_VPRTravelConnectionString %>" SelectCommand="SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTrein.prijs AS Betaald FROM tblTicket INNER JOIN tblTrein ON tblTicket.treinID = tblTrein.ID INNER JOIN tblGebruikers ON tblTicket.gebruikerID = tblGebruikers.ID WHERE (tblGebruikers.ID = @gebruikersid) and (tblTicket.vertrekDatum &lt; CURRENT_TIMESTAMP) ORDER BY Datum
-       ">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_99C675_VPRTravelConnectionString %>" SelectCommand="SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTrein.prijs AS Betaald, tblTicket.ID AS TicketID FROM tblTicket INNER JOIN tblTrein ON tblTicket.treinID = tblTrein.ID INNER JOIN tblGebruikers ON tblTicket.gebruikerID = tblGebruikers.ID WHERE (tblGebruikers.ID = @gebruikersid) AND (tblTicket.vertrekDatum &lt; CURRENT_TIMESTAMP) ORDER BY Datum">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="-1" Name="gebruikersid" SessionField="VPR_id" />
             </SelectParameters>
