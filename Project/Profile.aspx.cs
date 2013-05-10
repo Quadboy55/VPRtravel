@@ -35,7 +35,7 @@ public partial class _Default : System.Web.UI.Page
             txtGemeente.Text = g.stad;
             txtEmail.Text = g.mail;
             vulBestemmingData();
-            setGrid(RitAccess.getHistoriek(Int32.Parse(Session["VPR_id"].ToString())));
+            setGrid(RitAccess.getFuture(Int32.Parse(Session["VPR_id"].ToString())));
             
         }
     }
@@ -113,9 +113,6 @@ public partial class _Default : System.Web.UI.Page
         txtGemeente.Text = g.stad;
         txtEmail.Text = g.mail;
     }
-    protected void btnRitten_Click(object sender, EventArgs e)
-    {
-    }
 
     public string getPlaats(int id)
     {
@@ -134,10 +131,5 @@ public partial class _Default : System.Web.UI.Page
             str += "<li> " + table.Rows[i][2] + " " + table.Rows[i][3] + " </li>";
         }
         return str;
-    }
-    protected void btnAnnuleer_Click(object sender, EventArgs e)
-    {
-        Button btn = (Button)sender;
-        
     }
 }

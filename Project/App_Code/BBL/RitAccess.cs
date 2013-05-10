@@ -45,5 +45,11 @@ public class RitAccess
         return DAO.getHistoriek(id).Tables[0];
     }
 
-    
+
+
+    public DataTable getFuture(int id)
+    {
+        DAO = new RitDAO();
+        return DAO.getFuture(id).Tables[0];
+    }
 }
