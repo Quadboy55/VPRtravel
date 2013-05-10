@@ -19,7 +19,7 @@ public partial class _Default : System.Web.UI.Page
         TreinAccess = new TreinenAccess();
         PlaatsAccess = new PlaatsenAccess();
         plaatsData = new Dictionary<int, PlaatsData>();
-        vulBestemmingData();
+        plaatsData = Hulp.getBestemmingData();
 
         if (!Page.IsPostBack)
         {
@@ -27,23 +27,6 @@ public partial class _Default : System.Web.UI.Page
             setGrid(TreinAccess.getAllTrains());
             vulDropBestemming();
 
-        }
-    }
-
-
-    private void vulBestemmingData()
-    {
-        DataTable plaats = PlaatsAccess.getAllPlaatsen();
-
-        for (int r = 0; r < plaats.Rows.Count; r++)
-        {
-            PlaatsData pl = new PlaatsData();
-            object[] inhoud = plaats.Rows[r].ItemArray;
-            pl.ID = (int)inhoud[0];
-            pl.naam = (String)inhoud[1];
-            //pl.beschrijving = (String)inhoud[2];
-
-            plaatsData.Add(pl.ID, pl);
         }
     }
 
