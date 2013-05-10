@@ -16,6 +16,9 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        ((Master)Page.Master).checkLogon(true);
+
         TreinAccess = new TreinenAccess();
         PlaatsAccess = new PlaatsenAccess();
         plaatsData = new Dictionary<int, PlaatsData>();

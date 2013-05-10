@@ -11,7 +11,7 @@ public partial class Master : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        checkLogon();
+        checkLogon(false);
         
     }
 
@@ -55,27 +55,58 @@ public partial class Master : System.Web.UI.MasterPage
          }
 
     }
-    private void checkLogon()
+    public void checkLogon(Boolean plicht)
     {
-        if (Session["VPR_login"] != null)
+        if (plicht)
         {
-            if (((Boolean)Session["VPR_login"]) == true)
+            if (Session["VPR_login"] != null)
             {
-                btnLogRes.Visible = false;
-                btnLogOut.Visible = true;
-                btnProfile.Visible = true;
-                btnProfile.Text = Session["VPR_naam"].ToString();
-                lblError.Visible = false;
-                hdValue.Value = "1";
+                if (((Boolean)Session["VPR_login"]) == true)
+                {
+                    btnLogRes.Visible = false;
+                    btnLogOut.Visible = true;
+                    btnProfile.Visible = true;
+                    btnProfile.Text = Session["VPR_naam"].ToString();
+                    lblError.Visible = false;
+                    hdValue.Value = "1";
+                }
+                else
+                {
+                    lblError.Text = "Login of wachtwoord zijn incorrect";
+                    lblError.Visible = true;
+                    hdValue.Value = "0";
+                }
             }
             else
             {
-                lblError.Text = "Login of wachtwoord zijn incorrect";
+                lblError.Text = "Login om verder te gaan";
                 lblError.Visible = true;
                 hdValue.Value = "0";
-                
+            }
+
+        }
+        else
+        {
+            if (Session["VPR_login"] != null)
+            {
+                if (((Boolean)Session["VPR_login"]) == true)
+                {
+                    btnLogRes.Visible = false;
+                    btnLogOut.Visible = true;
+                    btnProfile.Visible = true;
+                    btnProfile.Text = Session["VPR_naam"].ToString();
+                    lblError.Visible = false;
+                    hdValue.Value = "1";
+                }
+                else
+                {
+                    lblError.Text = "Login of wachtwoord zijn incorrect";
+                    lblError.Visible = true;
+                    hdValue.Value = "0";
+                }
             }
         }
+
     }
 
     protected void btnLogOut_Click(object sender, EventArgs e)
@@ -89,5 +120,11 @@ public partial class Master : System.Web.UI.MasterPage
     protected void btnProfile_Click(object sender, EventArgs e)
     {
         Response.Redirect("profile.aspx");
+    }
+    protected void btnClose_Click(object sender, EventArgs e)
+    {
+        Session["VPR_login"] = null;
+        hdValue.Value = "1";
+
     }
 }

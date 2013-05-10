@@ -4,8 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="banner" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="inhoud" runat="Server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+    
             <script src="JS/Profiel.js"></script>
 
             <div id="zoek" class="zoek">
@@ -26,13 +25,15 @@
                 <br />
                 <strong>
                     <asp:Label ID="Label3" runat="server" Text="Vertrekuur: "></asp:Label></strong>
-                <asp:DropDownList ID="drpUur" runat="server" CssClass="btn dropdown-toggle" OnSelectedIndexChanged="drpUur_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="drpUur" runat="server" CssClass="btn dropdown-toggle"></asp:DropDownList>
                 <br />
                 <br />
 
                 <asp:Button ID="btnZoek" runat="server" Text="Zoek" CssClass="btn btn-primary" OnClick="btnZoek_Click" />
 
             </div>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
             <asp:GridView ID="grdRitten" CssClass="table table-striped" runat="server" Visible="False" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="vertrekUur" HeaderText="Vertrektijd" />
@@ -80,6 +81,9 @@
 
             
         </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btnZoek" EventName="Click" />
+        </Triggers>
     </asp:UpdatePanel>
     <input id="hdValCal" type="hidden" value="0" />
 </asp:Content>

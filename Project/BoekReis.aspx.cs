@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class BoekReis : System.Web.UI.Page
 {
-    DataTable tempTrein;
-    DataTable tempRit;
-    DataTable tempClass;
-    DateTime vertrekDate;
-    DateTime aankomstDate;
+    private DataTable tempTrein;
+    private DataTable tempRit;
+    private DataTable tempClass;
+    private DateTime vertrekDate;
+    private DateTime aankomstDate;
+    private int atlPersonen;
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -97,14 +99,9 @@ public partial class BoekReis : System.Web.UI.Page
         grdRitten.DataBind();
         setGridBestemming();
         atlTickets.Visible = true;
-    }
 
-    protected void drpUur_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (drpUur.SelectedIndex != 0)
-        {
-            btnZoek.Enabled = true;
-        }
+        Session["VPR_tempTrein"] = tempTrein;
+        Session["VPR_tempRit"] = tempRit;
     }
 
     // zoekt dichtst volgende vertrekuur
@@ -197,49 +194,66 @@ public partial class BoekReis : System.Web.UI.Page
             }
         }
     }
+
     protected void drpPersonen_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int atl = Convert.ToInt32(drpPersonen.SelectedValue);
+        atlPersonen = Convert.ToInt32(drpPersonen.SelectedValue);
 
-        for (int i = 1; i <= atl; i++)
+        for (int i = 1; i <= atlPersonen; i++)
         {
 
-            namen.Controls.Add(new LiteralControl("<strong>"));
+            
             Label l = new Label();
             l.ID = "naam" + i;
             l.Text = "Naam " + i + " : ";
-            namen.Controls.Add(new LiteralControl("</strong>"));
 
             TextBox t = new TextBox();
             t.ID = "txtnaam" + i;
 
-            namen.Controls.Add(new LiteralControl("<strong>"));
             Label l2 = new Label();
-            l.ID = "vrnaam" + i;
-            l.Text = "Voornaam " + i + " : ";
-            namen.Controls.Add(new LiteralControl("</strong>"));
+            l2.ID = "vrnaam" + i;
+            l2.Text = "Voornaam " + i + " : ";
 
             TextBox t2 = new TextBox();
-            t.ID = "txtvrnaam" + i;
+            t2.ID = "txtvrnaam" + i;
 
             RequiredFieldValidator val = new RequiredFieldValidator();
-            val.ControlToValidate = t.ID;
+            val.ControlToValidate = t2.ID;
             val.ValidationGroup = "namen";
-            val.ErrorMessage = "Gelieve de naam op te geven";
+            val.ErrorMessage = "Gelieve de voornaam op te geven.   ";
             val.CssClass = "error";
+            val.Display = ValidatorDisplay.Dynamic;
 
+            RequiredFieldValidator val2 = new RequiredFieldValidator();
+            val2.ControlToValidate = t.ID;
+            val2.ValidationGroup = "namen";
+            val2.ErrorMessage = "Gelieve de naam op te geven";
+            val2.CssClass = "error";
+            val2.Display = ValidatorDisplay.Dynamic;
+
+            namen.Controls.Add(new LiteralControl("<strong>"));
             namen.Controls.Add(l);
+            namen.Controls.Add(new LiteralControl("</strong>"));
             namen.Controls.Add(t);
+            namen.Controls.Add(new LiteralControl("<strong>"));
             namen.Controls.Add(l2);
+            namen.Controls.Add(new LiteralControl("</strong>"));
             namen.Controls.Add(t2);
             namen.Controls.Add(val);
+            namen.Controls.Add(val2);
             namen.Controls.Add(new LiteralControl("<br/>"));
 
         }
         btnMand.Visible = true;
     }
+
     protected void btnMand_Click(object sender, EventArgs e)
     {
+        tempTrein = (DataTable)Session["VPR_tempTrein"];
+        tempTrein = (DataTable)Session["VPR_tempRit"];
+
+
+        // bestelling in sessie plaatsen
         DataTable bestelling = new DataTable();
 
         if (Session["VPR_tickets"] == null) // schoppingcart
@@ -250,6 +264,8 @@ public partial class BoekReis : System.Web.UI.Page
             bestelling.Columns.Add("vertrekDatum");
             bestelling.Columns.Add("typeID");
             bestelling.Columns.Add("treinID");
+            bestelling.Columns.Add("vertrekplaats");
+            bestelling.Columns.Add("aankomstplaats");
         }
         else
         {
@@ -259,19 +275,85 @@ public partial class BoekReis : System.Web.UI.Page
         DataRow r = bestelling.NewRow();
         r[0] = Session["VPR_id"];
         r[1] = berekenPrijs();
-        r[2] = DateTime.ParseExact(grdRitten.Rows[0].Cells[0].ToString(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-        r[3] = DateTime.ParseExact(grdRitten.Rows[grdRitten.Rows.Count-1].Cells[1].ToString(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-        r[4] = drpClass.SelectedValue;
+        r[2] = DateTime.ParseExact(grdRitten.Rows[0].Cells[0].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+        r[3] = DateTime.ParseExact(grdRitten.Rows[grdRitten.Rows.Count-1].Cells[1].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+        r[4] = drpClass.SelectedItem.ToString();
         r[5] = Session["VPR_reis"];
+        r[6] = grdRitten.Rows[0].Cells[2].Text;
+        r[7] = grdRitten.Rows[grdRitten.Rows.Count-1].Cells[3].Text;
+
+
+        bestelling.Rows.Add(r);
+        Session["VPR_bestelling"] = bestelling;
+
+        // personen in sesie plaatsen
+        DataTable personen = new DataTable();
+
+        if (Session["VPR_personen"] == null) // schoppingcart
+        {
+            bestelling.Columns.Add("rijTicket");
+            bestelling.Columns.Add("voornaam");
+            bestelling.Columns.Add("naam");
+            bestelling.Columns.Add("stoelnr");
+        }
+        else
+        {
+            personen = (DataTable)Session["VPR_personen"];
+        }
+
+        for (int i = 1; i <= atlPersonen; i++)
+        {
+            DataRow rp = personen.NewRow();
+            rp[0] = bestelling.Rows.Count - 1;
+
+            TextBox t = (TextBox)Page.FindControl("vrnaam" + i);
+            rp[1] = t.Text;
+
+            t = (TextBox)Page.FindControl("naam" + i);
+            rp[2] = t.Text;
+
+            int[] stoelnummers = getEersteVrijeStoel();
+            StringBuilder sb = new StringBuilder();
+            for(int j = 0; j < stoelnummers.Count<int>();j++)
+            {
+                sb.Append(stoelnummers[j]+";");
+                stoelnummers[j]++;
+            }
+
+            rp[3] = sb.ToString();
+            personen.Rows.Add(rp);
+        }
+        Session["VPR_personen"] = personen;
+        Response.Redirect("winkelkarretje.aspx");
     }
 
-    //private double berekenPrijs()
-    //{
-    //    double prijs = 0;
+    private int[] getEersteVrijeStoel()
+    {
+        int[] stoelen = new int[tempRit.Rows.Count];
+        for(int i = 0; i < tempRit.Rows.Count; i++)
+        {
+            DateTime datum = DateTime.ParseExact(grdRitten.Rows[i].Cells[0].Text,"dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+            datum = DateTime.ParseExact(datum.ToString("dd/MM/yyyy"),"dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DataTable d = new CapaciteitAccess().getCapa(datum,Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()));
+            stoelen[i] = Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
+        }
 
-    //    foreach (DataRow r in tempTrein.Rows)
-    //    {
-    //        double tarief = Convert.ToDouble(r.ItemArray[3].ToString());
-    //    }
-    //}
+        return stoelen;
+    }
+
+    private double berekenPrijs()
+    {
+        double prijs = 0;
+        tempClass = new ClassAccess().getAllClass();
+
+        foreach (DataRow r in tempTrein.Rows)
+        {
+            double tarief = Convert.ToDouble(r.ItemArray[3].ToString());
+            prijs += tarief;
+        }
+        double verhouding = Convert.ToDouble(tempClass.Rows[drpClass.SelectedIndex - 1].ItemArray[3]);
+
+        double totaal = prijs * verhouding * atlPersonen;
+        return totaal;
+    }
 }
