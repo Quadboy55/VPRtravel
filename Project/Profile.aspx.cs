@@ -132,4 +132,12 @@ public partial class _Default : System.Web.UI.Page
         }
         return str;
     }
+    protected void btnAnnuleer_Click(object sender, EventArgs e)
+    {
+        Button btn = (Button)sender;
+        int TicketID = Int32.Parse(btn.ToolTip.ToString());
+        TicketAccess t = new TicketAccess();
+        t.AnnuleerTicket(TicketID);
+
+    }
 }

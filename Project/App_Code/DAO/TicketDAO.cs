@@ -57,5 +57,27 @@ public class TicketDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public void VerwijderPersonen(int TicketID)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", TicketID));
 
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "DELETE FROM tblPersonenPerTicket WHERE TicketID = @id;";
+        util.updaten(strSQL, sqlparam);
+    }
+
+    public void AnnuleerTicket(int TicketID)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", TicketID));
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "DELETE FROM tblTicket WHERE ID = @id;";
+        util.updaten(strSQL, sqlparam);
+    }
 }

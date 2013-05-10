@@ -35,4 +35,11 @@ public class TicketAccess
         DAO = new TicketDAO();
         return DAO.getPersonenPerTicket(tr).Tables[0];
     }
+
+    public void AnnuleerTicket(int TicketID)
+    {
+        DAO = new TicketDAO();
+        DAO.VerwijderPersonen(TicketID);
+        DAO.AnnuleerTicket(TicketID);
+    }
 }
