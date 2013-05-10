@@ -60,8 +60,8 @@
     text-align:center;
 }
 
-grdRitten {width:90%; align-content:center;}
-#report { border-collapse:collapse; width:90%;align-content:center;}
+grdRitten {width:100%; align-content:center;}
+#report { border-collapse:collapse; width:100%;align-content:center;}
 #report h4 { margin:0px; padding:0px;}
 #report img { float:right;}
 #report ul { margin:10px 0 10px 40px; padding:0px;}

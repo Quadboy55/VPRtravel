@@ -82,11 +82,11 @@
             <HeaderTemplate>
                 <table id="report">
                     <tr class="header">
-                        <td><b>Datum</b></td>
-                        <td><b>Verstrekpunt</b></td>
-                        <td><b>Aankomstpunt</b></td>
-                        <td><b>Betaald</b></td>
-                        <td><b></b></td>
+                        <th><b>Datum</b></th>
+                        <th><b>Verstrekpunt</b></th>
+                        <th><b>Aankomstpunt</b></th>
+                        <th><b>Betaald</b></th>
+                        <th><b></b></th>
 
                     </tr>
             </HeaderTemplate>
