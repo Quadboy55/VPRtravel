@@ -135,4 +135,9 @@ public partial class _Default : System.Web.UI.Page
         }
         return str;
     }
+    protected void btnAnnuleer_Click(object sender, EventArgs e)
+    {
+        Button btn = (Button)sender;
+        
+    }
 }

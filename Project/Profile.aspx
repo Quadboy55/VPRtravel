@@ -83,16 +83,15 @@
                 <table id="report">
                     <tr class="header">
                         <th><b>Datum</b></th>
-                        <th><b>Verstrekpunt</b></th>
+                        <th><b>Vertrekpunt</b></th>
                         <th><b>Aankomstpunt</b></th>
                         <th><b>Betaald</b></th>
                         <th><b></b></th>
-
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr class="odd">
-                    
+
                     <td><%# Convert.ToDateTime(Eval("Datum")).ToShortDateString() %></td>
                     <td><%# getPlaats(Int32.Parse(Eval("Vertrek").ToString())) %></td>
                     <td><%# getPlaats(Int32.Parse(Eval("Aankomst").ToString())) %></td>
@@ -108,7 +107,7 @@
                         <span>
                             <%# getPersonen(Int32.Parse(Eval("TicketID").ToString())) %>
                         </span>
-                        
+
                     </td>
                 </tr>
             </ItemTemplate>
@@ -126,6 +125,58 @@
         </asp:SqlDataSource>
     </div>
     <div id="Ritten">
+
+        <asp:Repeater ID="rptRepeaterRitten" runat="server" DataSourceID="SqlDataSource2">
+            <HeaderTemplate>
+                <table id="report">
+                    <tr class="header">
+                        <th><b>Datum</b></th>
+                        <th><b>Vertrekpunt</b></th>
+                        <th><b>Aankomstpunt</b></th>
+                        <th><b>Betaald</b></th>
+                        <th><b>Opties</b></th>
+                        <th><b></b></th>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr class="odd">
+
+                    <td><%# Convert.ToDateTime(Eval("Datum")).ToShortDateString() %></td>
+                    <td><%# getPlaats(Int32.Parse(Eval("Vertrek").ToString())) %></td>
+                    <td><%# getPlaats(Int32.Parse(Eval("Aankomst").ToString())) %></td>
+                    <td><%# Eval("Betaald") %></td>
+                    <td>
+                        <asp:Button ID="btnAnnuleer" runat="server" Text="Annuleer" OnClick="btnAnnuleer_Click()" />
+                        </td>
+                    <td>
+                        <div class="arrow"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <h5>Details:</h5>
+                        <h6>Personen</h6>
+                        <span>
+                            <%# getPersonen(Int32.Parse(Eval("TicketID").ToString())) %>
+                        </span>
+
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                <tr>
+                    <td colspan="6" style="text-align: center;">- Einde van de lijst -</td>
+                </tr>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_99C675_VPRTravelConnectionString %>" SelectCommand="SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTrein.prijs AS Betaald, tblTicket.ID AS TicketID FROM tblTicket INNER JOIN tblTrein ON tblTicket.treinID = tblTrein.ID INNER JOIN tblGebruikers ON tblTicket.gebruikerID = tblGebruikers.ID WHERE (tblGebruikers.ID = @gebruikersid) AND (tblTicket.vertrekDatum &gt; CURRENT_TIMESTAMP) ORDER BY Datum">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="-1" Name="gebruikersid" SessionField="VPR_id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
+
         <asp:GridView ID="grdRitten" runat="server" AutoGenerateColumns="False" CssClass="table table-striped">
             <Columns>
 
