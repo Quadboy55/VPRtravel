@@ -30,9 +30,10 @@ public class CapaciteitDAO
         param.Add(new SqlParameter("@datum", d));
         param.Add(new SqlParameter("@rit", rit));
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "SELECT capaciteit FROM tblCapaciteitRit WHERE datum = @datum AND ritID = @rit;";
+        //strSQL = "SELECT capaciteit FROM tblCapaciteitRit WHERE datum = @datum AND ritID = @rit;";
+        strSQL = "getCapa";
 
-        return util.ophalen(strSQL, sqlparam);
+        return util.ophalenStoredProcedure(strSQL, sqlparam);
     }
 
     public int addCapa(CapaciteitData t)

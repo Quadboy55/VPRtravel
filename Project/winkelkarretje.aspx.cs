@@ -95,7 +95,8 @@ public partial class winkelkarretje : System.Web.UI.Page
                 
             }
 
-            clearBestelling()
+            clearBestelling();
+            Response.Redirect("Home.aspx");
         }
     }
 

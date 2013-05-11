@@ -21,6 +21,28 @@ public class Util
         cnn.ConnectionString = ConfigurationManager.ConnectionStrings["VPRtravel"].ConnectionString; ;
 	}
 
+    public DataSet ophalenStoredProcedure(string strSQL, SqlParameter[] parameter)
+    {
+        try
+        {
+            SqlCommand cmd = new SqlCommand(strSQL, cnn);
+            cmd.Parameters.AddRange(parameter);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter dtaAdapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            dtaAdapter.Fill(ds);
+            return ds;
+        }
+        catch (System.Exception ex)
+        {
+            return null;
+        }
+        finally
+        {
+            cnn.Close();
+        }
+    }
+
     public DataSet ophalen(string strSQL,SqlParameter[] parameter)
     {
         try
