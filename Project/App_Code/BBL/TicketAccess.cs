@@ -24,7 +24,13 @@ public class TicketAccess
         return DAO.getAllTickets().Tables[0];
     }
 
-    public DataTable getTrainById(int tr)
+    public DataTable getTicket(TicketData t)
+    {
+        DAO = new TicketDAO();
+        return DAO.getTicket(t).Tables[0];
+    }
+
+    public DataTable getTicketById(int tr)
     {
         DAO = new TicketDAO();
         return DAO.getTicketById(tr).Tables[0];
@@ -42,4 +48,11 @@ public class TicketAccess
         DAO.VerwijderPersonen(TicketID);
         DAO.AnnuleerTicket(TicketID);
     }
+
+    public int addTicket(TicketData t)
+    {
+        DAO = new TicketDAO();
+        return DAO.addTicket(t);
+    }
+
 }

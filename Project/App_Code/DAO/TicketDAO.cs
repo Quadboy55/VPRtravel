@@ -31,6 +31,25 @@ public class TicketDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public DataSet getTicket(TicketData t)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> param.Add(new SqlParameter("@variabelenaam",variabele));
+        param.Add(new SqlParameter("@gebruikerID", t.gebruikerID));
+        param.Add(new SqlParameter("@totalePrijs", t.totalePrijs));
+        param.Add(new SqlParameter("@aankomstdatum", t.aankomstdatum.ToLocalTime()));
+        param.Add(new SqlParameter("@vertrekdatum", t.vertrekdatum.ToLocalTime()));
+        param.Add(new SqlParameter("@typeID", t.typeID));
+        param.Add(new SqlParameter("@treinID", t.treinID));
+
+        SqlParameter[] sqlparam = param.ToArray();
+
+        strSQL = "SELECT id FROM tblTicket WHERE( gebruikerID = @gebruikerID AND totalePrijs = @totalePrijs AND aankomstdatum = @aankomstdatum AND vertrekDatum = @vertrekdatum AND typeID = @typeID AND treinID = @treinID);";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+
     public DataSet getTicketById(int tr)
     {
         util = new Util();
@@ -79,5 +98,26 @@ public class TicketDAO
         SqlParameter[] sqlparam = param.ToArray();
         strSQL = "DELETE FROM tblTicket WHERE ID = @id;";
         util.updaten(strSQL, sqlparam);
+    }
+
+    public int addTicket(TicketData t)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+
+        param.Add(new SqlParameter("@gebruikerID", t.gebruikerID));
+        param.Add(new SqlParameter("@totalePrijs", t.totalePrijs));
+        param.Add(new SqlParameter("@aankomstdatum", t.aankomstdatum.ToLocalTime()));
+        param.Add(new SqlParameter("@vertrekdatum", t.vertrekdatum.ToLocalTime()));
+        param.Add(new SqlParameter("@typeID", t.typeID));
+        param.Add(new SqlParameter("@treinID", t.treinID));
+
+
+        //SET IDENTITY_INSERT tblGebruikers ON;
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "INSERT INTO tblTicket (gebruikerID, totalePrijs, aankomstdatum, vertrekDatum, typeID, treinID) VALUES(@gebruikerID, @totalePrijs, @aankomstdatum, @vertrekdatum, @typeID, @treinID);";
+
+        return util.updaten(strSQL, sqlparam);
     }
 }

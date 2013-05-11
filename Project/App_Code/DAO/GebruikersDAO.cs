@@ -12,7 +12,6 @@ using System.Data.SqlClient;
 public class GebruikersDAO
 {
     private string strSQL;
-    //private DataTable dttLanden;
     private Util util;
     private List<SqlParameter> param;
 

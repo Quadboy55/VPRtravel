@@ -67,6 +67,20 @@ public class RitDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public DataSet getRitByID(int i)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", i));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "select * from tblRit WHERE ID = @id ;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+
     public DataSet getHistoriek(int gebruikersid)
     {
         util = new Util();

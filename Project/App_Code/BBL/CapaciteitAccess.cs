@@ -30,4 +30,16 @@ public class CapaciteitAccess
             return null;
         }
     }
+
+    public int addCapa(CapaciteitData t)
+    {
+        DAO = new CapaciteitDAO();
+        return DAO.addCapa(t);
+    }
+
+    public int updateCapa(CapaciteitData t)
+    {
+        DAO = new CapaciteitDAO();
+        return DAO.updateCapa(t);
+    }
 }

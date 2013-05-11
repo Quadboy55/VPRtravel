@@ -33,6 +33,12 @@ public class RitAccess
         return DAO.getRittenTrein(r, day).Tables[0];
     }
 
+    public DataTable getRitById(int id)
+    {
+        DAO = new RitDAO();
+        return DAO.getRitByID(id).Tables[0];
+    }
+
     public DataTable getRit(int treinID, int day, TimeSpan tijd)
     {
         DAO = new RitDAO();
@@ -44,8 +50,6 @@ public class RitAccess
         DAO = new RitDAO();
         return DAO.getHistoriek(id).Tables[0];
     }
-
-
 
     public DataTable getFuture(int id)
     {

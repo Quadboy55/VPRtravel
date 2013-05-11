@@ -193,6 +193,7 @@ public partial class BoekReis : System.Web.UI.Page
                 
 
             }
+            Session["VPR_grdRitten"] = grdRitten;
         }
     }
 
@@ -262,7 +263,7 @@ public partial class BoekReis : System.Web.UI.Page
         r[1] = berekenPrijs();
         r[3] = DateTime.ParseExact(grdRitten.Rows[0].Cells[0].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
         r[2] = DateTime.ParseExact(grdRitten.Rows[grdRitten.Rows.Count-1].Cells[1].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-        r[4] = drpClass.SelectedItem.ToString();
+        r[4] = drpClass.SelectedValue;
         r[5] = Session["VPR_reis"];
         r[6] = grdRitten.Rows[0].Cells[2].Text;
         r[7] = grdRitten.Rows[grdRitten.Rows.Count-1].Cells[3].Text;
@@ -337,7 +338,6 @@ public partial class BoekReis : System.Web.UI.Page
         for(int i = 0; i < tempRit.Rows.Count; i++)
         {
             DateTime datum = DateTime.ParseExact(grdRitten.Rows[i].Cells[0].Text,"dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-            datum = DateTime.ParseExact(datum.ToString("dd/MM/yyyy"),"dd/MM/yyyy", CultureInfo.InvariantCulture);
             DataTable d = new CapaciteitAccess().getCapa(datum,Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()));
             if (d != null)
             {
@@ -362,7 +362,7 @@ public partial class BoekReis : System.Web.UI.Page
         {
             tarief += Convert.ToDouble(r.ItemArray[3].ToString());
         }
-        double verhouding = Convert.ToDouble(tempClass.Rows[drpClass.SelectedIndex - 1].ItemArray[3]);
+        double verhouding = Convert.ToDouble(tempClass.Rows[drpClass.SelectedIndex].ItemArray[3]);
 
         prijs = tarief * verhouding/100 * atlPersonen;
         return prijs;

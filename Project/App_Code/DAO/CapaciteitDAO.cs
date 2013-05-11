@@ -34,4 +34,40 @@ public class CapaciteitDAO
 
         return util.ophalen(strSQL, sqlparam);
     }
+
+    public int addCapa(CapaciteitData t)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+
+        param.Add(new SqlParameter("@ritID", t.ritID));
+        param.Add(new SqlParameter("@datum", t.datum));
+        param.Add(new SqlParameter("@capaciteit", t.capaciteit));
+
+
+        //SET IDENTITY_INSERT tblGebruikers ON;
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "INSERT INTO tblCapaciteitRit (ritID, datum, capaciteit) VALUES(ritID, datum, capaciteit);";
+
+        return util.updaten(strSQL, sqlparam);
+    }
+
+    public int updateCapa(CapaciteitData t)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+
+        param.Add(new SqlParameter("@ritID", t.ritID));
+        param.Add(new SqlParameter("@datum", t.datum));
+        param.Add(new SqlParameter("@capaciteit", t.capaciteit));
+
+
+        //SET IDENTITY_INSERT tblGebruikers ON;
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "UPDATE tblCapaciteitRit capaciteit = @capaciteit WHERE ritID = @ritID AND datum = @datum;";
+
+        return util.updaten(strSQL, sqlparam);
+    }
 }
