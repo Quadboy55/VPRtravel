@@ -123,7 +123,7 @@ public partial class Master : System.Web.UI.MasterPage
     }
     protected void btnClose_Click(object sender, EventArgs e)
     {
-        Session["VPR_login"] = null;
+        Session.Clear();
         hdValue.Value = "1";
 
     }

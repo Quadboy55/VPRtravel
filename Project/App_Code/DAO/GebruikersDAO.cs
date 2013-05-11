@@ -113,7 +113,7 @@ public class GebruikersDAO
         param.Add(new SqlParameter("@huisnr", g.huisnr));
         param.Add(new SqlParameter("@postcode", g.postcode));
         param.Add(new SqlParameter("@stad", g.stad));
-        param.Add(new SqlParameter("@geboortedatum", g.geboortedatum.ToLocalTime()));
+        param.Add(new SqlParameter("@geboortedatum", g.geboortedatum));
 
 
 

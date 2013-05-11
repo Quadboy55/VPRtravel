@@ -38,8 +38,8 @@ public class TicketDAO
         //to add parameters=> param.Add(new SqlParameter("@variabelenaam",variabele));
         param.Add(new SqlParameter("@gebruikerID", t.gebruikerID));
         param.Add(new SqlParameter("@totalePrijs", t.totalePrijs));
-        param.Add(new SqlParameter("@aankomstdatum", t.aankomstdatum.ToLocalTime()));
-        param.Add(new SqlParameter("@vertrekdatum", t.vertrekdatum.ToLocalTime()));
+        param.Add(new SqlParameter("@aankomstdatum", t.aankomstdatum));
+        param.Add(new SqlParameter("@vertrekdatum", t.vertrekdatum));
         param.Add(new SqlParameter("@typeID", t.typeID));
         param.Add(new SqlParameter("@treinID", t.treinID));
 
@@ -108,8 +108,8 @@ public class TicketDAO
 
         param.Add(new SqlParameter("@gebruikerID", t.gebruikerID));
         param.Add(new SqlParameter("@totalePrijs", t.totalePrijs));
-        param.Add(new SqlParameter("@aankomstdatum", t.aankomstdatum.ToLocalTime()));
-        param.Add(new SqlParameter("@vertrekdatum", t.vertrekdatum.ToLocalTime()));
+        param.Add(new SqlParameter("@aankomstdatum", t.aankomstdatum));
+        param.Add(new SqlParameter("@vertrekdatum", t.vertrekdatum));
         param.Add(new SqlParameter("@typeID", t.typeID));
         param.Add(new SqlParameter("@treinID", t.treinID));
 

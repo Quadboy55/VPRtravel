@@ -339,7 +339,7 @@ public partial class BoekReis : System.Web.UI.Page
         {
             DateTime datum = DateTime.ParseExact(grdRitten.Rows[i].Cells[0].Text,"dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
             DataTable d = new CapaciteitAccess().getCapa(datum,Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()));
-            if (d != null)
+            if (d.Rows.Count != 0)
             {
                 stoelen[i] = Convert.ToInt32(tempRit.Rows[i].ItemArray[2])-Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
             }
