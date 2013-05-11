@@ -81,6 +81,7 @@ public partial class winkelkarretje : System.Web.UI.Page
                 CapaciteitData c = new CapaciteitData();
                 c.datum = datum;
                 c.ritID = Convert.ToInt32(rit.Rows[j].ItemArray[0].ToString());
+                //double extraCapa= specialeDagen();
                 if (d.Rows.Count != 0)
                 {
                     c.capaciteit = Convert.ToInt32(d.Rows[0].ItemArray[0].ToString())- pers.Rows.Count;
@@ -106,5 +107,10 @@ public partial class winkelkarretje : System.Web.UI.Page
         Session["VPR_grdRitten"] = null;
         Session["VPR_tempRit"] = null;
         Session["VPR_bestelling"] = null;
+    }
+
+    private double specialeDagen()
+    {
+        return 0;
     }
 }

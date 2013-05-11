@@ -10,5 +10,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="inhoud" runat="Server">
+    <asp:Button ID="Button1" runat="server" Text="sendMail" OnClick="Button1_Click" />
     </asp:Content>
 
