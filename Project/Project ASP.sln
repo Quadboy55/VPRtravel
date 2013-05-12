@@ -5,20 +5,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Project", ".", "{B716FDAA-1
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/Project"
-		Debug.AspNetCompiler.PhysicalPath = "I:\GitHub\VPRtravel\VPRtravel\Project\"
+		Debug.AspNetCompiler.PhysicalPath = "..\Project\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Project\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/Project"
-		Release.AspNetCompiler.PhysicalPath = "I:\GitHub\VPRtravel\VPRtravel\Project\"
+		Release.AspNetCompiler.PhysicalPath = "..\Project\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Project\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "62179"
+		VWDPort = "55950"
 	EndProjectSection
 EndProject
 Global

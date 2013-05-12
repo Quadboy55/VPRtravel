@@ -141,7 +141,19 @@ public partial class _Default : System.Web.UI.Page
         Button btn = (Button)sender;
         int TicketID = Int32.Parse(btn.ToolTip.ToString());
         TicketAccess t = new TicketAccess();
-        t.AnnuleerTicket(TicketID);
-        updateRitten();
+        DataTable table = t.getDatum(TicketID);
+        string date = table.Rows[0][0].ToString();
+        DateTime d = DateTime.Parse(date);
+        DateTime today = new DateTime();
+
+        if (d.AddDays(3) >= today)
+        {
+            t.AnnuleerTicket(TicketID);
+            updateRitten();
+        }
+        else
+        {
+            Response.Write("<script LANGUAGE='JavaScript' >alert('Deze Rit kan niet worden geannuleerd!');</script>");
+        }
     }
 }

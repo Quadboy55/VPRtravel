@@ -18,6 +18,12 @@ public class TicketAccess
 
     }
 
+    public DataTable getDatum(int TicketID)
+    {
+        DAO = new TicketDAO();
+        return DAO.getDatum(TicketID).Tables[0];
+    }
+
     public DataTable getAllTickets()
     {
         DAO = new TicketDAO();

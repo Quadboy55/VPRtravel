@@ -76,6 +76,19 @@ public class TicketDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public DataSet getDatum(int TicketID)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", TicketID));
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT vertrekDatum FROM tblTicket WHERE ID = @id;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+
     public void VerwijderPersonen(int TicketID)
     {
         util = new Util();
