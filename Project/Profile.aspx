@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.master" AutoEventWireup="true" CodeFile="Profile.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Master.master" AutoEventWireup="true" CodeFile="Profile.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="banner" runat="Server">
     <link href="CSS/Profiel.css" rel="stylesheet" />
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="Historiek">
-        <asp:Repeater ID="rptRepeater" runat="server" DataSourceID="SqlDataSource1">
+        <asp:Repeater ID="rptHistoriek" runat="server">
             <HeaderTemplate>
                 <table id="report">
                     <tr class="header">
@@ -113,20 +113,14 @@
             </ItemTemplate>
             <FooterTemplate>
                 <tr>
-                    <tf colspan="5" style="text-align: center;">- Einde van de lijst -</tf>
+                    <td colspan="5" style="text-align: center;">- Einde van de lijst -</td>
                 </tr>
                 </table>
             </FooterTemplate>
         </asp:Repeater>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DB_99C675_VPRTravelConnectionString %>" SelectCommand="SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTrein.prijs AS Betaald, tblTicket.ID AS TicketID FROM tblTicket INNER JOIN tblTrein ON tblTicket.treinID = tblTrein.ID INNER JOIN tblGebruikers ON tblTicket.gebruikerID = tblGebruikers.ID WHERE (tblGebruikers.ID = @gebruikersid) AND (tblTicket.vertrekDatum &lt; CURRENT_TIMESTAMP) ORDER BY Datum">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="-1" Name="gebruikersid" SessionField="VPR_id" />
-            </SelectParameters>
-        </asp:SqlDataSource>
     </div>
     <div id="Ritten">
-
-        <asp:Repeater ID="rptRepeaterRitten" runat="server" DataSourceID="SqlDataSource2">
+        <asp:Repeater ID="rptRitten" runat="server">
             <HeaderTemplate>
                 <table id="report">
                     <tr class="header">
@@ -170,25 +164,6 @@
                 </table>
             </FooterTemplate>
         </asp:Repeater>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DB_99C675_VPRTravelConnectionString %>" SelectCommand="SELECT tblTicket.vertrekDatum AS Datum, tblTrein.vertrekID AS Vertrek, tblTrein.aankomstID AS Aankomst, tblTrein.prijs AS Betaald, tblTicket.ID AS TicketID FROM tblTicket INNER JOIN tblTrein ON tblTicket.treinID = tblTrein.ID INNER JOIN tblGebruikers ON tblTicket.gebruikerID = tblGebruikers.ID WHERE (tblGebruikers.ID = @gebruikersid) AND (tblTicket.vertrekDatum &gt; CURRENT_TIMESTAMP) ORDER BY Datum">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="-1" Name="gebruikersid" SessionField="VPR_id" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-
-        <asp:GridView ID="grdRitten" runat="server" AutoGenerateColumns="False" CssClass="table table-striped">
-            <Columns>
-
-                <asp:BoundField DataField="Datum" HeaderText="Datum" />
-                <asp:BoundField DataField="Vertrek" HeaderText="Vertrek" />
-                <asp:BoundField DataField="Aankomst" HeaderText="Aankomst" />
-                <asp:BoundField DataField="Betaald" HeaderText=" Totale Prijs" />
-                <asp:CommandField SelectText="Annuleer" ControlStyle-CssClass="btn btn-danger" ShowSelectButton="True">
-                    <ControlStyle CssClass="btn btn-danger"></ControlStyle>
-                </asp:CommandField>
-            </Columns>
-        </asp:GridView>
     </div>
 
 </asp:Content>

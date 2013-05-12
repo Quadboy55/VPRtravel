@@ -71,12 +71,9 @@ public partial class winkelkarretje : System.Web.UI.Page
                 }
             }
 
-
-
-
             for (int j = 0; j < rit.Rows.Count; j++)
             {
-                DateTime datum = DateTime.ParseExact(grdRitten.Rows[j].Cells[0].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+                DateTime datum = DateTime.Parse(grdRitten.Rows[j].Cells[0].Text);
                 DataTable d = new CapaciteitAccess().getCapa(datum, Convert.ToInt32(rit.Rows[j].ItemArray[0].ToString()));
                 CapaciteitData c = new CapaciteitData();
                 c.datum = datum;
@@ -93,7 +90,6 @@ public partial class winkelkarretje : System.Web.UI.Page
                     c.capaciteit = Convert.ToInt32(ritTabel.Rows[0].ItemArray[2].ToString())  - pers.Rows.Count;
                     capacc.addCapa(c);
                 }
-                
             }
 
             clearBestelling();

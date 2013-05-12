@@ -261,8 +261,11 @@ public partial class BoekReis : System.Web.UI.Page
         DataRow r = bestelling.NewRow();
         r[0] = Session["VPR_id"];
         r[1] = berekenPrijs();
-        r[3] = DateTime.ParseExact(grdRitten.Rows[0].Cells[0].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-        r[2] = DateTime.ParseExact(grdRitten.Rows[grdRitten.Rows.Count-1].Cells[1].Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+        DateTime vertrek = DateTime.Parse(grdRitten.Rows[0].Cells[0].Text);
+        DateTime aankomst = DateTime.Parse(grdRitten.Rows[grdRitten.Rows.Count - 1].Cells[1].Text);
+
+        r[3] = vertrek;
+        r[2] = aankomst;
         r[4] = drpClass.SelectedValue;
         r[5] = Session["VPR_reis"];
         r[6] = grdRitten.Rows[0].Cells[2].Text;
@@ -337,7 +340,7 @@ public partial class BoekReis : System.Web.UI.Page
         int[] stoelen = new int[tempRit.Rows.Count];
         for(int i = 0; i < tempRit.Rows.Count; i++)
         {
-            DateTime datum = DateTime.ParseExact(grdRitten.Rows[i].Cells[0].Text,"dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+            DateTime datum = DateTime.Parse(grdRitten.Rows[i].Cells[0].Text);
             DataTable d = new CapaciteitAccess().getCapa(datum,Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()));
             if (d.Rows.Count != 0)
             {
