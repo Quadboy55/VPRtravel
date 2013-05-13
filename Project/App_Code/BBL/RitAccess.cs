@@ -33,6 +33,13 @@ public class RitAccess
         return DAO.getRittenTrein(r, day).Tables[0];
     }
 
+    public int getRitCapaciteit(int r)
+    {
+        DAO = new RitDAO();
+        DataTable d = DAO.getRitCapaciteit(r).Tables[0];
+        return Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
+    }
+
     public DataTable getRitById(int id)
     {
         DAO = new RitDAO();

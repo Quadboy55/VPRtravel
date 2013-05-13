@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,25 +12,40 @@ public partial class winkelkarretje : System.Web.UI.Page
 {
     private DataTable bestelling;
     private DataTable klasse;
+    private StringBuilder mail;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         ((Master)Page.Master).checkLogon(true);
 
         setGrid();
+ 
+        
     }
     protected void btnBevestig_Click(object sender, EventArgs e)
     {
+        
         TicketAccess tktacc = new TicketAccess();
         PersoonAccess persacc = new PersoonAccess();
         CapaciteitAccess capacc = new CapaciteitAccess();
         GridView grdRitten = (GridView)Session["VPR_grdRitten"];
         DataTable rit = (DataTable)Session["VPR_tempRit"];
 
+        mail = new StringBuilder();
+        mail.Append("Beste "+ (String)Session["VPR_fullnaam"]+",");
+        mail.Append(Environment.NewLine);
+        mail.Append(Environment.NewLine);
+        mail.Append("U heeft volgende reis bij VPRtravel geboekt:");
+        mail.Append(Environment.NewLine);
+        
         // rij id in het sessionobject met de bestellingstabel
         int i = 0;
         foreach (DataRow r in bestelling.Rows)
         {
+            //mail opstellen
+            mail.Append(r.ItemArray[6].ToString() +" - "+r.ItemArray[7].ToString());
+            mail.Append(Environment.NewLine);
+            
             TicketData t = new TicketData();
             t.gebruikerID = (int)Session["VPR_id"];
             t.totalePrijs = Convert.ToDouble(r.ItemArray[1].ToString());
@@ -45,7 +61,11 @@ public partial class winkelkarretje : System.Web.UI.Page
             i++;
 
             DataTable pers = (DataTable)Session["VPR_personen"];
-     
+            
+            //mail opstellen
+            mail.Append("met volgende personen als reizigers:");
+            mail.Append(Environment.NewLine);
+
             foreach (DataRow pr in pers.Rows)
             {
                 if(pr.ItemArray[0].ToString().Equals(tRowID.ToString()))
@@ -57,6 +77,10 @@ public partial class winkelkarretje : System.Web.UI.Page
                     p.stoelnr = pr.ItemArray[3].ToString();
 
                     persacc.addPersoon(p);
+
+                    //mail opstellen
+                    mail.Append(p.naam +" "+p.voornaam);
+                    mail.Append(Environment.NewLine);
                 }
                 else
                 {
@@ -85,7 +109,16 @@ public partial class winkelkarretje : System.Web.UI.Page
                 }
             }
 
+            //mail opstellen
+            mail.Append(Environment.NewLine);
+            mail.Append(Environment.NewLine);
+            mail.Append("Mvg");
+            mail.Append(Environment.NewLine);
+            mail.Append("Het VPRtravel team");
+
             clearBestelling();
+            String emailAdress = new GebruikersAccess().getMailByID(Convert.ToInt32(Session["VPR_id"].ToString()));
+            Mail.sendMail(mail.ToString(),emailAdress ,Session["VPR_fullnaam"].ToString());
             Response.Redirect("Home.aspx");
         }
     }

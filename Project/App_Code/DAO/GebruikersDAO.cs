@@ -44,6 +44,20 @@ public class GebruikersDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public DataSet getMailById(int id)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", id));
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT email FROM tblGebruikers WHERE ID=@id;";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+
     public DataSet getLogins(String login)
     {
         util = new Util();

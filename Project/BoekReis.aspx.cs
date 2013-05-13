@@ -24,7 +24,7 @@ public partial class BoekReis : System.Web.UI.Page
         {
             Response.Redirect("Trein.aspx");
         }
-        
+
         
         
         Label1.Text = (String)Session["VPR_reis"];
@@ -39,7 +39,6 @@ public partial class BoekReis : System.Web.UI.Page
             }
 
 
-            drpUur.Items.Add("--Uur--");
             drpUur.Items.Add("08:00:00");
             drpUur.Items.Add("12:00:00");
             drpUur.Items.Add("16:00:00");
@@ -59,7 +58,6 @@ public partial class BoekReis : System.Web.UI.Page
         TreinenAccess tracc = new TreinenAccess();
         RitAccess rtacc = new RitAccess();
         DataTable fullTraject = tracc.getTrainById(Convert.ToInt32(Session["VPR_reis"]));
-
         int start = Convert.ToInt32(fullTraject.Rows[0].ItemArray[1].ToString());
         int eind = Convert.ToInt32(fullTraject.Rows[0].ItemArray[2].ToString());
         vertrekDate = DateTime.Parse(drpDagen.SelectedItem.ToString()); ;
@@ -118,6 +116,7 @@ public partial class BoekReis : System.Web.UI.Page
         Session["VPR_tempTrein"] = tempTrein;
         Session["VPR_tempRit"] = tempRit;
         
+
 
     }
 
@@ -379,7 +378,7 @@ public partial class BoekReis : System.Web.UI.Page
             DataTable d = new CapaciteitAccess().getCapa(datum,Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()));
             if (d.Rows.Count != 0)
             {
-                stoelen[i] = Convert.ToInt32(tempRit.Rows[i].ItemArray[2])-Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
+                stoelen[i] = Convert.ToInt32(new RitAccess().getRitCapaciteit(Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()))) - Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
             }
             else
             {

@@ -41,7 +41,7 @@ public partial class Master : System.Web.UI.MasterPage
              {
                  Session["VPR_login"] = true;
                  Session["VPR_id"] = gebruiker.ID;
-                 //Session["VPR_naam"] = gebruiker.naam + " " + gebruiker.voornaam;
+                 Session["VPR_fullnaam"] = gebruiker.naam + " " + gebruiker.voornaam;
                  Session["VPR_naam"] = gebruiker.gebruikersnaam;
 
                  Response.Redirect("Profile.aspx");

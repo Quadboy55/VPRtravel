@@ -51,6 +51,20 @@ public class RitDAO
         return util.ophalen(strSQL, sqlparam);
     }
 
+    public DataSet getRitCapaciteit(int r)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+        param.Add(new SqlParameter("@id", r));;
+
+
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "SELECT capaciteit FROM tblRit WHERE treinID = @id";
+
+        return util.ophalen(strSQL, sqlparam);
+    }
+
     public DataSet getRit(int treinID, int day, TimeSpan tijd)
     {
         util = new Util();

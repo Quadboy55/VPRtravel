@@ -79,6 +79,13 @@ public class GebruikersAccess
         return DAO.getUserById(id).Tables[0];
     }
 
+    public String getMailByID(int id)
+    {
+        DAO = new GebruikersDAO();
+        DataTable d = (DataTable)DAO.getMailById(id).Tables[0];
+        return d.Rows[0].ItemArray[0].ToString();
+    }
+
     public void changeUserById(GebruikerData g)
     {
         DAO = new GebruikersDAO();

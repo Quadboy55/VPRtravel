@@ -67,7 +67,7 @@ public class CapaciteitDAO
 
         //SET IDENTITY_INSERT tblGebruikers ON;
         SqlParameter[] sqlparam = param.ToArray();
-        strSQL = "UPDATE tblCapaciteitRit capaciteit = @capaciteit WHERE ritID = @ritID AND datum = @datum;";
+        strSQL = "UPDATE tblCapaciteitRit SET capaciteit = @capaciteit WHERE ritID = @ritID AND datum = @datum;";
 
         return util.updaten(strSQL, sqlparam);
     }
