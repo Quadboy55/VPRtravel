@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="inhoud" Runat="Server">
     <br />
+    <asp:Label ID="lblLeeg" Visible ="false" runat="server" Text=""></asp:Label>
     <asp:GridView ID="grdReizen" CssClass="table table-striped" runat="server" AutoGenerateColumns="False">
         <Columns>
             <asp:BoundField DataField="vertrekdatum" HeaderText="Vertrektijd" />

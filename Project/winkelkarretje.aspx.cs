@@ -14,15 +14,26 @@ public partial class winkelkarretje : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        bestelling = (DataTable)Session["VPR_bestelling"];
-        grdReizen.DataSource = bestelling;
-        grdReizen.DataBind();
-
-        klasse = new ClassAccess().getAllClass();
-        foreach (TableRow r in grdReizen.Rows)
+        ((Master)Page.Master).checkLogon(true);
+        
+        if (Session["VPR_bestelling"] == null)
         {
-            int id = Convert.ToInt32(r.Cells[4].Text);
-            r.Cells[4].Text = klasse.Rows[id - 1].ItemArray[1].ToString();
+            lblLeeg.Text = "Uw winkelkarretje is leeg";
+            lblLeeg.Visible = true;
+            grdReizen.Visible = false;
+        }
+        else
+        {
+            bestelling = (DataTable)Session["VPR_bestelling"];
+            grdReizen.DataSource = bestelling;
+            grdReizen.DataBind();
+
+            klasse = new ClassAccess().getAllClass();
+            foreach (TableRow r in grdReizen.Rows)
+            {
+                int id = Convert.ToInt32(r.Cells[4].Text);
+                r.Cells[4].Text = klasse.Rows[id - 1].ItemArray[1].ToString();
+            }
         }
     }
     protected void btnBevestig_Click(object sender, EventArgs e)

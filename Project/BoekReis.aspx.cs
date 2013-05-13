@@ -20,6 +20,13 @@ public partial class BoekReis : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["VPR_trace"] == null)
+        {
+            Response.Redirect("Trein.aspx");
+        }
+        
+        
+        
         Label1.Text = (String)Session["VPR_reis"];
         if (!Page.IsPostBack)
         {
@@ -199,37 +206,56 @@ public partial class BoekReis : System.Web.UI.Page
 
     protected void drpPersonen_SelectedIndexChanged(object sender, EventArgs e)
     {
-        atlPersonen = Convert.ToInt32(drpPersonen.SelectedValue);
-        Session["VPR_atlPersonen"] = atlPersonen;
-
-        p1.Visible = false;
-        p2.Visible = false;
-        p3.Visible = false;
-        p4.Visible = false;
-        p5.Visible = false;
-        p6.Visible = false;
-        p7.Visible = false;
-        p8.Visible = false;
-        p9.Visible = false;
-        p10.Visible = false;
-
-        for (int i = 0; i < atlPersonen; i++)
+        if (drpPersonen.SelectedIndex != 0)
         {
-            switch (i)
+            atlPersonen = Convert.ToInt32(drpPersonen.SelectedValue);
+            Session["VPR_atlPersonen"] = atlPersonen;
+
+            p1.Visible = false;
+            p2.Visible = false;
+            p3.Visible = false;
+            p4.Visible = false;
+            p5.Visible = false;
+            p6.Visible = false;
+            p7.Visible = false;
+            p8.Visible = false;
+            p9.Visible = false;
+            p10.Visible = false;
+
+            for (int i = 0; i < atlPersonen; i++)
             {
-                case 0: p1.Visible = true; break;
-                case 1: p2.Visible = true; break;
-                case 2: p3.Visible = true; break;
-                case 3: p4.Visible = true; break;
-                case 4: p5.Visible = true; break;
-                case 5: p6.Visible = true; break;
-                case 6: p7.Visible = true; break;
-                case 7: p8.Visible = true; break;
-                case 8: p9.Visible = true; break;
-                case 9: p10.Visible = true; break;
+                switch (i)
+                {
+                    case 0: p1.Visible = true; break;
+                    case 1: p2.Visible = true; break;
+                    case 2: p3.Visible = true; break;
+                    case 3: p4.Visible = true; break;
+                    case 4: p5.Visible = true; break;
+                    case 5: p6.Visible = true; break;
+                    case 6: p7.Visible = true; break;
+                    case 7: p8.Visible = true; break;
+                    case 8: p9.Visible = true; break;
+                    case 9: p10.Visible = true; break;
+                }
             }
+            btnMand.Visible = true;
         }
-        btnMand.Visible = true;
+        else
+        {
+            p1.Visible = false;
+            p2.Visible = false;
+            p3.Visible = false;
+            p4.Visible = false;
+            p5.Visible = false;
+            p6.Visible = false;
+            p7.Visible = false;
+            p8.Visible = false;
+            p9.Visible = false;
+            p10.Visible = false;
+            btnMand.Visible = false;
+        }
+
+
     }
 
     protected void btnMand_Click(object sender, EventArgs e)
@@ -242,7 +268,7 @@ public partial class BoekReis : System.Web.UI.Page
         // bestelling in sessie plaatsen
         DataTable bestelling = new DataTable();
 
-        if (Session["VPR_tickets"] == null) // schoppingcart
+        if (Session["VPR_bestelling"] == null) // schoppingcart
         {
             bestelling.Columns.Add("gebruikerID");
             bestelling.Columns.Add("totalePrijs");
@@ -370,18 +396,5 @@ public partial class BoekReis : System.Web.UI.Page
         prijs = tarief * verhouding/100 * atlPersonen;
         return prijs;
     }
-    protected void valPers_ServerValidate(object source, ServerValidateEventArgs args)
-    {
-        if (drpPersonen.SelectedIndex == 0)
-            args.IsValid = false;
-        else
-            args.IsValid = true;
-    }
-    protected void valClass_ServerValidate(object source, ServerValidateEventArgs args)
-    {
-        if (drpClass.SelectedIndex == 0)
-            args.IsValid = false;
-        else
-            args.IsValid = true;
-    }
+
 }

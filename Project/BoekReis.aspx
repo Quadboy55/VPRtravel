@@ -69,8 +69,7 @@
                             <asp:ListItem>10</asp:ListItem>
 
                         </asp:DropDownList>
-                        <asp:CustomValidator ID="valPers" runat="server" ValidationGroup="namen" ErrorMessage="Kies het aantal reizigers" ControlToValidate="drpPersonen" OnServerValidate="valPers_ServerValidate"></asp:CustomValidator>
-                   
+                    
 
                 <asp:Panel ID="p1" runat="server" Visible="false">
                     <strong>
@@ -80,6 +79,9 @@
                     <asp:TextBox ID="txtnaam1" runat="server"></asp:TextBox>
                     <asp:Label ID="Label8" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam1" runat="server"></asp:TextBox>
+
+                    <asp:RequiredFieldValidator ID="val11" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam1" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="val12" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam1" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p2" runat="server" Visible="false">
                     <strong>
@@ -89,6 +91,8 @@
                     <asp:TextBox ID="txtnaam2" runat="server"></asp:TextBox>
                     <asp:Label ID="Label15" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam2" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam2" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam2" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p3" runat="server" Visible="false">
                     <strong>
@@ -98,6 +102,9 @@
                     <asp:TextBox ID="txtnaam3" runat="server"></asp:TextBox>
                     <asp:Label ID="Label18" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam3" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam3" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam3" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p4" runat="server" Visible="false">
                     <strong>
@@ -107,6 +114,9 @@
                     <asp:TextBox ID="txtnaam4" runat="server"></asp:TextBox>
                     <asp:Label ID="Label21" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam4" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam4" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam4" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p5" runat="server" Visible="false">
                     <strong>
@@ -116,6 +126,9 @@
                     <asp:TextBox ID="txtnaam5" runat="server"></asp:TextBox>
                     <asp:Label ID="Label24" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam5" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam5" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ValidationGroup="namen"  runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam5" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p6" runat="server" Visible="false">
                     <strong>
@@ -125,6 +138,9 @@
                     <asp:TextBox ID="txtnaam6" runat="server"></asp:TextBox>
                     <asp:Label ID="Label27" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam6" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam6" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam6" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p7" runat="server" Visible="false">
                     <strong>
@@ -134,6 +150,9 @@
                     <asp:TextBox ID="txtnaam7" runat="server"></asp:TextBox>
                     <asp:Label ID="Label30" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam7" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam7" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam7" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p8" runat="server" Visible="false">
                     <strong>
@@ -143,6 +162,9 @@
                     <asp:TextBox ID="txtnaam8" runat="server"></asp:TextBox>
                     <asp:Label ID="Label33" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam8" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam8" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam8" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p9" runat="server" Visible="false">
                     <strong>
@@ -152,6 +174,9 @@
                     <asp:TextBox ID="txtnaam9" runat="server"></asp:TextBox>
                     <asp:Label ID="Label36" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam9" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam9" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam9" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
                 <asp:Panel ID="p10" runat="server" Visible="false">
                     <strong>
@@ -161,6 +186,9 @@
                     <asp:TextBox ID="txtnaam10" runat="server"></asp:TextBox>
                     <asp:Label ID="Label39" runat="server" Text="Voornaam: "></asp:Label>
                     <asp:TextBox ID="txtvrnaam10" runat="server"></asp:TextBox>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" ValidationGroup="namen" runat="server" ErrorMessage="Gelieve de naam van de reiziger in te geven." Display="Dynamic" ControlToValidate="txtnaam10" CssClass ="error"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ValidationGroup="namen"  runat="server" ErrorMessage="Gelieve de voornaam van de reiziger in te geven" Display="Dynamic" ControlToValidate="txtvrnaam10" CssClass =" error"></asp:RequiredFieldValidator>
                 </asp:Panel>
 
                 <asp:Button ID="btnMand" runat="server" Text="Zet in winkelmandje" CssClass="btn btn-primary" OnClick="btnMand_Click" Visible="false" ValidationGroup="namen" />

@@ -103,7 +103,7 @@
                             </div>      
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+                            <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-primary" OnClick="btnClose_Click" CausesValidation="false" />
                             <asp:Button ID="btnLogOk" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogOk_Click" ValidationGroup="login" />
                         </div>
                 </div>

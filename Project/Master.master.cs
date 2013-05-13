@@ -124,6 +124,6 @@ public partial class Master : System.Web.UI.MasterPage
     {
         Session.Clear();
         hdValue.Value = "1";
-
+        Response.Redirect("Home.aspx");
     }
 }

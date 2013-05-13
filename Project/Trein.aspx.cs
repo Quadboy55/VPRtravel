@@ -116,6 +116,7 @@ public partial class _Default : System.Web.UI.Page
     protected void GridTrein_SelectedIndexChanged(object sender, EventArgs e)
     {
         Session["VPR_reis"] = GridTrein.SelectedRow.Cells[1].Text;
+        Session["VPR_trace"] = 1;
         Response.Redirect("BoekReis.aspx");
     }
 
