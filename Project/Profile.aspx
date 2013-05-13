@@ -112,9 +112,6 @@
                 </tr>
             </ItemTemplate>
             <FooterTemplate>
-                <tr>
-                    <td colspan="5" style="text-align: center;">- Einde van de lijst -</td>
-                </tr>
                 </table>
             </FooterTemplate>
         </asp:Repeater>
@@ -158,9 +155,6 @@
                 </tr>
             </ItemTemplate>
             <FooterTemplate>
-                <tr>
-                    <td colspan="6" style="text-align: center;">- Einde van de lijst -</td>
-                </tr>
                 </table>
             </FooterTemplate>
         </asp:Repeater>

@@ -2,8 +2,14 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="Home.aspx" title="Home"  description="">
     <siteMapNode url="" title="Bestemmingen"  description="">
-      <siteMapNode url="" title="Rome"  description="" />
-      <siteMapNode url="" title="Parijs"  description="" />
+      <siteMapNode url="Landen/Rome.aspx" title="Rome"  description="" />
+      <siteMapNode url="Landen/Parijs.aspx" title="Parijs"  description="" />
+      <siteMapNode url="Landen/Amsterdam.aspx" title="Amsterdam"  description="" />
+      <siteMapNode url="Landen/Brussel.aspx" title="Brussel"  description="" />
+      <siteMapNode url="Landen/Londen.aspx" title="Londen"  description="" />
+      <siteMapNode url="Landen/Moskou.aspx" title="Moskou"  description="" />
+      <siteMapNode url="Landen/Berlijn.aspx" title="Berlijn"  description="" />
+
     </siteMapNode>
     <siteMapNode url="" title="Uw reis"  description="" >
       <siteMapNode url="Trein.aspx" title="Boek een reis"  description="" />
