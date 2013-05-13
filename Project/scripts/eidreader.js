@@ -19,13 +19,13 @@ function getIDData() {
 }
 function EmptyScreen() {
     var strTemp = "";
-    document.getElementById('txtNaam').value = strTemp;
-    document.getElementById('txtVoornaam').value = strTemp;
-    document.getElementById('drpGeslacht').value = strTemp;
-    document.getElementById('txtAdres').value = strTemp;
-    document.getElementById('txtPostcode').value = strTemp;
-    document.getElementById('txtGemeente').value = strTemp;
-    document.getElementById('txtLand').value = strTemp;
+    document.getElementById('inhoud_txtNaam').value = strTemp;
+    document.getElementById('inhoud_txtVoornaam').value = strTemp;
+    document.getElementById('inhoud_txtStraat').value = strTemp;
+    document.getElementById('inhoud_txtHuisnr').value = strTemp;
+    document.getElementById('inhoud_txtPost').value = strTemp;
+    document.getElementById('inhoud_txtStad').value = strTemp;
+    document.getElementById('inhoud_txtGebDat').value = strTemp;
 }
 
 function ReadCard() {
