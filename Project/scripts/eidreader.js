@@ -38,8 +38,9 @@ function ReadCard() {
         getIDData();
         document.getElementById('inhoud_StatusField').innerHTML = "Reading Picture, please wait...";
         document.BEIDApplet.GetPicture();
-        document.BEIDApplet.ExitLib();
         document.getElementById('inhoud_StatusField').innerHTML = "Done";
+        document.BEIDApplet.ExitLib();
+        
     }
     else {
         document.getElementById('inhoud_StatusField').innerHTML = "Error Reading Card";
