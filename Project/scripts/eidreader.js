@@ -31,17 +31,17 @@ function EmptyScreen() {
 function ReadCard() {
     var retval;
     EmptyScreen();
-    document.getElementById('StatusField').innerHTML = "Reading Card, please wait...";
+    document.getElementById('inhoud_StatusField').innerHTML = "Reading Card, please wait...";
     retval = document.BEIDApplet.InitLib(null);
     if (retval == 0) {
-        document.getElementById('StatusField').innerHTML = "Reading Identity, please wait...";
+        document.getElementById('inhoud_StatusField').innerHTML = "Reading Identity, please wait...";
         getIDData();
-        document.getElementById('StatusField').innerHTML = "Reading Picture, please wait...";
+        document.getElementById('inhoud_StatusField').innerHTML = "Reading Picture, please wait...";
         document.BEIDApplet.GetPicture();
         document.BEIDApplet.ExitLib();
-        document.getElementById('StatusField').innerHTML = "Done";
+        document.getElementById('inhoud_StatusField').innerHTML = "Done";
     }
     else {
-        document.getElementById('StatusField').innerHTML = "Error Reading Card";
+        document.getElementById('inhoud_StatusField').innerHTML = "Error Reading Card";
     }
 }
