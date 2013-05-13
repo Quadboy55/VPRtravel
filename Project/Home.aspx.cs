@@ -12,8 +12,4 @@ public partial class Home : System.Web.UI.Page
         Page.Title = "Home - VPRtravel";
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Mail.sendMail("test", "anthony.vanparijs@gmail.com", "Anthony");
-    }
 }
