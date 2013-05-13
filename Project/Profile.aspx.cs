@@ -44,6 +44,7 @@ public partial class _Default : System.Web.UI.Page
     private void updateHistoriek()
     {
         RitAccess = new RitAccess();
+        int id = Int32.Parse(Session["VPR_id"].ToString());
         rptHistoriek.DataSource = RitAccess.getHistoriek(Int32.Parse(Session["VPR_id"].ToString()));
         rptHistoriek.DataBind();
     }
