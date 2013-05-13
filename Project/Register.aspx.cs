@@ -88,4 +88,26 @@ public partial class Register : System.Web.UI.Page
         }
     }
 
+    protected void btnEID_Click(object sender, EventArgs e)
+    {
+        HttpBrowserCapabilities bc = Request.Browser;
+        pnlAppletFF.Visible = false;
+        pnlAppletIE.Visible = false;
+
+        if (bc.Browser == "IE" || bc.Browser == "Chrome")
+        {
+            pnlAppletIE.Visible = true;
+        }
+        else
+        {
+            if (bc.Browser == "Firefox")
+            {
+                pnlAppletFF.Visible = true;
+            }
+            else
+            {
+                pnlAppletIE.Visible = true;
+            }
+        }
+    }
 }
