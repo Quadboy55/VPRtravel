@@ -8,7 +8,7 @@
     <script src="JS/Profiel.js"></script>
 
     <div id="zoek" class="zoek">
-        <asp:Label ID="Label4" runat="server" Text="U heeft gekozen vor reis: "></asp:Label>
+        <asp:Label ID="Label4" runat="server" Text="U heeft gekozen voor reis: "></asp:Label>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
 
@@ -17,8 +17,7 @@
         <strong>
             <asp:Label ID="Label2" runat="server" Text="Dag: "></asp:Label>
         </strong>
-
-        <asp:Calendar ID="CalDate" runat="server"></asp:Calendar>
+        <asp:DropDownList ID="drpDagen" runat="server" CssClass="btn dropdown-toggle"></asp:DropDownList>
 
         <br />
         <strong>

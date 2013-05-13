@@ -67,20 +67,6 @@ public partial class _Default : System.Web.UI.Page
         setGridBestemming();
     }
 
-    protected void btnZoekFunc_Click(object sender, EventArgs e)
-    {
-        //if (btnZoekFunc.Text.Equals("Zoeken naar reis"))
-        //{
-        //    zoek.Visible = true;
-        //    btnZoekFunc.Text = "verberg";
-        //}
-        //else
-        //{
-        //    zoek.Visible = false;
-        //    btnZoekFunc.Text = "Zoeken naar reis";
-        //    setGrid(TreinAccess.getAllTrains());
-        //}
-    }
 
     protected void btnZoek_Click(object sender, EventArgs e)
     {

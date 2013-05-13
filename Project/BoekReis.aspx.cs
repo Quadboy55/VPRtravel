@@ -30,13 +30,22 @@ public partial class BoekReis : System.Web.UI.Page
         Label1.Text = (String)Session["VPR_reis"];
         if (!Page.IsPostBack)
         {
+            DateTime d = DateTime.Today;
+            d = d.AddDays(1);
+            for (int i = 0; i < 14; i++)
+            {
+                drpDagen.Items.Add(d.ToString("dddd dd MMMM yyyy"));
+                d = d.AddDays(1);
+            }
+
+
             drpUur.Items.Add("--Uur--");
             drpUur.Items.Add("08:00:00");
             drpUur.Items.Add("12:00:00");
             drpUur.Items.Add("16:00:00");
             drpUur.Items.Add("20:00:00");
 
-           tempClass = new ClassAccess().getAllClass();
+            tempClass = new ClassAccess().getAllClass();
             foreach (DataRow r in tempClass.Rows)
             {
                 drpClass.Items.Add(new ListItem(r.ItemArray[1].ToString(), r.ItemArray[0].ToString()));
@@ -53,7 +62,7 @@ public partial class BoekReis : System.Web.UI.Page
 
         int start = Convert.ToInt32(fullTraject.Rows[0].ItemArray[1].ToString());
         int eind = Convert.ToInt32(fullTraject.Rows[0].ItemArray[2].ToString());
-        vertrekDate = CalDate.SelectedDate;
+        vertrekDate = DateTime.Parse(drpDagen.SelectedItem.ToString()); ;
         aankomstDate = vertrekDate;
 
         String[] overstap = fullTraject.Rows[0].ItemArray[4].ToString().Split(';');

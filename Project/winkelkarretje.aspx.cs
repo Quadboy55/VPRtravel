@@ -15,26 +15,8 @@ public partial class winkelkarretje : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((Master)Page.Master).checkLogon(true);
-        
-        if (Session["VPR_bestelling"] == null)
-        {
-            lblLeeg.Text = "Uw winkelkarretje is leeg";
-            lblLeeg.Visible = true;
-            grdReizen.Visible = false;
-        }
-        else
-        {
-            bestelling = (DataTable)Session["VPR_bestelling"];
-            grdReizen.DataSource = bestelling;
-            grdReizen.DataBind();
 
-            klasse = new ClassAccess().getAllClass();
-            foreach (TableRow r in grdReizen.Rows)
-            {
-                int id = Convert.ToInt32(r.Cells[4].Text);
-                r.Cells[4].Text = klasse.Rows[id - 1].ItemArray[1].ToString();
-            }
-        }
+        setGrid();
     }
     protected void btnBevestig_Click(object sender, EventArgs e)
     {
@@ -89,16 +71,16 @@ public partial class winkelkarretje : System.Web.UI.Page
                 CapaciteitData c = new CapaciteitData();
                 c.datum = datum;
                 c.ritID = Convert.ToInt32(rit.Rows[j].ItemArray[0].ToString());
-                //double extraCapa= specialeDagen();
+                double extraCapa= specialeDagen(datum, Convert.ToInt32(rit.Rows[j].ItemArray[1].ToString()));
                 if (d.Rows.Count != 0)
                 {
-                    c.capaciteit = Convert.ToInt32(d.Rows[0].ItemArray[0].ToString())- pers.Rows.Count;
+                    c.capaciteit = Convert.ToInt32((extraCapa*Convert.ToInt32(d.Rows[0].ItemArray[0].ToString())) - pers.Rows.Count);
                     capacc.updateCapa(c);
                 }
                 else
                 {
                     DataTable ritTabel = new RitAccess().getRitById(Convert.ToInt32(rit.Rows[j].ItemArray[0].ToString()));
-                    c.capaciteit = Convert.ToInt32(ritTabel.Rows[0].ItemArray[2].ToString())  - pers.Rows.Count;
+                    c.capaciteit = Convert.ToInt32((extraCapa*Convert.ToInt32(ritTabel.Rows[0].ItemArray[2].ToString()))  - pers.Rows.Count);
                     capacc.addCapa(c);
                 }
             }
@@ -116,8 +98,88 @@ public partial class winkelkarretje : System.Web.UI.Page
         Session["VPR_bestelling"] = null;
     }
 
-    private double specialeDagen()
+    private double specialeDagen(DateTime d, int trein)
     {
-        return 0;
+        DataTable tr = new TreinenAccess().getTrainById(trein);
+        DateTime kerst = new DateTime(new GregorianCalendar().GetYear(d), 12 , 25 );
+        DateTime paas = new DateTime(new GregorianCalendar().GetYear(d), 4, 7);
+
+        TimeSpan nuKerst = kerst - d;
+        TimeSpan nuPaas = d - paas;
+        if (nuKerst.Days <= 31 && nuKerst.Days >= 0)
+        {
+            int aankomstID = Convert.ToInt32(tr.Rows[0].ItemArray[2].ToString());
+            if (aankomstID == 2 || aankomstID == 3)
+            {
+                return 1.3;
+            }
+
+        }
+        else
+        {
+            if (nuPaas.Days <= 14 && nuKerst.Days >= 0)
+            {
+                int aankomstID = Convert.ToInt32(tr.Rows[0].ItemArray[2].ToString());
+                if (aankomstID == 1 || aankomstID == 3 || aankomstID == 4)
+                {
+                    return 1.3;
+                }
+
+            }
+        }
+        return 1;
+
+    }
+
+    protected void grdReizen_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        bestelling = (DataTable)Session["VPR_bestelling"];
+        bestelling.Rows[grdReizen.SelectedRow.RowIndex].Delete();
+
+        DataTable p = (DataTable)Session["VPR_personen"];
+
+        for(int i = 0; i < p.Rows.Count;i++)
+        {
+            if (Convert.ToInt32(p.Rows[i].ItemArray[0]) == grdReizen.SelectedRow.RowIndex)
+            {
+                p.Rows.RemoveAt(i);
+                i--;
+            }
+        }
+
+
+        if (bestelling.Rows.Count == 0)
+        {
+            Session["VPR_bestelling"] = null;
+        }
+        else
+        {
+            Session["VPR_bestelling"] = bestelling;
+        }
+        setGrid();
+        
+    }
+
+    private void setGrid()
+    {
+        if (Session["VPR_bestelling"] == null)
+        {
+            lblLeeg.Text = "Uw winkelkarretje is leeg";
+            lblLeeg.Visible = true;
+            grdReizen.Visible = false;
+        }
+        else
+        {
+            bestelling = (DataTable)Session["VPR_bestelling"];
+            grdReizen.DataSource = bestelling;
+            grdReizen.DataBind();
+
+            klasse = new ClassAccess().getAllClass();
+            foreach (TableRow r in grdReizen.Rows)
+            {
+                int id = Convert.ToInt32(r.Cells[4].Text);
+                r.Cells[4].Text = klasse.Rows[id - 1].ItemArray[1].ToString();
+            }
+        }
     }
 }
