@@ -5,24 +5,29 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
-
+using System.Data;
 public partial class _Default : System.Web.UI.Page
 {
-    private WS_Weather.GlobalWeather ws;
-
     protected void Page_Load(object sender, EventArgs e)
     {
-        ws = new WS_Weather.GlobalWeather();
-        XmlDocument xml = new XmlDocument();
-        xml.LoadXml(ws.GetWeather("Bruxelles", "Belgium"));
-        XmlNodeList xnList = xml.SelectNodes("/CurrentWeather");
-        foreach (XmlNode xn in xnList)
+        String City = "amsterdam";
+        String Land = "Netherland";
+        List<HotelData> lst = new List<HotelData>();
+        HotelAccess bll = new HotelAccess();
+        DataTable hotels = bll.getAllHotelsByPlaats("Amsterdam");
+        for (int r = 0; r < hotels.Rows.Count; r++)
         {
-            string s =  xn["Temperature"].InnerText;
-            int index1 = s.IndexOf("(");
-            int index2 = s.IndexOf(")");
-
-            lblTemp.Text = s.Substring(index1 + 1, index2 - index1-1);
+            HotelData pl = new HotelData();
+            object[] inhoud = hotels.Rows[r].ItemArray;
+            pl.ID = (int)inhoud[0];
+            pl.beschrijving = Convert.ToString(inhoud[2]);
+            pl.foto = Convert.ToString(inhoud[3]);
+            pl.website = Convert.ToString(inhoud[4]);
+            pl.prijs = Convert.ToDouble(inhoud[5]);
+            lst.Add(pl);
         }
+
+        Master.setTemperatuur(City, Land);
+        Master.setHotel(lst);
     }
 }

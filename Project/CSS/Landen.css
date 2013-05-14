@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.hotel {
+    float: left;
+    width: 28%;
+    margin:1.5%;
+    border: 1pt solid black;
+    padding: 1%;
+}
