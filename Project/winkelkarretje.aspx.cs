@@ -115,21 +115,13 @@ public partial class winkelkarretje : System.Web.UI.Page
             mail.Append("Mvg");
             mail.AppendLine("<br/>");
             mail.Append("Het VPRtravel team");
-
-            clearBestelling();
             String emailAdress = new GebruikersAccess().getMailByID(Convert.ToInt32(Session["VPR_id"].ToString()));
             Mail.sendMail(mail.ToString(),emailAdress ,Session["VPR_fullnaam"].ToString());
-            Response.Redirect("Home.aspx");
+            Response.Redirect("BoekSucces.aspx");
         }
     }
 
-    private void clearBestelling()
-    {
-        Session["VPR_personen"] = null;
-        Session["VPR_grdRitten"] = null;
-        Session["VPR_tempRit"] = null;
-        Session["VPR_bestelling"] = null;
-    }
+    
 
     private double specialeDagen(DateTime d, int trein)
     {

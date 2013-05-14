@@ -49,9 +49,6 @@ public partial class _Default : System.Web.UI.Page
     }
     private void setGridBestemming()
     {
-        HttpCookie cookie = new HttpCookie("VPR_Profiel", GridTrein.SelectedRow.Cells[3].Text);
-        cookie.Expires = DateTime.Today.AddDays(7);
-        Response.Cookies.Add(cookie);
 
         for (int r = 0; r < GridTrein.Rows.Count; r++)
         {
@@ -68,6 +65,7 @@ public partial class _Default : System.Web.UI.Page
     {
         GridTrein.DataSource = data;
         GridTrein.DataBind();
+        
         setGridBestemming();
     }
 
@@ -105,6 +103,12 @@ public partial class _Default : System.Web.UI.Page
 
     protected void GridTrein_SelectedIndexChanged(object sender, EventArgs e)
     {
+        TreinAccess = new TreinenAccess();
+        DataTable d = TreinAccess.getTrainById(Convert.ToInt32(GridTrein.SelectedRow.Cells[1].Text));
+        HttpCookie cookie = new HttpCookie("VPR_Profiel", d.Rows[0].ItemArray[2].ToString());
+        cookie.Expires = DateTime.Today.AddDays(7);
+        Response.Cookies.Add(cookie);
+        Session["VPR_vertrek/aankomst"] = GridTrein.SelectedRow.Cells[2].Text +" - "+GridTrein.SelectedRow.Cells[3].Text;
         Session["VPR_reis"] = GridTrein.SelectedRow.Cells[1].Text;
         Session["VPR_trace"] = 1;
         Response.Redirect("BoekReis.aspx");

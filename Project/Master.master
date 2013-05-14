@@ -83,12 +83,13 @@
             </asp:SiteMapPath>
         </div>
 
-
+        <br />
+        <br />
         <div class="content">
             <asp:ContentPlaceHolder ID="inhoud" runat="server">
             </asp:ContentPlaceHolder>
-            <div>
-                <asp:AdRotator ID="adRotator" runat="server" Visible="true" DataSourceID="XmlAdrotator" Height ="100px" />
+            <div class="ads">
+                <asp:AdRotator ID="adRotator" runat="server" Visible="true" DataSourceID="XmlAdrotator"/>
                 <asp:XmlDataSource ID="XmlAdrotator" runat="server" DataFile="ads.xml"></asp:XmlDataSource>
             </div>
 

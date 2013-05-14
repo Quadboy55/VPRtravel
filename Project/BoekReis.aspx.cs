@@ -113,6 +113,7 @@ public partial class BoekReis : System.Web.UI.Page
         setGridBestemming();
         atlTickets.Visible = true;
 
+        Session["VPR_grdRit"] = grdRitten.DataSource;
         Session["VPR_tempTrein"] = tempTrein;
         Session["VPR_tempRit"] = tempRit;
         
