@@ -12,6 +12,7 @@ public partial class Master : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         checkLogon(false);
+
     }
 
     protected void btnRegister_Click(object sender, EventArgs e)
@@ -125,5 +126,17 @@ public partial class Master : System.Web.UI.MasterPage
         Session.Clear();
         hdValue.Value = "1";
         Response.Redirect("Home.aspx");
+    }
+    protected void adRotator_AdCreated(object sender, AdCreatedEventArgs e)
+    {
+        String[] talen = HttpContext.Current.Request.UserLanguages;
+        if (talen[0].StartsWith("nl"))
+        {
+            adRotator.KeywordFilter = "nederlands";
+        }
+        else
+        {
+            adRotator.KeywordFilter = "engels";
+        }
     }
 }
