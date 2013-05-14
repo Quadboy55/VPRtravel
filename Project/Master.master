@@ -87,7 +87,7 @@
         <div class="content">
             <asp:ContentPlaceHolder ID="inhoud" runat="server">
             </asp:ContentPlaceHolder>
-            <div style="background-color: black">
+            <div>
                 <asp:AdRotator ID="adRotator" runat="server" Visible="true" DataSourceID="XmlAdrotator" Height ="100px" />
                 <asp:XmlDataSource ID="XmlAdrotator" runat="server" DataFile="ads.xml"></asp:XmlDataSource>
             </div>
