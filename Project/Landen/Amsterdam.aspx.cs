@@ -22,7 +22,7 @@ public partial class _Default : System.Web.UI.Page
             int index1 = s.IndexOf("(");
             int index2 = s.IndexOf(")");
 
-            lblShit.Text = s.Substring(index1 + 1, index2 - index1-1);
+            lblTemp.Text = s.Substring(index1 + 1, index2 - index1-1);
         }
     }
 }
