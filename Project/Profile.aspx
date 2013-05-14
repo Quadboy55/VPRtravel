@@ -70,7 +70,7 @@
                 </div>
                 <h3 class="popover-title">Change Passwoord</h3>
                 <div class="popover-content">
-                    <asp:ChangePassword ID="cngPass" runat="server"></asp:ChangePassword>
+                    <asp:ChangePassword ID="cngPass" runat="server" OnChangingPassword="cngPass_ChangingPassword"></asp:ChangePassword>
 
                 </div>
 

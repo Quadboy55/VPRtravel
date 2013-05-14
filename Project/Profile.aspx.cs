@@ -154,7 +154,11 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<script LANGUAGE='JavaScript' >alert('Deze Rit kan niet worden geannuleerd!');</script>");
+            Response.Write("<script LANGUAGE='JavaScript'>alert('Deze Rit kan niet worden geannuleerd!');</script>");
         }
+    }
+    protected void cngPass_ChangingPassword(object sender, LoginCancelEventArgs e)
+    {
+
     }
 }
