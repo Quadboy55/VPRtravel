@@ -10,6 +10,7 @@
     <div id="zoek" class="zoek">
         <asp:Label ID="Label4" runat="server" Text="U heeft gekozen voor reis: "></asp:Label>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="lblerror" runat="server" Text="" CssClass="error"></asp:Label>
 
 
 

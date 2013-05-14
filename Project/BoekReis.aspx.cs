@@ -266,68 +266,92 @@ public partial class BoekReis : System.Web.UI.Page
 
     }
 
+    private Boolean CheckIfPlaats()
+    {
+        foreach (DataRow r in tempRit.Rows)
+        {
+            DataTable capa = new CapaciteitAccess().getCapa(DateTime.Parse(grdRitten.Rows[0].Cells[0].Text), Convert.ToInt32(r.ItemArray[0].ToString()));
+
+            if (capa.Rows.Count != 0)
+            {
+                int atlPlaatsen = Convert.ToInt32(capa.Rows[0].ItemArray[0].ToString());
+
+                if (atlPlaatsen - atlPersonen < 0)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     protected void btnMand_Click(object sender, EventArgs e)
     {
+        
         tempTrein = (DataTable)Session["VPR_tempTrein"];
         tempRit = (DataTable)Session["VPR_tempRit"];
         atlPersonen = (int)Session["VPR_atlPersonen"];
 
+        Boolean ok = CheckIfPlaats();
 
-        // bestelling in sessie plaatsen
-        DataTable bestelling = new DataTable();
-
-        if (Session["VPR_bestelling"] == null) // schoppingcart
+        if (ok)
         {
-            bestelling.Columns.Add("gebruikerID");
-            bestelling.Columns.Add("totalePrijs");
-            bestelling.Columns.Add("aankomstdatum");
-            bestelling.Columns.Add("vertrekDatum");
-            bestelling.Columns.Add("typeID");
-            bestelling.Columns.Add("treinID");
-            bestelling.Columns.Add("vertrekplaats");
-            bestelling.Columns.Add("aankomstplaats");
-        }
-        else
-        {
-            bestelling = (DataTable)Session["VPR_bestelling"];
-        }
 
-        DataRow r = bestelling.NewRow();
-        r[0] = Session["VPR_id"];
-        r[1] = berekenPrijs();
-        DateTime vertrek = DateTime.Parse(grdRitten.Rows[0].Cells[0].Text);
-        DateTime aankomst = DateTime.Parse(grdRitten.Rows[grdRitten.Rows.Count - 1].Cells[1].Text);
+            // bestelling in sessie plaatsen
+            DataTable bestelling = new DataTable();
 
-        r[3] = vertrek;
-        r[2] = aankomst;
-        r[4] = drpClass.SelectedValue;
-        r[5] = Session["VPR_reis"];
-        r[6] = grdRitten.Rows[0].Cells[2].Text;
-        r[7] = grdRitten.Rows[grdRitten.Rows.Count-1].Cells[3].Text;
+            if (Session["VPR_bestelling"] == null) // schoppingcart
+            {
+                bestelling.Columns.Add("gebruikerID");
+                bestelling.Columns.Add("totalePrijs");
+                bestelling.Columns.Add("aankomstdatum");
+                bestelling.Columns.Add("vertrekDatum");
+                bestelling.Columns.Add("typeID");
+                bestelling.Columns.Add("treinID");
+                bestelling.Columns.Add("vertrekplaats");
+                bestelling.Columns.Add("aankomstplaats");
+            }
+            else
+            {
+                bestelling = (DataTable)Session["VPR_bestelling"];
+            }
+
+            DataRow r = bestelling.NewRow();
+            r[0] = Session["VPR_id"];
+            r[1] = berekenPrijs();
+            DateTime vertrek = DateTime.Parse(grdRitten.Rows[0].Cells[0].Text);
+            DateTime aankomst = DateTime.Parse(grdRitten.Rows[grdRitten.Rows.Count - 1].Cells[1].Text);
+
+            r[3] = vertrek;
+            r[2] = aankomst;
+            r[4] = drpClass.SelectedValue;
+            r[5] = Session["VPR_reis"];
+            r[6] = grdRitten.Rows[0].Cells[2].Text;
+            r[7] = grdRitten.Rows[grdRitten.Rows.Count - 1].Cells[3].Text;
 
 
-        bestelling.Rows.Add(r);
-        Session["VPR_bestelling"] = bestelling;
+            bestelling.Rows.Add(r);
+            Session["VPR_bestelling"] = bestelling;
 
-        // personen in sesie plaatsen
-        DataTable personen = new DataTable();
+            // personen in sesie plaatsen
+            DataTable personen = new DataTable();
 
-        if (Session["VPR_personen"] == null) // schoppingcart
-        {
-            personen.Columns.Add("rijTicket");
-            personen.Columns.Add("voornaam");
-            personen.Columns.Add("naam");
-            personen.Columns.Add("stoelnr");
-        }
-        else
-        {
-            personen = (DataTable)Session["VPR_personen"];
-        }
+            if (Session["VPR_personen"] == null) // schoppingcart
+            {
+                personen.Columns.Add("rijTicket");
+                personen.Columns.Add("voornaam");
+                personen.Columns.Add("naam");
+                personen.Columns.Add("stoelnr");
+            }
+            else
+            {
+                personen = (DataTable)Session["VPR_personen"];
+            }
 
-        for (int i = 1; i <= atlPersonen; i++)
-        {
-            DataRow rp = personen.NewRow();
-            rp[0] = bestelling.Rows.Count - 1;
+            for (int i = 1; i <= atlPersonen; i++)
+            {
+                DataRow rp = personen.NewRow();
+                rp[0] = bestelling.Rows.Count - 1;
 
 
                 switch (i)
@@ -354,19 +378,24 @@ public partial class BoekReis : System.Web.UI.Page
                         rp[2] = txtnaam10.Text; break;
                 }
 
-            int[] stoelnummers = getEersteVrijeStoel();
-            StringBuilder sb = new StringBuilder();
-            for(int j = 0; j < stoelnummers.Count<int>();j++)
-            {
-                sb.Append(stoelnummers[j]+";");
-                stoelnummers[j]++;
-            }
+                int[] stoelnummers = getEersteVrijeStoel();
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < stoelnummers.Count<int>(); j++)
+                {
+                    sb.Append(stoelnummers[j] + ";");
+                    stoelnummers[j]++;
+                }
 
-            rp[3] = sb.ToString();
-            personen.Rows.Add(rp);
+                rp[3] = sb.ToString();
+                personen.Rows.Add(rp);
+            }
+            Session["VPR_personen"] = personen;
+            Response.Redirect("winkelkarretje.aspx");
         }
-        Session["VPR_personen"] = personen;
-        Response.Redirect("winkelkarretje.aspx");
+        else
+        {
+            lblerror.Text = "Er niet genoeg plaats meer gelieve een vroegere of latere reis te kiezen";
+        }
     }
 
     private int[] getEersteVrijeStoel()

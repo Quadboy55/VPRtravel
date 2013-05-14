@@ -33,10 +33,10 @@ public partial class winkelkarretje : System.Web.UI.Page
 
         mail = new StringBuilder();
         mail.Append("Beste "+ (String)Session["VPR_fullnaam"]+",");
-        mail.Append(Environment.NewLine);
-        mail.Append(Environment.NewLine);
+        mail.AppendLine("<br/>");
+        mail.AppendLine("<br/>");
         mail.Append("U heeft volgende reis bij VPRtravel geboekt:");
-        mail.Append(Environment.NewLine);
+        mail.AppendLine("<br/>");
         
         // rij id in het sessionobject met de bestellingstabel
         int i = 0;
@@ -44,7 +44,7 @@ public partial class winkelkarretje : System.Web.UI.Page
         {
             //mail opstellen
             mail.Append(r.ItemArray[6].ToString() +" - "+r.ItemArray[7].ToString());
-            mail.Append(Environment.NewLine);
+            mail.AppendLine("<br/>");
             
             TicketData t = new TicketData();
             t.gebruikerID = (int)Session["VPR_id"];
@@ -64,7 +64,7 @@ public partial class winkelkarretje : System.Web.UI.Page
             
             //mail opstellen
             mail.Append("met volgende personen als reizigers:");
-            mail.Append(Environment.NewLine);
+            mail.AppendLine("<br/>");
 
             foreach (DataRow pr in pers.Rows)
             {
@@ -80,7 +80,7 @@ public partial class winkelkarretje : System.Web.UI.Page
 
                     //mail opstellen
                     mail.Append(p.naam +" "+p.voornaam);
-                    mail.Append(Environment.NewLine);
+                    mail.AppendLine("<br/>");
                 }
                 else
                 {
@@ -110,10 +110,10 @@ public partial class winkelkarretje : System.Web.UI.Page
             }
 
             //mail opstellen
-            mail.Append(Environment.NewLine);
-            mail.Append(Environment.NewLine);
+            mail.AppendLine("<br/>");
+            mail.AppendLine("<br/>");
             mail.Append("Mvg");
-            mail.Append(Environment.NewLine);
+            mail.AppendLine("<br/>");
             mail.Append("Het VPRtravel team");
 
             clearBestelling();
