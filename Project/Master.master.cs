@@ -17,7 +17,7 @@ public partial class Master : System.Web.UI.MasterPage
 
     protected void btnRegister_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Register.aspx");
+        Response.Redirect("~/Register.aspx");
     }
 
 
@@ -33,7 +33,7 @@ public partial class Master : System.Web.UI.MasterPage
          if (gebruiker == null)
          {
              Session["VPR_login"] = false;
-             Response.Redirect("Home.aspx");
+             Response.Redirect("~/Home.aspx");
              
          }
          else
@@ -45,12 +45,12 @@ public partial class Master : System.Web.UI.MasterPage
                  Session["VPR_fullnaam"] = gebruiker.naam + " " + gebruiker.voornaam;
                  Session["VPR_naam"] = gebruiker.gebruikersnaam;
 
-                 Response.Redirect("Profile.aspx");
+                 Response.Redirect("~/Profile.aspx");
              }
              else
              {
                  Session["VPR_login"] = false;
-                 Response.Redirect("Home.aspx");
+                 Response.Redirect("~/Home.aspx");
              }
          }
 

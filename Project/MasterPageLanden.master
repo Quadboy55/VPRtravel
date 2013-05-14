@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageLanden.master.cs" Inherits="MasterPageLanden"  MasterPageFile="~/Master.master"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="banner" Runat="Server">
-    <link href="../CSS/Landen.css" rel="stylesheet" />
+    <link href="CSS/Landen.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="inhoud" Runat="Server">
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
