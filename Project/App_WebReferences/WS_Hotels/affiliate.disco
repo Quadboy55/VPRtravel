@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://xml.alpharooms.com/affiliate.asmx?wsdl" docRef="http://xml.alpharooms.com/affiliate.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://xml.alpharooms.com/affiliate.asmx" xmlns:q1="http://www.alpha-beds.com/" binding="q1:AffiliateSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://xml.alpharooms.com/affiliate.asmx" xmlns:q2="http://www.alpha-beds.com/" binding="q2:AffiliateSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
