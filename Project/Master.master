@@ -87,11 +87,13 @@
         <div class="content">
             <asp:ContentPlaceHolder ID="inhoud" runat="server">
             </asp:ContentPlaceHolder>
+            <div style="background-color: black">
+                <asp:AdRotator ID="adRotator" runat="server" Visible="true" DataSourceID="XmlAdrotator" Height ="100px" />
+                <asp:XmlDataSource ID="XmlAdrotator" runat="server" DataFile="ads.xml"></asp:XmlDataSource>
+            </div>
+
         </div>
 
-        
-        <asp:AdRotator ID="adRotator" runat="server" OnAdCreated="adRotator_AdCreated"  DataSourceID="XmlAdrotator"/>
-        <asp:XmlDataSource ID="XmlAdrotator" runat="server" DataFile="adrotator/ads.xml"></asp:XmlDataSource>
 
         <footer class="modal-footer">
             <p class="pagination-centered">Made By Kevin Restiaens & Anthony Van Parijs</p>

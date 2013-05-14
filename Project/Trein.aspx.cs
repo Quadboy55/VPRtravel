@@ -49,6 +49,10 @@ public partial class _Default : System.Web.UI.Page
     }
     private void setGridBestemming()
     {
+        HttpCookie cookie = new HttpCookie("VPR_Profiel", GridTrein.SelectedRow.Cells[3].Text);
+        cookie.Expires = DateTime.Today.AddDays(7);
+        Response.Cookies.Add(cookie);
+
         for (int r = 0; r < GridTrein.Rows.Count; r++)
         {
             for (int i = 2; i < 4; i++)

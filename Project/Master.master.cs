@@ -12,7 +12,59 @@ public partial class Master : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         checkLogon(false);
+        HttpCookie c = Request.Cookies["VPR_Profiel"];
 
+        String[] talen = HttpContext.Current.Request.UserLanguages;
+        if (talen[0].StartsWith("nl"))
+        {
+            int i;
+            
+            if (c != null)
+            {
+                i = Convert.ToInt32(c.Value);
+            }
+            else
+            {
+                Random r = new Random();
+                i = r.Next(1, 7);
+            }
+
+            switch(i)
+            {
+                case 1: adRotator.KeywordFilter = "amsterdam_ned"; break;
+                case 2: adRotator.KeywordFilter = "berlijn_ned"; break;
+                case 3: adRotator.KeywordFilter = "brussel_ned"; break;
+                case 4: adRotator.KeywordFilter = "London_ned"; break;
+                case 5: adRotator.KeywordFilter = "moskou_ned"; break;
+                case 6: adRotator.KeywordFilter = "parijs_ned"; break;
+                case 7: adRotator.KeywordFilter = "Rome_ned"; break;
+            }
+        }
+        else
+        {
+            int i;
+
+            if (c != null)
+            {
+                i = Convert.ToInt32(c.Value);
+            }
+            else
+            {
+                Random r = new Random();
+                i = r.Next(1, 7);
+            }
+
+            switch(i)
+            {
+                case 1: adRotator.KeywordFilter = "amsterdam_eng"; break;
+                case 2: adRotator.KeywordFilter = "berlijn_eng"; break;
+                case 3: adRotator.KeywordFilter = "brussel_eng"; break;
+                case 4: adRotator.KeywordFilter = "London_eng"; break;
+                case 5: adRotator.KeywordFilter = "moskou_eng"; break;
+                case 6: adRotator.KeywordFilter = "parijs_eng"; break;
+                case 7: adRotator.KeywordFilter = "Rome_eng"; break;
+            }
+        }
     }
 
     protected void btnRegister_Click(object sender, EventArgs e)
@@ -126,17 +178,5 @@ public partial class Master : System.Web.UI.MasterPage
         Session.Clear();
         hdValue.Value = "1";
         Response.Redirect("Home.aspx");
-    }
-    protected void adRotator_AdCreated(object sender, AdCreatedEventArgs e)
-    {
-        String[] talen = HttpContext.Current.Request.UserLanguages;
-        if (talen[0].StartsWith("nl"))
-        {
-            adRotator.KeywordFilter = "nederlands";
-        }
-        else
-        {
-            adRotator.KeywordFilter = "engels";
-        }
     }
 }
