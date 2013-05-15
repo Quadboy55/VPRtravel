@@ -10,7 +10,10 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        SiteMapPath pad = (SiteMapPath)Master.FindControl("SiteMapPath1");
+        pad.Visible = false;
+        
+        
         lblReis.Text = (String)Session["VPR_vertrek/aankomst"];
         grdRitten.DataSource = (DataTable)Session["VPR_grdRit"];
         grdRitten.DataBind();

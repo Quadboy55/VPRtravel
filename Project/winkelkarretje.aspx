@@ -19,7 +19,7 @@
         </Columns>
     </asp:GridView>
     <br />
-    <asp:Button ID="btnBoekNog" CssClass="btn btn-primary" runat="server" Text="Nog een reservatie toevoegen." />
+    <asp:Button ID="btnBoekNog" CssClass="btn btn-primary" runat="server" Text="Nog een reservatie toevoegen." OnClick="btnBoekNog_Click" />
     <asp:Button ID="btnBevestig" CssClass="btn btn-success" runat="server" Text="Bevestig uw bestelling" OnClick="btnBevestig_Click" />
     
 </asp:Content>

@@ -25,6 +25,8 @@ public partial class BoekReis : System.Web.UI.Page
         {
             Response.Redirect("Trein.aspx");
         }
+        SiteMapPath pad = (SiteMapPath)Master.FindControl("SiteMapPath1");
+        pad.Visible = false;
 
         
         

@@ -24,6 +24,9 @@ public partial class _Default : System.Web.UI.Page
             Response.Redirect("Home.aspx");
         }
 
+        SiteMapPath pad = (SiteMapPath)Master.FindControl("SiteMapPath1");
+        pad.Visible = false;
+
 
         RitAccess = new RitAccess();
         PlaatsAccess = new PlaatsenAccess();

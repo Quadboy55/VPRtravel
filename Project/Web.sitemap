@@ -15,5 +15,6 @@
       <siteMapNode url="~/Trein.aspx" title="Boek een reis"  description="" />
       <siteMapNode url="~/winkelkarretje.aspx" title="Uw winkelkarretje"  description="" />
     </siteMapNode>
+    <siteMapNode url="~/Over.aspx" title="Over VPRtravel"  description="" />
   </siteMapNode>
 </siteMap>

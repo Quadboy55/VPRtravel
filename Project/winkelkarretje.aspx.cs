@@ -207,4 +207,8 @@ public partial class winkelkarretje : System.Web.UI.Page
             }
         }
     }
+    protected void btnBoekNog_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Trein.aspx");
+    }
 }
