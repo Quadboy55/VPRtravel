@@ -24,6 +24,12 @@ public class GebruikersAccess
         return DAO.getAllUsers().Tables[0];
     }
 
+    public void changePass(int id, string pass)
+    {
+        DAO = new GebruikersDAO();
+        DAO.changePass(id,pass);
+    }
+
     public DataTable getPlayersByLogin(String login)
     {
         DAO = new GebruikersDAO();

@@ -70,8 +70,31 @@
                 </div>
                 <h3 class="popover-title">Change Passwoord</h3>
                 <div class="popover-content">
-                    <asp:ChangePassword ID="cngPass" runat="server" OnChangingPassword="cngPass_ChangingPassword"></asp:ChangePassword>
+                    <table>
+                        <tr>
+                            <td>Oud Passwoord:</td>
+                            <td>
+                                <asp:TextBox ID="txtPassOud" runat="server"></asp:TextBox></td>
+                        </tr>
+                        <tr>
+                            <td>Nieuw Passwoord:</td>
+                            <td><asp:TextBox ID="txtPassNieuw" runat="server"></asp:TextBox></td>
+                        </tr>
+                        <tr>
+                            <td>Nieuw Passwoord opnieuw:</td>
+                            <td><asp:TextBox ID="txtPassNieuwOpnieuw" runat="server"></asp:TextBox></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <asp:Button ID="btnPassChange" runat="server" Text="Wijzig Passwoord" OnClick="btnPassChange_Click" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label> </td>
+                        </tr>
 
+                    </table>
                 </div>
 
             </div>
@@ -125,7 +148,7 @@
                         <th><b>Vertrekpunt</b></th>
                         <th><b>Aankomstpunt</b></th>
                         <th><b>Betaald</b></th>
-                        0<th><b>Opties</b></th>
+                        <th><b>Opties</b></th>
                         <th><b></b></th>
                     </tr>
             </HeaderTemplate>
@@ -138,7 +161,7 @@
                     <td><%# Eval("Betaald") %></td>
                     <td>
                         <asp:Button ID="btnAnnuleer" runat="server" Text="Annuleer Ticket" ToolTip='<%# Eval("TicketID") %>' OnClick="btnAnnuleer_Click" />
-                        </td>
+                    </td>
                     <td>
                         <div class="arrow"></div>
                     </td>

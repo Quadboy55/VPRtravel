@@ -157,8 +157,45 @@ public partial class _Default : System.Web.UI.Page
             Response.Write("<script LANGUAGE='JavaScript'>alert('Deze Rit kan niet worden geannuleerd!');</script>");
         }
     }
-    protected void cngPass_ChangingPassword(object sender, LoginCancelEventArgs e)
-    {
 
+    protected void btnPassChange_Click(object sender, EventArgs e)
+    {
+        if (!txtPassOud.Text.Equals(txtPassNieuw.Text))
+        {
+            if (txtPassNieuw.Text.Equals(txtPassNieuwOpnieuw.Text))
+            {
+                try
+                {
+                    GebruikersAccess bll = new GebruikersAccess();
+                    MD5_encryption md5 = new MD5_encryption();
+                    GebruikerData gebruiker = bll.getPlayerByLogin(Convert.ToString(Session["VPR_naam"]));
+                    // controle op huidig pass
+                    if (gebruiker.wachtwoord.Equals(md5.encryptPas(txtPassOud.Text)))
+                    {
+                        int id = gebruiker.ID;
+                        bll.changePass(id, md5.encryptPas(txtPassNieuw.Text));
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Het oud passwoord klopt niet met het huidige passwoord!";
+                    }
+
+                    
+                }
+                catch (Exception ex)
+                {
+                    lblStatus.Text = "Er trad een fout op tijdens het wijzigen van het passwoord!";
+                }
+
+            }
+            else
+            {
+                lblStatus.Text = "De 2 nieuwe passwoorden zijn niet gelijk!";
+            }
+        }
+        else
+        {
+            lblStatus.Text = "Het nieuwe passwoord kan niet gelijk zijn aan de oude!";
+        }
     }
 }

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    alert("test");
     $("#report tr:odd").addClass("odd");
     $("#report tr:not(.odd)").hide();
     $("#report tr:first-child").show();

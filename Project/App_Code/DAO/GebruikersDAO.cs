@@ -177,4 +177,22 @@ public class GebruikersDAO
 
         return util.ophalen(strSQL, sqlparam);
     }
+
+    internal void changePass(int id,string pass)
+    {
+        util = new Util();
+        param = new List<SqlParameter>();
+        //to add parameters=> 
+
+        param.Add(new SqlParameter("@id", id));
+        param.Add(new SqlParameter("@pass", pass));
+
+
+
+        //SET IDENTITY_INSERT tblGebruikers ON;
+        SqlParameter[] sqlparam = param.ToArray();
+        strSQL = "Update tblGebruikers set passwoord=@pass where id=@id;";
+
+        util.updaten(strSQL, sqlparam);
+    }
 }
