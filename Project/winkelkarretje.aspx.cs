@@ -82,10 +82,7 @@ public partial class winkelkarretje : System.Web.UI.Page
                     mail.Append(p.naam +" "+p.voornaam);
                     mail.AppendLine("<br/>");
                 }
-                else
-                {
-                    break;
-                }
+                
             }
 
             for (int j = 0; j < rit.Rows.Count; j++)
@@ -108,6 +105,7 @@ public partial class winkelkarretje : System.Web.UI.Page
                     capacc.addCapa(c);
                 }
             }
+        }
 
             //mail opstellen
             mail.AppendLine("<br/>");
@@ -118,7 +116,7 @@ public partial class winkelkarretje : System.Web.UI.Page
             String emailAdress = new GebruikersAccess().getMailByID(Convert.ToInt32(Session["VPR_id"].ToString()));
             Mail.sendMail(mail.ToString(),emailAdress ,Session["VPR_fullnaam"].ToString());
             Response.Redirect("BoekSucces.aspx");
-        }
+        
     }
 
     
