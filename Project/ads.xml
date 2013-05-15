@@ -1,49 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Advertisements>
   <Ad>
-    <ImageUrl>Ads/ImagesNed/amsterdam_ned.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesNed/amsterdam_ned.png</ImageUrl>
     <NavigateUrl>Landen/Amsterdam.aspx</NavigateUrl>
     <AlternateText>Amsterdam </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>amsterdam_ned</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesNed/berlijn_ned.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesNed/berlijn_ned.png</ImageUrl>
     <NavigateUrl>Landen/Berlijn.aspx</NavigateUrl>
     <AlternateText>Berlijn </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>berlijn_ned</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesNed/brussel_ned.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesNed/brussel_ned.png</ImageUrl>
     <NavigateUrl>Landen/Brussel.aspx</NavigateUrl>
     <AlternateText>Brussel </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>brussel_ned</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesNed/London_ned.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesNed/London_ned.png</ImageUrl>
     <NavigateUrl>Landen/London.aspx</NavigateUrl>
     <AlternateText>London </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>London_ned</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesNed/moskou_ned.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesNed/moskou_ned.png</ImageUrl>
     <NavigateUrl>Landen/Moskou.aspx</NavigateUrl>
     <AlternateText>Moskou </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>moskou_ned</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesNed/parijs_ned.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesNed/parijs_ned.png</ImageUrl>
     <NavigateUrl>Landen/Parijs.aspx</NavigateUrl>
     <AlternateText>Parijs </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>parijs_ned</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesNed/Rome_ned.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesNed/Rome_ned.png</ImageUrl>
     <NavigateUrl>Landen/Rome.aspx</NavigateUrl>
     <AlternateText>Rome </AlternateText>
     <Impressions> 33 </Impressions>
@@ -52,49 +52,49 @@
 
 
   <Ad>
-    <ImageUrl>Ads/ImagesEng/amsterdam_eng.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesEng/amsterdam_eng.png</ImageUrl>
     <NavigateUrl>Landen/Amsterdam.aspx</NavigateUrl>
     <AlternateText>Amsterdam </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>amsterdam_eng</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesEng/berlijn_eng.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesEng/berlijn_eng.png</ImageUrl>
     <NavigateUrl>Landen/Berlijn.aspx</NavigateUrl>
     <AlternateText>Berlijn </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>berlijn_eng</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesEng/brussel_eng.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesEng/brussel_eng.png</ImageUrl>
     <NavigateUrl>Landen/Brussel.aspx</NavigateUrl>
     <AlternateText>Brussel </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>brussel_eng</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesEng/London_eng.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesEng/London_eng.png</ImageUrl>
     <NavigateUrl>Landen/London.aspx</NavigateUrl>
     <AlternateText>London </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>London_eng</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesEng/moskou_eng.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesEng/moskou_eng.png</ImageUrl>
     <NavigateUrl>Landen/Moskou.aspx</NavigateUrl>
     <AlternateText>Moskou </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>moskou_eng</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesEng/parijs_eng.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesEng/parijs_eng.png</ImageUrl>
     <NavigateUrl>Landen/Parijs.aspx</NavigateUrl>
     <AlternateText>Parijs </AlternateText>
     <Impressions> 33 </Impressions>
     <Keyword>parijs_eng</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>Ads/ImagesEng/Rome_eng.png</ImageUrl>
+    <ImageUrl>~/Ads/ImagesEng/Rome_eng.png</ImageUrl>
     <NavigateUrl>Landen/Rome.aspx</NavigateUrl>
     <AlternateText>Rome </AlternateText>
     <Impressions> 33 </Impressions>

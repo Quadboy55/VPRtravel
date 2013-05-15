@@ -106,7 +106,7 @@ public partial class _Default : System.Web.UI.Page
         TreinAccess = new TreinenAccess();
         DataTable d = TreinAccess.getTrainById(Convert.ToInt32(GridTrein.SelectedRow.Cells[1].Text));
         HttpCookie cookie = new HttpCookie("VPR_Profiel", d.Rows[0].ItemArray[2].ToString());
-        cookie.Expires = DateTime.Today.AddDays(7);
+        cookie.Expires = DateTime.Today.AddDays(1);
         Response.Cookies.Add(cookie);
         Session["VPR_vertrek/aankomst"] = GridTrein.SelectedRow.Cells[2].Text +" - "+GridTrein.SelectedRow.Cells[3].Text;
         Session["VPR_reis"] = GridTrein.SelectedRow.Cells[1].Text;
