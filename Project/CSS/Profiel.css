@@ -47,7 +47,7 @@
 }
 
 .popover {
-    margin-top:390px;
+    margin-top:365px;
     width:450px;
 }
 
@@ -61,7 +61,7 @@
 }
 
 grdRitten {width:100%; align-content:center;}
-#report { border-collapse:collapse; width:100%;align-content:center;}
+#report { border-collapse:collapse; width:95%;align-content:center; margin:15px;}
 #report h4 { margin:0px; padding:0px;}
 #report img { float:right;}
 #report ul { margin:10px 0 10px 40px; padding:0px;}
