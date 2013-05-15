@@ -221,30 +221,100 @@ public partial class BoekReis : System.Web.UI.Page
             Session["VPR_atlPersonen"] = atlPersonen;
 
             p1.Visible = false;
+            val11.Enabled = false;
+            val12.Enabled = false;
+
             p2.Visible = false;
+            val21.Enabled = false;
+            val22.Enabled = false;
+
             p3.Visible = false;
-            p4.Visible = false;
+            val31.Enabled = false;
+            val32.Enabled = false;
+
+            p4.Visible = false; 
+            val41.Enabled = false;
+            val42.Enabled = false;
+
             p5.Visible = false;
+            val51.Enabled = false;
+            val52.Enabled = false;
+
             p6.Visible = false;
+            val61.Enabled = false;
+            val62.Enabled = false;
+
             p7.Visible = false;
+            val71.Enabled = false;
+            val72.Enabled = false;
+
             p8.Visible = false;
+            val81.Enabled = false;
+            val82.Enabled = false;
+
             p9.Visible = false;
+            val91.Enabled = false;
+            val92.Enabled = false;
+
             p10.Visible = false;
+            val101.Enabled = false;
+            val102.Enabled = false;
+
 
             for (int i = 0; i < atlPersonen; i++)
             {
                 switch (i)
                 {
-                    case 0: p1.Visible = true; break;
-                    case 1: p2.Visible = true; break;
-                    case 2: p3.Visible = true; break;
-                    case 3: p4.Visible = true; break;
-                    case 4: p5.Visible = true; break;
-                    case 5: p6.Visible = true; break;
-                    case 6: p7.Visible = true; break;
-                    case 7: p8.Visible = true; break;
-                    case 8: p9.Visible = true; break;
-                    case 9: p10.Visible = true; break;
+                    case 0: 
+                        p1.Visible = true; 
+                        val11.Enabled = true;
+                        val12.Enabled = true;
+                        break;
+                    case 1: 
+                        p2.Visible = true;
+                        val21.Enabled = true;
+                        val22.Enabled = true;
+                        break;
+                    case 2:
+                        p3.Visible = true; 
+                        val31.Enabled = true;
+                        val32.Enabled = true;
+                        break;
+                    case 3:
+                        p4.Visible = true; 
+                        val41.Enabled = true;
+                        val42.Enabled = true;
+                        break;
+                    case 4: 
+                        p5.Visible = true; 
+                        val51.Enabled = true;
+                        val52.Enabled = true;
+                        break;
+                    case 5: 
+                        p6.Visible = true; 
+                        val61.Enabled = true;
+                        val62.Enabled = true;
+                        break;
+                    case 6: 
+                        p7.Visible = true;
+                        val71.Enabled = true;
+                        val72.Enabled = true;
+                        break;
+                    case 7:
+                        p8.Visible = true; 
+                        val81.Enabled = true;
+                        val82.Enabled = true;
+                        break;
+                    case 8:
+                        p9.Visible = true; 
+                        val91.Enabled = true;
+                        val92.Enabled = true;
+                        break;
+                    case 9: 
+                        p10.Visible = true; 
+                        val101.Enabled = true;
+                        val102.Enabled = true;
+                        break;
                 }
             }
             btnMand.Visible = true;
