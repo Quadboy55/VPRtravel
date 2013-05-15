@@ -8,3 +8,18 @@
     border: 1pt solid black;
     padding: 1%;
 }
+
+.LandInfo {
+    padding-left: 2%;
+    padding-right:2%;
+}
+
+.LandTemp {
+    padding-left: 2%;
+    padding-right:2%;
+}
+
+.LandHead {
+    padding-left: 2%;
+    padding-right:2%;
+}

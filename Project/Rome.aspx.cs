@@ -26,6 +26,7 @@ public partial class _Default : System.Web.UI.Page
             lst.Add(pl);
         }
 
+        Master.setLandInfo("Rome (Italiaans: Roma) is de hoofdstad van Italië en tevens hoofdstad van de regio Lazio en de provincie Rome. De stad Rome heeft ca. 2,7 miljoen inwoners, het inwonertal van de metropoolregio bedraagt 3,7 miljoen. Het is de grootste stad van Italië. Door de stad, gelegen in het midwesten van het Apennijns Schiereiland, stromen de rivieren de Tiber en de Aniene. De geschiedenis van Rome strekt zich uit over 2500 jaar en de stad heeft zich in de geschiedenis ontwikkeld als een van de belangrijkste steden van de Westerse cultuur. Het was de hoofdstad van het Romeinse Koninkrijk, de Romeinse Republiek en het Romeinse Keizerrijk. Sinds 1871 is Rome de hoofdstad van Italië. Rome is ook de zetel van de paus, die het gezag voert over de dwergstaat Vaticaanstad, een enclave binnen de stad Rome.");
         Master.setTemperatuur(City, Land);
         Master.setHotel(lst);
     }

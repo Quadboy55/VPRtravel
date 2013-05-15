@@ -1,17 +1,19 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageLanden.master.cs" Inherits="MasterPageLanden"  MasterPageFile="~/Master.master"%>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageLanden.master.cs" Inherits="MasterPageLanden" MasterPageFile="~/Master.master" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="banner" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="banner" runat="Server">
     <link href="CSS/Landen.css" rel="stylesheet" />
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="inhoud" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="inhoud" runat="Server">
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     <div class="LandTemp">
         <asp:Label ID="lblTemp" runat="server" Text="Label"></asp:Label>
     </div>
-    <asp:Label class="LandInfo" ID="Label1" runat="server" Text="Label"></asp:Label>
+    <div class="LandInfo">
+        <asp:Label ID="lblLandInfo" runat="server" Text="Label"></asp:Label>
+    </div>
     <div class="LandHotels">
         <div class="hotel">
-            <asp:Image ID="imgHotel1" runat="server" Height="200px" Width="100%"  ImageAlign="Middle"/><br />
+            <asp:Image ID="imgHotel1" runat="server" Height="200px" Width="100%" ImageAlign="Middle" /><br />
             <asp:Label ID="Label5" runat="server" Text="Beschrijving: " Font-Bold="True"></asp:Label><br />
             <asp:Label ID="lblHotel1Beschrijving" runat="server" Text="[HotelBeschrijving]"></asp:Label><br />
             <asp:Label ID="Label4" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:HyperLink ID="lblHotel1URL" runat="server">[HotelURL]</asp:HyperLink><br />
@@ -27,7 +29,7 @@
             <asp:Label ID="lblHotel2Prijs" runat="server" Text="[HotelPrijs]"></asp:Label><br />
         </div>
         <div class="hotel">
-            <asp:Image ID="imgHotel3" runat="server" Height="200px" Width="100%" ImageAlign="Middle"/><br />
+            <asp:Image ID="imgHotel3" runat="server" Height="200px" Width="100%" ImageAlign="Middle" /><br />
             <asp:Label ID="Label7" runat="server" Text="Beschrijving: " Font-Bold="True"></asp:Label><br />
             <asp:Label ID="lblHotel3Beschrijving" runat="server" Text="[HotelBeschrijving]"></asp:Label><br />
             <asp:Label ID="Label2" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:HyperLink ID="lblHotel3URL" runat="server">[HotelURL]</asp:HyperLink><br />
@@ -35,5 +37,5 @@
             <asp:Label ID="lblHotel3Prijs" runat="server" Text="[HotelPrijs]"></asp:Label><br />
         </div>
     </div>
-    
+
 </asp:Content>

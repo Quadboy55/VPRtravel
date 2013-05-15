@@ -26,6 +26,7 @@ public partial class _Default : System.Web.UI.Page
             lst.Add(pl);
         }
 
+        Master.setLandInfo("Het Brussels Hoofdstedelijk Gewest is een van de drie gewesten van België, al heeft het niet dezelfde juridische status als het Vlaamse en Waalse gewest.[1] Het omvat de 19 gemeenten van het arrondissement Brussel-Hoofdstad, en vormt zo de kern van het stedelijk gebied van Brussel. Het Brussels Gewest heeft een totale oppervlakte van 161 km² en ruim 1,2 miljoen inwoners. De bevolkingsdichtheid bedraagt zo 7.056 inwoners per km².");
         Master.setTemperatuur(City, Land);
         Master.setHotel(lst);
     }
