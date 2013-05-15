@@ -20,6 +20,7 @@ public partial class BoekReis : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //controle dat gebruiker komt via Trein.aspx
         if (Session["VPR_trace"] == null)
         {
             Response.Redirect("Trein.aspx");
@@ -215,6 +216,7 @@ public partial class BoekReis : System.Web.UI.Page
 
     protected void drpPersonen_SelectedIndexChanged(object sender, EventArgs e)
     {
+        //aantal velden weergeven voor persoon namen
         if (drpPersonen.SelectedIndex != 0)
         {
             atlPersonen = Convert.ToInt32(drpPersonen.SelectedValue);
@@ -339,6 +341,7 @@ public partial class BoekReis : System.Web.UI.Page
 
     private Boolean CheckIfPlaats()
     {
+       //kijken of er nog genoeg plaats is op de trein
         foreach (DataRow r in tempRit.Rows)
         {
             DataTable capa = new CapaciteitAccess().getCapa(DateTime.Parse(grdRitten.Rows[0].Cells[0].Text), Convert.ToInt32(r.ItemArray[0].ToString()));
@@ -478,6 +481,7 @@ public partial class BoekReis : System.Web.UI.Page
             DataTable d = new CapaciteitAccess().getCapa(datum,Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()));
             if (d.Rows.Count != 0)
             {
+                //capaciteit van de rit - de nog vrije aantal plaatsen
                 stoelen[i] = Convert.ToInt32(new RitAccess().getRitCapaciteit(Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()))) - Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
                 stoelen[i] += i;
             }

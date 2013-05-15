@@ -104,6 +104,8 @@ public partial class _Default : System.Web.UI.Page
     protected void GridTrein_SelectedIndexChanged(object sender, EventArgs e)
     {
         TreinAccess = new TreinenAccess();
+
+        //cookie als profiel voor gebruiker
         DataTable d = TreinAccess.getTrainById(Convert.ToInt32(GridTrein.SelectedRow.Cells[1].Text));
         HttpCookie cookie = new HttpCookie("VPR_Profiel", d.Rows[0].ItemArray[2].ToString());
         cookie.Expires = DateTime.Today.AddDays(1);
