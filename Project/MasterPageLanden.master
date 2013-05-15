@@ -14,7 +14,7 @@
             <asp:Image ID="imgHotel1" runat="server" Height="200px" Width="100%"  ImageAlign="Middle"/><br />
             <asp:Label ID="Label5" runat="server" Text="Beschrijving: " Font-Bold="True"></asp:Label><br />
             <asp:Label ID="lblHotel1Beschrijving" runat="server" Text="[HotelBeschrijving]"></asp:Label><br />
-            <asp:Label ID="Label4" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:LinkButton ID="lblHotel1URL" runat="server">[HotelURL]</asp:LinkButton><br />
+            <asp:Label ID="Label4" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:HyperLink ID="lblHotel1URL" runat="server">[HotelURL]</asp:HyperLink><br />
             <asp:Label ID="Label8" runat="server" Text="Prijs: " Font-Bold="True"></asp:Label>
             <asp:Label ID="lblHotel1Prijs" runat="server" Text="[HotelPrijs]"></asp:Label><br />
         </div>
@@ -22,7 +22,7 @@
             <asp:Image ID="imgHotel2" runat="server" Height="200px" Width="100%" ImageAlign="Middle" /><br />
             <asp:Label ID="Label6" runat="server" Text="Beschrijving: " Font-Bold="True"></asp:Label><br />
             <asp:Label ID="lblHotel2Beschrijving" runat="server" Text="[HotelBeschrijving]"></asp:Label><br />
-            <asp:Label ID="Label3" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:LinkButton ID="lblHotel2URL" runat="server">[HotelURL]</asp:LinkButton><br />
+            <asp:Label ID="Label3" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:HyperLink ID="lblHotel2URL" runat="server">[HotelURL]</asp:HyperLink><br />
             <asp:Label ID="Label9" runat="server" Text="Prijs: " Font-Bold="True"></asp:Label>
             <asp:Label ID="lblHotel2Prijs" runat="server" Text="[HotelPrijs]"></asp:Label><br />
         </div>
@@ -30,7 +30,7 @@
             <asp:Image ID="imgHotel3" runat="server" Height="200px" Width="100%" ImageAlign="Middle"/><br />
             <asp:Label ID="Label7" runat="server" Text="Beschrijving: " Font-Bold="True"></asp:Label><br />
             <asp:Label ID="lblHotel3Beschrijving" runat="server" Text="[HotelBeschrijving]"></asp:Label><br />
-            <asp:Label ID="Label2" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:LinkButton ID="lblHotel3URL" runat="server">[HotelURL]</asp:LinkButton><br />
+            <asp:Label ID="Label2" runat="server" Text="Link: " Font-Bold="True"></asp:Label><asp:HyperLink ID="lblHotel3URL" runat="server">[HotelURL]</asp:HyperLink><br />
             <asp:Label ID="Label10" runat="server" Text="Prijs: " Font-Bold="True"></asp:Label>
             <asp:Label ID="lblHotel3Prijs" runat="server" Text="[HotelPrijs]"></asp:Label><br />
         </div>

@@ -47,16 +47,22 @@ public partial class MasterPageLanden : System.Web.UI.MasterPage
         lblHotel1Prijs.Text = Convert.ToString(hotels[0].prijs);
         imgHotel1.ImageUrl = hotels[0].foto;
         lblHotel1URL.Text = hotels[0].website;
+        lblHotel1URL.Target = "_blank";
+        lblHotel1URL.NavigateUrl = hotels[0].website;
 
         lblHotel2Beschrijving.Text = hotels[1].beschrijving;
         lblHotel2Prijs.Text = Convert.ToString(hotels[1].prijs);
         imgHotel2.ImageUrl = hotels[1].foto;
         lblHotel2URL.Text = hotels[1].website;
+        lblHotel2URL.Target = "_blank";
+        lblHotel2URL.NavigateUrl = hotels[0].website;
 
         lblHotel3Beschrijving.Text = hotels[2].beschrijving;
         lblHotel3Prijs.Text = Convert.ToString(hotels[2].prijs);
         imgHotel3.ImageUrl = hotels[2].foto;
         lblHotel3URL.Text = hotels[2].website;
+        lblHotel3URL.Target = "_blank";
+        lblHotel3URL.NavigateUrl = hotels[0].website;
     }
 
     public void setLandInfo(string info)

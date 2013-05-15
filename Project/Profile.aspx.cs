@@ -17,6 +17,14 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        ((Master)Page.Master).checkLogon(true);
+
+        if (Session["VPR_naam"] == null)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+
         RitAccess = new RitAccess();
         PlaatsAccess = new PlaatsenAccess();
         plaatsData = new Dictionary<int, PlaatsData>();
@@ -26,6 +34,7 @@ public partial class _Default : System.Web.UI.Page
             GebruikerData g = new GebruikerData();
             string gebruikersnaam = Session["VPR_naam"].ToString();
             g = bll.getPlayerByLogin(gebruikersnaam);
+            
             lblGebruiker.Text = gebruikersnaam;
             txtNaam.Text = g.naam;
             txtVoornaam.Text = g.voornaam;
