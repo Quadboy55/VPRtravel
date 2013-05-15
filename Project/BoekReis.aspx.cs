@@ -409,6 +409,7 @@ public partial class BoekReis : System.Web.UI.Page
             if (d.Rows.Count != 0)
             {
                 stoelen[i] = Convert.ToInt32(new RitAccess().getRitCapaciteit(Convert.ToInt32(tempRit.Rows[i].ItemArray[0].ToString()))) - Convert.ToInt32(d.Rows[0].ItemArray[0].ToString());
+                stoelen[i]++;
             }
             else
             {

@@ -16,6 +16,7 @@
             <asp:BoundField DataField="aankomstID" HeaderText="Aankomstplaats" />
             <asp:BoundField DataField="prijs" HeaderText="Prijs/pers." />
             <asp:BoundField DataField="Duur" HeaderText="Duur" />
+            <asp:BoundField DataField="vertrekUur" HeaderText="Vertrek uur" />
         </Columns>
     </asp:GridView>
     <br />
