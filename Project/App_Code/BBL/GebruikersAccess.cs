@@ -30,19 +30,13 @@ public class GebruikersAccess
         DAO.changePass(id,pass);
     }
 
-    public DataTable getPlayersByLogin(String login)
-    {
-        DAO = new GebruikersDAO();
-        return DAO.getPlayersByLogin(login).Tables[0];
-    }
+  
 
     public GebruikerData getPlayerByLogin(String login)
     {
        DAO = new GebruikersDAO();
-       if (getPlayersByLogin(login) != null)
-       {
            DataTable t = DAO.getUserByLogin(login).Tables[0];
-           if (t.Rows.Count != 0)
+           if (t != null && t.Rows.Count != 0 )
            {
                GebruikerData g = new GebruikerData();
                object[] inhoud = t.Rows[0].ItemArray;
@@ -60,7 +54,7 @@ public class GebruikersAccess
 
                return g;
            }
-       }
+       
 
             return null;
         
@@ -114,7 +108,7 @@ public class GebruikersAccess
     public GebruikerData login(String login, byte[] pass)
     {
         DAO = new GebruikersDAO();
-        if(getPlayersByLogin(login) != null)
+        if(getPlayerByLogin(login) != null)
         {
             DataTable t = DAO.login(login).Tables[0];
             if (t.Rows.Count != 0)

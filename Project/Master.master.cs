@@ -85,7 +85,7 @@ public partial class Master : System.Web.UI.MasterPage
          if (gebruiker == null)
          {
              Session["VPR_login"] = false;
-             //Response.Redirect("~/Home.aspx");
+             Response.Redirect(Request.Url.ToString());
              
          }
          else
@@ -97,12 +97,12 @@ public partial class Master : System.Web.UI.MasterPage
                  Session["VPR_fullnaam"] = gebruiker.naam + " " + gebruiker.voornaam;
                  Session["VPR_naam"] = gebruiker.gebruikersnaam;
 
-                 //Response.Redirect("~/Profile.aspx");
+                 Response.Redirect(Request.Url.ToString());
              }
              else
              {
                  Session["VPR_login"] = false;
-                 //Response.Redirect("~/Home.aspx");
+                 Response.Redirect(Request.Url.ToString());
              }
          }
 
@@ -177,6 +177,18 @@ public partial class Master : System.Web.UI.MasterPage
     {
         Session.Clear();
         hdValue.Value = "1";
-        Response.Redirect("Home.aspx");
+        if (Request.Url.ToString().EndsWith("Trein.aspx"))
+        {
+            Response.Redirect("Home.aspx");
+        }
+        else
+        {
+            Response.Redirect(Request.Url.ToString());
+        }
+        
+    }
+    protected void btnLostPass_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Recover.aspx");
     }
 }

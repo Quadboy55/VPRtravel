@@ -103,7 +103,6 @@
         <!-- Login/Register -->
         <div id="ModalLogReg" class="modal hide fade" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="H1">Login/Register</h3>
             </div>
             <div class="modal-body">
@@ -135,6 +134,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <asp:LinkButton ID="btnLostPass" runat="server" OnClick="btnLostPass_Click">Wachtwoord vergeten...</asp:LinkButton>
                 <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-primary" OnClick="btnClose_Click" CausesValidation="false" />
                 <asp:Button ID="btnLogOk" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogOk_Click" ValidationGroup="login" />
             </div>

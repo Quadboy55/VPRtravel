@@ -74,15 +74,15 @@
                         <tr>
                             <td>Oud Passwoord:</td>
                             <td>
-                                <asp:TextBox ID="txtPassOud" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtPassOud" runat="server" TextMode="Password"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>Nieuw Passwoord:</td>
-                            <td><asp:TextBox ID="txtPassNieuw" runat="server"></asp:TextBox></td>
+                            <td><asp:TextBox ID="txtPassNieuw" runat="server" TextMode="Password"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>Nieuw Passwoord opnieuw:</td>
-                            <td><asp:TextBox ID="txtPassNieuwOpnieuw" runat="server"></asp:TextBox></td>
+                            <td><asp:TextBox ID="txtPassNieuwOpnieuw" runat="server" TextMode="Password"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td></td>
